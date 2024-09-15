@@ -1,0 +1,654 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+
+
+
+
+
+<style>
+ a.menu:link {color: #0000FF; text-decoration: none; }
+ a.menu:hover {color: #33FFCC; text-decoration: underline; }
+</style>
+
+
+
+
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="../../Images/back.gif"  >
+
+
+
+
+
+<!-- Float script start -->
+<!-- Courtesy of SimplytheBest.net - http://simplythebest.net/scripts/ -->
+<SCRIPT>
+
+var IW= 0;
+var IH= 0;
+var PX= 0;
+var PY= 0;
+var ZIN= 0;
+var us= null;
+var IMGW= 30;
+//modify top position
+var IMGH= 0;
+var LSAFETY= 20;
+var TSAFETY= 17;
+function branding() {
+browserVer = parseInt(navigator.appVersion); 
+if(browserVer<4) return;
+ oldIW= IW;
+ oldIH= IH;
+ oldPX= PX;
+ oldPY= PY;
+ if (navigator.appName == 'Netscape')
+ {
+  if ((window.innerHeight != oldIH)||(window.innerWidth != oldIW)||(window.pageXOffset != oldPX)||(window.pageYOffset != oldPY))
+  {
+    if (us == null)
+    {
+      for (i=0; i<document.layers.length; i++)
+      {
+        us= document.layers[i];
+        if (us.id == "Logo") break;
+      }
+    }
+    if (us != null)
+    {
+      us.visibility= "hide";
+      IH= window.innerHeight;
+      IW= window.innerWidth;
+      PX= window.pageXOffset;
+      PY= window.pageYOffset;
+
+      (IH > IMGH) ? us.bottom= (PY+(IMGH+TSAFETY)) : us.bottom= 0;
+//      (IW > IMGW) ? us.left= (PX-(IMGW+LSAFETY)) : us.left= 0;
+      us.left = 20;
+
+      for (i=0; i<document.layers.length; i++)
+      {
+        templay= document.layers[i];
+
+        if (templay.zIndex > ZIN)
+          ZIN= (templay.zIndex + 1);
+      }
+      us.zIndex= ZIN;
+      us.visibility= "show";
+    }
+  }
+ }
+ else{
+  //if (navigator.appVersion.indexOf("Mac") == -1)
+  {
+    if ((document.body.clientHeight != oldIH)||(document.body.clientWidth != oldIW)||(document.body.scrollLeft != oldPX)||(document.body.scrollTop != oldPY))      {
+      alldivs= document.all.tags("DIV");
+      if (us == null){ 
+        for (i=0; i<alldivs.length; i++)
+          {
+          us= alldivs[i];
+          if (us.id == "Logo")
+            break;
+          }
+      }
+      if (us != null){
+        us.style.display= "none";
+        IH= document.body.clientHeight;
+        IW= document.body.clientWidth;
+        PX= document.body.scrollLeft;
+        PY= document.body.scrollTop;
+        us.style.bottom= (-PY+(IMGH+TSAFETY)+12);
+//        us.style.left=(PX-(IMGW+LSAFETY)+15);
+//modify left position
+        us.style.left = 5;
+//us.style.left = (150 - ims.width)/2;
+
+        for (i=0; i<alldivs.length; i++){
+          templay= alldivs(i);
+          if (templay.style.zIndex > ZIN)
+            us.style.zindex= (templay.style.zIndex + 1);
+        }
+        us.style.display= "";
+      }
+  }
+ }
+ }
+}
+if ((document.all) || (document.layers))
+{
+ setInterval("branding()",100);
+}
+
+</SCRIPT>
+
+<div class="Logo" id="Logo" style="LEFT: 6px; POSITION: absolute; bottom:5px">
+<br>
+<b><span lang="en-us">
+<font face="Wingdings" color="#0000FF" style="font-size: 16pt">
+<a class="menu" href="#0"><span style="text-decoration: none">&Ccedil;</span></a></font></span></b></div>
+<!-- Float script end -->
+
+
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<b>
+<span lang="AR-SA" style="font-size: 22.0pt; font-family: khalaad al-arabeh 2; color: #993300">
+&nbsp; <a name="0"></a> </span></b>
+<span lang="AR-SA" style="font-size:22.0pt;font-family:&quot;Hesham AlSharq&quot;;
+color:#993300">متن الجزرية</span></p>
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" width="648" style="width: 100%; border-collapse: collapse; border: medium none; margin-left: -29.3pt" id="table1">
+		<tr>
+			<td width="648" colspan="3" style="width: 100%; border-left: medium none; border-right: medium none; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: blue" align="center">
+			<p class="MsoNormal" align="center" dir="LTR" style="text-align: center">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;;
+  color:white">باب معرفة الوقوف</span></b></td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 50%; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَبَـعْـدَ&nbsp;تَـجْـوِيْـدِكَ&nbsp;لِلْحـُرُوفِ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;">لاَبُـدَّ&nbsp;مِـنْ&nbsp;مـَعْـرِفَـةِ 
+			&nbsp;الْوُقـوفِ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 50%; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَالابْتِـدَاءِ &nbsp;وَهْـيَ&nbsp;تُقْـسَـمُ&nbsp;إِذَنْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;">
+			ثَـلاَثَــةً&nbsp;تَـامٌ&nbsp;وَكَـافٍ&nbsp;وَحَـسـَنْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 50%; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَهْيَ&nbsp;لِمَا&nbsp;تَـمَّ &nbsp;فـَإنْ&nbsp;لَـمْ&nbsp;يُوجـَدِ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;">تَعـَلُـقٌ&nbsp;أَوْ&nbsp;كـَانَ&nbsp;</span><span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">مَـْـنَىً</span><span lang="AR-SA" dir="RTL" style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;">&nbsp;فَابْـتَدي</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 50%; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			فَالتَّامُ&nbsp;فَالْكَـافِي &nbsp;وَلَفْظـًا&nbsp; فَامْنَعَنْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;">إِلاَّ&nbsp;رُؤُوسَ&nbsp;الآيِ&nbsp;</span><span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">جــَوِّزْ</span><span lang="AR-SA" dir="RTL" style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;">&nbsp;فَالْحَسـَنْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 50%; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَغَـيْرُ&nbsp;مَـا&nbsp;تَـمَّ&nbsp;قَـبِيْـحٌ&nbsp;وَلَـهُ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;">ألْوَقْفُ&nbsp;مُضْـطَرًّا&nbsp;وَيُـبْدَا&nbsp;قَـبـْلَـهُ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 50%; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَلَيْسَ&nbsp;فِي&nbsp;الْقُرْآنِ&nbsp;مِنْ&nbsp;وَقْفٍ&nbsp;وَجَبْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;">وَلاَ&nbsp;حَرَامٌ&nbsp;غَـيـْرَ&nbsp;مَـا&nbsp;</span><span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">لَـهُ</span><span lang="AR-SA" dir="RTL" style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;">&nbsp;سَبَـبْ</span></b></td>
+			<td style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="648" colspan="3" style="width: 100%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: blue" align="center">
+			<p class="MsoNormal" align="center" dir="LTR" style="text-align: center">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;;
+  color:white">باب المقطوع والموصول </span></b></td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَاعْرِفْ&nbsp;لِمَقْطُوعٍ&nbsp;وَمَوْصُـولٍ&nbsp;وَتَا</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			فِي&nbsp;مُصْـحَفِ&nbsp;الإِمـَامِ&nbsp;فِيمَا &nbsp;قَدْ&nbsp;أَتَى</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			فَاقْطـَعْ&nbsp;بِعَشـْرِ&nbsp;كـَلِمـَاتٍ&nbsp;أنْ&nbsp;لا</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">مَــعْ&nbsp; مـَلْجَــإٍ&nbsp; 
+			وَلاَ&nbsp;إِلَــهَ&nbsp;إِلاَّ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَتَعْبـُدُوا &nbsp;يَـاسِينَ&nbsp;ثَانِي&nbsp;هُودَ&nbsp;لاَ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">يُشْرِكـْنَ&nbsp;تُشْرِكْ&nbsp; 
+			يَدْخُلْنَ&nbsp;تَعْلُوا عَلَى</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			أَنْ&nbsp;لا&nbsp;يَقُـولُوا&nbsp;لاَ&nbsp;أَقُـولَ&nbsp;إِنَّ&nbsp;مَـا</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			بِالرَّعْدِ&nbsp;وَالمَـفْتُوحَ&nbsp;صِلْ&nbsp;وَعَـنْ مَا</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			نُهُوا&nbsp;اقْطَعُوا&nbsp;مِنْ&nbsp;مَا&nbsp;بِرُومٍ&nbsp;وَالنِّسَا</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">خُلْفُ&nbsp;المُنَـافِقِيـنَ&nbsp; 
+			أَمْ&nbsp;مَـنْ&nbsp;أَسَّسَا</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			فُصِّلَتْ&nbsp;النِّسَا&nbsp;وَذِبْـحٍ&nbsp;حَيـْثُ&nbsp;مَـا</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">وَأَنْ 
+			&nbsp;لَـمِ&nbsp;المَفْتُـوحَ&nbsp;كَـسْرُ&nbsp;إِنَّ&nbsp;مَا</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			لانْعَامِ&nbsp;وَالمَفْتُوحَ &nbsp;يَدْعـُونَ&nbsp;مَعـَا</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">وَخُـلْفُ&nbsp;الانْفـَالِ&nbsp;وَنَـحْلٍ&nbsp; 
+			وَقَـعَا</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَكُلِّ&nbsp;مـَا&nbsp;سَأَلْتُـمـُوهُ&nbsp;وَاخْتُلِـفْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">رُدُّوا&nbsp;كَذَا&nbsp;قُلْ&nbsp;بِئْسَمَا&nbsp; 
+			وَالْوَصْلُ&nbsp;صِفْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			خَلَفْتُمُونِي&nbsp;وَاشْتَرَوْا&nbsp;فِي&nbsp;مَا&nbsp;اقْطَعَا</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			أُوحِيْ&nbsp;أَفَضْتُمُ&nbsp;اشْتَهَتْ &nbsp;يَبْلُوا&nbsp; مَـعَا</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			ثَانِي&nbsp;فَعَلْنـَ&nbsp;وَقَـعَـتْ&nbsp;رُومٌ&nbsp;كِـلاَ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			تَنْزِيْلُ&nbsp;شُـعَرَاءٍ&nbsp;وَغـَيْرَ&nbsp;ذِي&nbsp;صِـلاَ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			فَأَيْنَمَا&nbsp;كَالنَّحْلِ&nbsp;صِلْ&nbsp;وَ&nbsp;مُـخْـتَلِفْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">فِي&nbsp;الشُّعَرَا&nbsp;الأَحْزَابِ&nbsp;وَالنِّسَا&nbsp;وُصِفْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَصِلْ&nbsp;فَإِلَّمْ&nbsp; هُـودَ&nbsp;أَلَّـنْ&nbsp;نَجْـعَلاَ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			نَجْمَعَ&nbsp;كَيْلاَ&nbsp;تَحْزَنُوا &nbsp;تَأْسَـوْا&nbsp;عَـلَى</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			حَـجٌّ&nbsp;عَلـَيْـكَ&nbsp;حَـرَجٌ&nbsp;وَقَطْعُهُمْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			عَنْ&nbsp;مَنْ&nbsp;يَشَاءُ&nbsp;مَنْ&nbsp;تَوَلَّى &nbsp;يَوْمَ&nbsp;هُـمْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			ومـَالِ&nbsp;هَــذَا&nbsp;وَالَّذِـينَ&nbsp;هـؤُلاَ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">تَ&nbsp;حِيـنَ&nbsp;فِي&nbsp;الإمَـامِ&nbsp;صِـلْ&nbsp;وَوُهِّلاَ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَوَزَنـُوهُـمْ&nbsp;وَكـَالُـوهُمْ&nbsp;صـِلِ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">كَـذَا&nbsp;مـنَ&nbsp;الْ&nbsp;وَهَا&nbsp;وَيَـا&nbsp;لاَ 
+			&nbsp;تَفْصِلِ</span></b></td>
+			<td style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="648" colspan="3" style="width: 100%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: blue" align="center">
+			<p class="MsoNormal" align="center" dir="LTR" style="text-align: center">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;;
+  color:white">باب التاءات</span></b></td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَرَحْمـَتُ&nbsp;الزُّخْـرُفِ&nbsp;بِالتَّا&nbsp; زَبَرَهْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">لاعْرَافِ&nbsp;رُومٍ 
+			&nbsp;هُودٍ&nbsp;كَـافِ&nbsp;الْبَقَـرَهْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			نِعْمَتُهَا&nbsp;ثَـلاثُ &nbsp;نَـحْلٍ&nbsp;إبـْرَهَـمْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			مَعًا&nbsp;أَخَيْـرَاتٌ&nbsp;عـُقُودُ&nbsp;الثَّـانِ&nbsp;هُـمْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			لُقْمَـانُ &nbsp;ثُمَّ&nbsp;فـَاطـِرٌ&nbsp;كَالـطُّـورِ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			عِـمْـرَانَ&nbsp;لَعْنَـتَ&nbsp;بِهـَا&nbsp;وَالنُّــورِ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَامْرَأَتٌ&nbsp;يُوسُفَ&nbsp;عِمْرَانَ&nbsp;الْقَصَصْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">تَحْرِيْمَ&nbsp;مَعْصِيَتْ&nbsp;بِقـَدْ&nbsp;سَمِعْ&nbsp;يُـخَصْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			شَجَرَتَ&nbsp;الدُّخانِ&nbsp; سُنَّـتْ&nbsp;فَـاطـِرِ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">كُـلاً&nbsp;وَالانْفَالَ&nbsp;وَحَــرْفَ&nbsp;غـَافِـرِ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			قُرَّتُ&nbsp;عَيْنٍ &nbsp;جَنَّتٌ&nbsp;فِـي&nbsp;وَقـَعـَتْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">فِطْرَتْ&nbsp;بَقِيَّتْ&nbsp;وَابْنَـتْ&nbsp;وَكَـلِمَــتْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			أَوْسَطَ&nbsp;اَلاعْرَافِ&nbsp;وَكُلُّ&nbsp;مَـا&nbsp;اخْتُلِفْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			جَمْـعًا&nbsp;وَفَرْدًا&nbsp;فِيْهِ&nbsp;بِالتَّـاءِ&nbsp;عُـرِفْ</span></b></td>
+			<td style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="648" colspan="3" style="width: 100%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: blue" align="center">
+			<p class="MsoNormal" align="center" dir="LTR" style="text-align: center">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;;
+  color:white">باب همز الوصل</span></b></td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَابْدَأْ&nbsp;بِهَمْزِ&nbsp;الْوَصْلِ&nbsp;مِنْ&nbsp;فِعْلٍ&nbsp;بِضَمْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">إنْ&nbsp;كَانَ&nbsp;ثَالِثٌ&nbsp; 
+			مـِنَ&nbsp;الفـِعْلِ&nbsp;يُضـَمْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَاكْسِرْهُ&nbsp;حَالَ&nbsp;الْكَسْرِ&nbsp;وَالْفَتْحِ &nbsp;وَفِي</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">لاسْمَاءِ 
+			&nbsp;غَيْرَ&nbsp;اللاَّمِ&nbsp;كَسْرَهـَا&nbsp;وَفِـي</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			ابْنٍ&nbsp;مَعَ&nbsp;ابْنَـةِ&nbsp;امْـرِئٍ &nbsp;وَاثْنَـيْنِ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			وَامْرَأةٍ&nbsp;وَاسْـمٍ&nbsp;مَــعَ اثْنـَتَـيـْنِ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			وَحَاذِرِ&nbsp;الْوَقْفَ&nbsp;بِـكُلِّ&nbsp;الحـَـرَكَهْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			إِلاَّ&nbsp;إِذَا&nbsp;رُمـتَ&nbsp;فَبَــعْـضُ&nbsp;حَرَكـَهْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="317" style="width: 237.5pt; border-left: 1.0pt solid windowtext; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" align="right" dir="LTR" style="text-align: right">
+			<b>
+			<span lang="AR-SA" dir="RTL" style="font-size:14.0pt;font-family:&quot;Simplified Arabic&quot;">
+			إِلاَّ&nbsp;بِفَتْـحٍ&nbsp;أَوْ&nbsp;بِنَـصْـبٍ&nbsp;وَأَشـِمْ</span></b></td>
+			<td width="331" style="width: 50%; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm" align="center">
+			<p class="MsoNormal" dir="LTR" style="margin-left: 15.85pt"><b>
+			<span style="font-size:14.0pt;
+  font-family:&quot;Simplified Arabic&quot;" dir="RTL">
+			إِشَـارَةً&nbsp;بِالضَّـمِّ&nbsp;فِي&nbsp;رَفْـعٍ&nbsp;وَضَـمْ</span></b></td>
+			<td style="border: medium none; padding: 0cm" width="1" align="center">
+			<p class="MsoNormal">&nbsp;</td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA">&nbsp;</span></p>
+
+</body>
+
+</html>

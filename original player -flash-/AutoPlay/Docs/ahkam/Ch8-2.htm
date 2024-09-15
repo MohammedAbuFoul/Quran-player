@@ -1,0 +1,526 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+
+
+
+
+<style>
+A.menulink {
+display: block;
+text-align: center;
+text-decoration: none;
+font-family:Times;
+font-size:14pt;
+color: #0000FF;
+BORDER: none;
+border: solid 1px #FFFFFF;
+}
+
+A.menulink:hover {
+border: solid 1px #6100C1;
+background-color:#F0E1FF;
+}
+
+</style>
+
+<script>
+
+var ns4class=''
+</script>
+
+<style>
+ a.menu:link {color: #0000FF; text-decoration: none; }
+ a.menu:hover {color: #33FFCC; text-decoration: underline; }
+</style>
+
+
+
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="../../Images/back.gif"  >
+
+
+
+
+
+<!-- Float script start -->
+<!-- Courtesy of SimplytheBest.net - http://simplythebest.net/scripts/ -->
+<SCRIPT>
+
+var IW= 0;
+var IH= 0;
+var PX= 0;
+var PY= 0;
+var ZIN= 0;
+var us= null;
+var IMGW= 30;
+//modify top position
+var IMGH= 0;
+var LSAFETY= 20;
+var TSAFETY= 17;
+function branding() {
+browserVer = parseInt(navigator.appVersion); 
+if(browserVer<4) return;
+ oldIW= IW;
+ oldIH= IH;
+ oldPX= PX;
+ oldPY= PY;
+ if (navigator.appName == 'Netscape')
+ {
+  if ((window.innerHeight != oldIH)||(window.innerWidth != oldIW)||(window.pageXOffset != oldPX)||(window.pageYOffset != oldPY))
+  {
+    if (us == null)
+    {
+      for (i=0; i<document.layers.length; i++)
+      {
+        us= document.layers[i];
+        if (us.id == "Logo") break;
+      }
+    }
+    if (us != null)
+    {
+      us.visibility= "hide";
+      IH= window.innerHeight;
+      IW= window.innerWidth;
+      PX= window.pageXOffset;
+      PY= window.pageYOffset;
+
+      (IH > IMGH) ? us.bottom= (PY+(IMGH+TSAFETY)) : us.bottom= 0;
+//      (IW > IMGW) ? us.left= (PX-(IMGW+LSAFETY)) : us.left= 0;
+      us.left = 20;
+
+      for (i=0; i<document.layers.length; i++)
+      {
+        templay= document.layers[i];
+
+        if (templay.zIndex > ZIN)
+          ZIN= (templay.zIndex + 1);
+      }
+      us.zIndex= ZIN;
+      us.visibility= "show";
+    }
+  }
+ }
+ else{
+  //if (navigator.appVersion.indexOf("Mac") == -1)
+  {
+    if ((document.body.clientHeight != oldIH)||(document.body.clientWidth != oldIW)||(document.body.scrollLeft != oldPX)||(document.body.scrollTop != oldPY))      {
+      alldivs= document.all.tags("DIV");
+      if (us == null){ 
+        for (i=0; i<alldivs.length; i++)
+          {
+          us= alldivs[i];
+          if (us.id == "Logo")
+            break;
+          }
+      }
+      if (us != null){
+        us.style.display= "none";
+        IH= document.body.clientHeight;
+        IW= document.body.clientWidth;
+        PX= document.body.scrollLeft;
+        PY= document.body.scrollTop;
+        us.style.bottom= (-PY+(IMGH+TSAFETY)+12);
+//        us.style.left=(PX-(IMGW+LSAFETY)+15);
+//modify left position
+        us.style.left = 5;
+//us.style.left = (150 - ims.width)/2;
+
+        for (i=0; i<alldivs.length; i++){
+          templay= alldivs(i);
+          if (templay.style.zIndex > ZIN)
+            us.style.zindex= (templay.style.zIndex + 1);
+        }
+        us.style.display= "";
+      }
+  }
+ }
+ }
+}
+if ((document.all) || (document.layers))
+{
+ setInterval("branding()",100);
+}
+
+</SCRIPT>
+
+<div class="Logo" id="Logo" style="LEFT: 10px; POSITION: absolute; bottom:5px; width:25px">
+<br>
+<b><span lang="en-us">
+<font face="Wingdings" color="#0000FF" style="font-size: 16pt">
+<a class="menu" href="#0"><span style="text-decoration: none">&Ccedil;</span></a></font></span></b></div>
+<!-- Float script end -->
+
+
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<b>
+<span lang="AR-SA" style="font-size: 22.0pt; font-family: khalaad al-arabeh 2; color: #993300">
+&nbsp; <a name="0"></a> </span></b>
+<span lang="AR-SA" style="font-size:22.0pt;font-family:&quot;Hesham AlSharq&quot;;
+color:#993300">السكت</span></p>
+
+
+<table border="0" width="100%" id="table2">
+
+<td>
+<p align="left"></td>
+
+  
+    <td width="109">
+	<p align="left">
+	<font color="#0000FF">
+	<b><a class="menulink" href="#1">
+	<font color="#0000FF" >تعريفه </font>
+	</a></b></font></td>
+
+    <td width="150">
+	<p align="left">
+	<font color="#0000FF"><a href="#2" class="menulink">
+	<b><font color="#0000FF">مواضع السكت</font></b></a></font></td>
+
+
+    <td width="122">
+	<p align="left">
+	<font color="#0000FF">
+	<b><a class="menulink" href="#3">
+	<font color="#0000FF">ضبط المصاحف</font></a></b></font></td>
+
+<td>
+<p align="left"></td>
+
+</table>
+
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&nbsp;</span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue"><a name="1"></a>تعريفه
+</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+لغة</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+السكت خلاف النطق</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+اصطلاحا</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+قطع الصوت زمنا ما دون الوقف من غير تنفس بنية متابعة القراءة. </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="2"></a>مواضع السكت في القرآن</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+في رواية حفص عن عاصم أربعة مواضع للسكت متفق عليها وموضعان مختلف فيهما.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+المواضع المتفق عليها</span><span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">: </span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.75pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 32.25pt">
+<span style="font-size: 18.0pt">1.<span style="font:7.0pt &quot;Times New Roman&quot;">
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+السكت بين كلمتي (<b><span style="color:red">عِوَجَا</span></b>) و(<b><span style="color:red">قَيِّماً</span></b>) 
+في قوله تعالى &#64831;<b><span style="color:blue">الْحَمْدُ لِلَّهِ الَّذِي أَنزَلَ 
+عَلَى عَبْدِهِ الْكِتَابَ وَلَمْ يَجْعَل لَّهُ </span><span style="color:red">
+عِوَجَا</span></b></span><b><sup><span lang="AR-SA" style="font-family:&quot;Traditional Arabic&quot;;color:blue">
+</span></sup>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+* </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">قَيِّماً</span><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:blue"> لِّيُنذِرَ بَأْساً 
+شَدِيداً مِ</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: blue">ن 
+لَّدُنْهُ وَيُبَش</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: blue" dir="RTL">ِّرَ 
+الْمُؤْمِنِينَ</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">&#64830; 
+(الكهف 1-2)</span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;"> </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player14 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-2-1.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;"> على القارئ أن يسكت على كلمة (<b><span style="color:red">عِوَجَا</span></b>) 
+سكتة خفيفة بدون تنفس إذا أراد وصلها بما بعدها، ويكون السكت على الألف من غير 
+تنوين. ومن السنة الوقف عليها وقفا كاملا مع التنفس لأنها رأس آية.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.75pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 32.25pt">
+<span style="font-size: 18.0pt">2.<span style="font:7.0pt &quot;Times New Roman&quot;">
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+السكت بين كلمتي (<b><span style="color:red">مَّرْقَدِنَا</span></b>) و(<b><span style="color:red">هَذَا</span></b>) 
+في قوله تعالى &#64831;<b><span style="color:blue">قَالُوا يَا وَيْلَنَا مَن بَعَثَنَا 
+مِن </span><span style="color:red">مَّرْقَدِنَا هَذَا </span>
+<span style="color:blue">مَا وَعَدَ الرَّحْمَنُ وَصَدَقَ الْمُرْسَلُونَ</span></b>&#64830;<span style="color:blue">
+</span>(يس 52)</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player15 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-2-2.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL"><span style="color:green"> &nbsp;</span>&nbsp;</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.75pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 32.25pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+لا توصل كلمة (<b><span style="color:red">مَّرْقَدِنَا</span></b>) 
+بما بعدها إلا بسكتة خفيفة. كما يجوز أيضا الوقف التام عليها.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.75pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 32.25pt">
+<span style="font-size: 18.0pt">3.<span style="font:7.0pt &quot;Times New Roman&quot;">
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+السكت بين كلمتي (<b><span style="color:red">مَنْ</span></b>) و(<b><span style="color:red">رَاقٍ</span></b>) 
+في قوله تعالى &#64831;<b><span style="color:blue">وَقِيلَ </span>
+<span style="color:red">مَنْ رَاقٍ</span></b>&#64830; (القيامة 27)<span style="color:blue">
+</span></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player16 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-2-3.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+لا يجوز الوقف على كلمة (<b><span style="color:red">مَنْ</span></b>) 
+لأنها ليست موضع وقف، إنما يجب وصلها بما بعدها مع السكت، دون إدغام للنون الساكنة 
+في الراء.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.75pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 32.25pt">
+<span style="font-size: 18.0pt">4.<span style="font:7.0pt &quot;Times New Roman&quot;">
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+السكت بين كلمتي (<b><span style="color:red">بَلْ</span></b>) و(<b><span style="color:red">رَانَ</span></b>) 
+في قوله تعالى &#64831;<b><span style="color:blue">كَلَّا </span>
+<span style="color:red">بَلْ رَانَ</span><span style="color:blue"> عَلَى 
+قُلُوبِهِم مَّا كَانُوا يَكْسِبُونَ</span></b>&#64830;<span style="color:blue"> </span>
+(المطففين 14)<span style="color:blue"> </span></span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player17 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-2-4.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">لا يجوز أيضا الوقف على كلمة (</span><b><span lang="AR-SA" dir="RTL" style="font-size: 18.0pt; font-family: Traditional Arabic; color: red">بَلْ</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">) وقفا تاما، بل يجب السكت عليها مع 
+إظهارها من غير إدغام.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+المواضعان المختلف فيهما</span><span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">: </span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span style="font-size: 18.0pt">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+ما بين سورتي الأنفال والتوبة : &#64831;<b><span style="color:blue">إِنَّ اللّهَ بِكُلِّ 
+شَيْءٍ </span><span style="color:red">عَلِيمٌ</span><span style="color:blue"> *
+</span><span style="color:red">بَرَاءةٌ</span><span style="color:blue"> مِّنَ 
+اللّهِ وَرَسُولِهِ إِلَى الَّذِينَ عَاهَدتُّم مِّنَ الْمُشْرِكِينَ</span></b>&#64830; </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player18 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-2-5.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+(الأنفال 75 - التوبة 1) </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+<span style="color:green">&nbsp;</span></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;يجوز 
+الوقف والسكت على آخر سورة الأنفال كما يجوز وصلها بدون سكت بأول سورة التوبة مع 
+إقلاب التنوين في (<b><span style="color:red">عَلِيمٌ</span></b>). والوقف التام 
+على رأس الآية مقدم في الأداء.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span style="font-size: 18.0pt">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+ما بين كلمتي (<b><span style="color:red">مَالِيهْ</span></b>) و(<b><span style="color:red">هَلَكَ</span></b>) 
+في قوله تعالى &#64831;<b><span style="color:blue">مَا أَغْنَى عَنِّي </span>
+<span style="color:red">مَالِيهْ</span><span style="color:blue"> * </span>
+<span style="color:red">هَلَكَ</span><span style="color:blue"> عَنِّي 
+سُلْطَانِيهْ</span></b>&#64830;&nbsp; (الحاقة 28-29)<span style="color:blue"> </span></span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player19 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-2-6.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;يجوز في حالة وصل الآيتين السكت على حرف الهاء من كلمة (<b><span style="color:red">مَالِيهْ</span></b>) 
+ثم الابتداء بـ(<b><span style="color:red">هَلَكَ</span></b>) مع إظهار حرفي 
+الهاء، ويجوز أيضا عدم السكت وإدغام الهائين إدغام متماثلين فيصبحان هاءً واحدة 
+مشددة. والسكت مقدم في الأداء حال الوصل. ويسن الوقف التام على (<b><span style="color:red">مَالِيهْ</span></b>) 
+لأنها رأس آية.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="3"></a>ضبط المصاحف: مصحف المدينة المنورة</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+وُضع، في المواضع التي لا خلاف فيها، حرف سين صغير فوق الحرف الأخير من الكلمة 
+دلالة على السكت على ذلك الحرف حال الوصل:
+<img border="0" src="Pictures/Sakt.gif" width="66" height="31" align="middle"></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+ووضعت سين صغيرة على هاء (<b><span style="color:red">مَالِيهْ</span></b>) بسورة 
+الحاقة لأن السكت حال الوصل أرجح.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+ولم توضع السين فوق ميم (<b><span style="color:red">عَلِيمٌ</span></b>) آخر سورة 
+الأنفال.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">&nbsp;</p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">&nbsp;</p>
+
+</body>
+
+</html>

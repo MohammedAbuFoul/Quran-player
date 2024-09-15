@@ -1,0 +1,687 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+
+
+
+<style>
+ a.menu:link {color: #0000FF; text-decoration: none; }
+ a.menu:hover {color: #33FFCC; text-decoration: underline; }
+</style>
+
+
+
+
+
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="../../Images/back.gif"  >
+
+
+
+
+
+<!-- Float script start -->
+<!-- Courtesy of SimplytheBest.net - http://simplythebest.net/scripts/ -->
+<SCRIPT>
+
+var IW= 0;
+var IH= 0;
+var PX= 0;
+var PY= 0;
+var ZIN= 0;
+var us= null;
+var IMGW= 30;
+//modify top position
+var IMGH= 0;
+var LSAFETY= 20;
+var TSAFETY= 17;
+function branding() {
+browserVer = parseInt(navigator.appVersion); 
+if(browserVer<4) return;
+ oldIW= IW;
+ oldIH= IH;
+ oldPX= PX;
+ oldPY= PY;
+ if (navigator.appName == 'Netscape')
+ {
+  if ((window.innerHeight != oldIH)||(window.innerWidth != oldIW)||(window.pageXOffset != oldPX)||(window.pageYOffset != oldPY))
+  {
+    if (us == null)
+    {
+      for (i=0; i<document.layers.length; i++)
+      {
+        us= document.layers[i];
+        if (us.id == "Logo") break;
+      }
+    }
+    if (us != null)
+    {
+      us.visibility= "hide";
+      IH= window.innerHeight;
+      IW= window.innerWidth;
+      PX= window.pageXOffset;
+      PY= window.pageYOffset;
+
+      (IH > IMGH) ? us.bottom= (PY+(IMGH+TSAFETY)) : us.bottom= 0;
+//      (IW > IMGW) ? us.left= (PX-(IMGW+LSAFETY)) : us.left= 0;
+      us.left = 20;
+
+      for (i=0; i<document.layers.length; i++)
+      {
+        templay= document.layers[i];
+
+        if (templay.zIndex > ZIN)
+          ZIN= (templay.zIndex + 1);
+      }
+      us.zIndex= ZIN;
+      us.visibility= "show";
+    }
+  }
+ }
+ else{
+  //if (navigator.appVersion.indexOf("Mac") == -1)
+  {
+    if ((document.body.clientHeight != oldIH)||(document.body.clientWidth != oldIW)||(document.body.scrollLeft != oldPX)||(document.body.scrollTop != oldPY))      {
+      alldivs= document.all.tags("DIV");
+      if (us == null){ 
+        for (i=0; i<alldivs.length; i++)
+          {
+          us= alldivs[i];
+          if (us.id == "Logo")
+            break;
+          }
+      }
+      if (us != null){
+        us.style.display= "none";
+        IH= document.body.clientHeight;
+        IW= document.body.clientWidth;
+        PX= document.body.scrollLeft;
+        PY= document.body.scrollTop;
+        us.style.bottom= (-PY+(IMGH+TSAFETY)+12);
+//        us.style.left=(PX-(IMGW+LSAFETY)+15);
+//modify left position
+        us.style.left = 5;
+//us.style.left = (150 - ims.width)/2;
+
+        for (i=0; i<alldivs.length; i++){
+          templay= alldivs(i);
+          if (templay.style.zIndex > ZIN)
+            us.style.zindex= (templay.style.zIndex + 1);
+        }
+        us.style.display= "";
+      }
+  }
+ }
+ }
+}
+if ((document.all) || (document.layers))
+{
+ setInterval("branding()",100);
+}
+
+</SCRIPT>
+
+<div class="Logo" id="Logo" style="LEFT: 6px; POSITION: absolute; bottom:5px">
+<br>
+<b><span lang="en-us">
+<font face="Wingdings" color="#0000FF" style="font-size: 16pt">
+<a class="menu" href="#0"><span style="text-decoration: none">&Ccedil;</span></a></font></span></b></div>
+<!-- Float script end -->
+
+
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<b>
+<span lang="AR-SA" style="font-size: 22.0pt; font-family: khalaad al-arabeh 2; color: #993300">
+&nbsp; <a name="0"></a> </span></b>
+<span lang="AR-SA" style="font-size:22.0pt;font-family:&quot;Hesham AlSharq&quot;;
+color:#993300">الإظهار</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;;color:red">لغة</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">:<b><span style="color:red">
+</span></b>البيان<b><span style="color:red"> </span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;;color:red">اصطلاحا</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+إخراج كل حرف من مخرجه من غير زيادة في غنة الحرف المُظهَر. وعلى هذا يجب فصل النون 
+الساكنة أو التنوين عن الحرف الذي بعدها من غير سكت عليه.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;;color:red">حروفه</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+تظهر النون الساكنة أو التنوين إذا وقع بعدها حرف من <b>حروف الحلق </b>الستة: 
+الهمزة والهاء والعين والحاء والغين والخاء (<b><span style="color:blue">ء هـ ع ح 
+غ خ</span></b>) وهذه الحروف مجموعة في أوائل هذه الكلمات:
+<span style="color:blue">أ</span>خي <span style="color:blue">ه</span>اك
+<span style="color:blue">ع</span>لما <span style="color:blue">ح</span>ازه
+<span style="color:blue">غ</span>ير <span style="color:blue">خ</span>اسر.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">ويكون إظهار النون الساكنة في الكلمة الواحدة وفي 
+الكلمتين. أما إظهار التنوين فلا يقع حتما إلا في كلمتين.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;;color:red">أمثلة:</span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<b><span style="font-size:18.0pt;color:black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+النون الساكنة مع الهمزة</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَمَ</span><span style="color:red">نْ 
+أ</span><span style="color:blue">َعْرَضَ عَن ذِكْرِي</span></b>&#64830; (طه 124)</span>
+      <OBJECT id=player7 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-1.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<b><span style="font-size:18.0pt;color:black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+التنوين مع الهمزة</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَجَنَّا</span><span style="color:red">تٍ 
+أَ</span><span style="color:blue">لْفَافاً</span></b>&#64830; (النبأ 16)</span>
+      <OBJECT id=player8 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-2.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<b><span style="font-size:18.0pt;color:black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+النون الساكنة مع الهاء</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَمِـ</span><span style="color:red">نْهُ</span><span style="color:blue">مْ 
+دُونَ ذَلِكَ</span></b>&#64830; (الأعراف 168)</span>
+      <OBJECT id=player9 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-3.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَهُمْ يَ</span><span style="color:red">نْه</span><span style="color:blue">َوْنَ 
+عَنْهُ وَيَ</span><span style="color:red">نْأَ</span><span style="color:blue">وْنَ 
+عَنْهُ</span></b>&#64830; (الأنعام 26)</span>
+      <OBJECT id=player10 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-4.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;"><b><span style="color:black">
+&nbsp;</span></b><span style="color:black">في هذا المثال التقاء نون ساكنة مع الهاء في 
+كلمة </span><b><span style="color:blue">يَ</span><span style="color:red">نْه</span><span style="color:blue">َوْنَ</span></b><span style="color:black"> 
+والتقاء أخرى مع همزة في كلمة </span><b><span style="color:blue">وَيَ</span><span style="color:red">نْأَ</span><span style="color:blue">وْنَ</span></b><span style="color:black">، 
+وفي الحالتين يجب إظهار النون.</span></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<b><span style="font-size:18.0pt;color:black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+التنوين مع الهاء</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَلِكُلِّ قَوْ</span><span style="color:red">مٍ 
+هَ</span><span style="color:blue">ادٍ</span></b>&#64830; (الرعد 7) </span>
+      <OBJECT id=player11 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-5.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+النون الساكنة مع العين</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">مَّا لَهُم مِّنَ 
+اللّهِ مِ</span><span style="color:red">نْ عَ</span><span style="color:blue">اصِمٍ</span></b>&#64830; 
+(يونس 27)</span>
+      <OBJECT id=player12 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-6.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+التنوين مع العين</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَهُوَ بِكُلِّ شَيْ</span><span style="color:red">ءٍ 
+عَ</span><span style="color:blue">لِيمٌ</span></b>&#64830; (البقرة 29)</span>
+      <OBJECT id=player13 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-7.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<b><span style="font-size:18.0pt;color:black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+النون الساكنة مع الحاء</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَكَانُواْ يَ</span><span style="color:red">نْحِ</span><span style="color:blue">تُونَ 
+مِنَ الْجِبَالِ بُيُوتاً آمِنِينَ</span></b>&#64830; (الحجر 82) </span>
+      <OBJECT id=player14 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-8.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<b><span style="font-size:18.0pt;color:black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+التنوين مع الحاء</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">إِنَّ اللّهَ عَزِي</span><span style="color:red">زٌ 
+حَ</span><span style="color:blue">كِيمٌ</span></b>&#64830; (البقرة 220)</span>
+      <OBJECT id=player15 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-9.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<b><span style="font-size:18.0pt;color:black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+النون الساكنة مع الغين</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَلَا طَعَامٌ 
+إِلَّا مِ</span><span style="color:red">نْ غِ</span><span style="color:blue">سْلِينٍ</span></b>&#64830; 
+(الحاقة 36)</span>
+      <OBJECT id=player16 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-10.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+التنوين مع الغين</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">إِنَّ اللّهَ كَانَ 
+عَفُ</span><span style="color:red">وّاً غَ</span><span style="color:blue">فُوراً</span></b>&#64830; 
+(النساء 43) </span>
+      <OBJECT id=player17 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-11.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<b><span style="font-size:18.0pt;color:black">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+النون الساكنة مع الخاء</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَإِنَّ مِنْهَا 
+لَمَا يَهْبِطُ مِ</span><span style="color:red">نْ خَ</span><span style="color:blue">شْيَةِ 
+اللّهِ</span></b>&#64830; (البقرة 74)</span>
+      <OBJECT id=player18 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-12.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:black">
+التنوين مع الخاء</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">فَمَن يَعْمَلْ 
+مِثْقَالَ ذَرَّ</span><span style="color:red">ةٍ خَ</span><span style="color:blue">يْراً 
+يَرَهُ</span></b>&#64830; (الزلزلة 7)</span>
+      <OBJECT id=player19 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\4-2-13.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;;color:red">ضبط النون الساكنة والتنوين عند 
+الإظهار&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">توضع علامة السكون 
+على النون المظهرة مثل : </span><b>
+<span lang="AR-SA" style="font-size:16.0pt;font-family:
+&quot;Mudir MT&quot;">أَ<span style="color:red">نْـ</span>عَمْتَ</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Mudir MT&quot;">.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">يتم ضبط التنوين 
+المُظهر عن طريق تركيب حركتين (ضمتين أو فتحتين أو كسرتين):
+<img border="0" src="Pictures/mim3.gif" width="95" height="33" align="absmiddle"></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;"> 
+(انظر رسم الآيات في الأمثلة).</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+
+</body>
+
+</html>

@@ -1,0 +1,960 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+
+
+
+
+<style>
+A.menulink {
+display: block;
+text-align: center;
+text-decoration: none;
+font-family:Times;
+font-size:15px;
+color: #000000;
+BORDER: none;
+border: solid 1px #FFFFFF;
+}
+
+A.menulink:hover {
+border: solid 1px #6100C1;
+background-color:#F0E1FF;
+}
+
+</style>
+
+<script>
+
+var ns4class=''
+</script>
+
+<SCRIPT language=javascript 
+src="JS\poem.js"></SCRIPT>
+
+
+
+
+
+<style>
+ a.menu:link {color: #0000FF; text-decoration: none; }
+ a.menu:hover {color: #33FFCC; text-decoration: underline; }
+</style>
+
+
+<style type="text/css">
+
+#dhtmltooltip{
+position: absolute;
+width: 200px;
+border: 1px  black;
+padding: 0px;
+background-color: lightyellow;
+visibility: hidden;
+z-index: 100;
+/*Remove below line to remove shadow. Below line should always appear last within this CSS*/
+/*filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);*/
+}
+
+</style>
+
+
+<style type="text/css">
+<!--
+
+.tooltiptitle{COLOR: #FFFFFF; TEXT-DECORATION: none; CURSOR: Default; font-family: times; font-weight: bold; font-size: 13pt}
+.tooltipcontent{COLOR: #000000; TEXT-DECORATION: none; CURSOR: Default; font-family: times; font-weight: bold; font-size: 13pt}
+
+#ToolTip{position:absolute; width: 80px; top: 0px; left: 0px; z-index:4; visibility:hidden}
+
+
+-->
+
+</style>
+
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="Pictures/back.gif"  >
+
+
+
+<div id="dhtmltooltip"></div>
+
+<script type="text/javascript">
+
+
+var offsetxpoint=-60 //Customize x offset of tooltip
+var offsetypoint=20 //Customize y offset of tooltip
+var ie=document.all
+var ns6=document.getElementById && !document.all
+var enabletip=false
+var Ex, Ey, topColor, subColor, ContentInfo
+topColor = "#000099"
+subColor = "#FFFFCC"
+
+if (ie||ns6)
+var tipobj=document.all? document.all["dhtmltooltip"] : document.getElementById? document.getElementById("dhtmltooltip") : ""
+
+function ietruebody(){
+return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+}
+
+function ddrivetip(TTitle, TContent, thecolor, thewidth){
+if (ns6||ie){
+if (typeof thewidth!="undefined") tipobj.style.width=thewidth+"px"
+if (typeof thecolor!="undefined" && thecolor!="") tipobj.style.backgroundColor=thecolor
+
+ContentInfo = '<table border="0" width="200" cellspacing="0" cellpadding="0">'+
+'<tr><td width="100%" bgcolor="#000000">'+
+
+'<table border="0" width="100%" cellspacing="1"  cellpadding="0">'+
+'<tr><td width="100%" bgcolor='+topColor+'>'+
+
+'<table border="0" width="90%" cellspacing="0" cellpadding="0" align="center">'+
+'<tr><td width="100%">'+
+
+'<font class="tooltiptitle"> <p align="center">&nbsp;'+TTitle+'</font>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+
+'<tr><td width="100%" bgcolor='+subColor+'>'+
+
+'<table border="0" width="90%" cellpadding="0" cellspacing="1" align="center">'+
+
+'<tr><td width="100%">'+
+
+'<font class="tooltipcontent"><p align="right">'+TContent+'</font>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+'</table>';
+
+
+
+tipobj.innerHTML=ContentInfo 
+
+enabletip=true
+return false
+}
+}
+
+function positiontip(e){
+if (enabletip){
+var curX=(ns6)?e.pageX : event.clientX+ietruebody().scrollLeft;
+var curY=(ns6)?e.pageY : event.clientY+ietruebody().scrollTop;
+//Find out how close the mouse is to the corner of the window
+var rightedge=ie&&!window.opera? ietruebody().clientWidth-event.clientX-offsetxpoint : window.innerWidth-e.clientX-offsetxpoint-20
+var bottomedge=ie&&!window.opera? ietruebody().clientHeight-event.clientY-offsetypoint : window.innerHeight-e.clientY-offsetypoint-20
+
+var leftedge=(offsetxpoint<0)? offsetxpoint*(-1) : -1000
+
+//if the horizontal distance isn't enough to accomodate the width of the context menu
+if (rightedge<tipobj.offsetWidth)
+//move the horizontal position of the menu to the left by it's width
+tipobj.style.left=ie? ietruebody().scrollLeft+event.clientX-tipobj.offsetWidth+"px" : window.pageXOffset+e.clientX-tipobj.offsetWidth+"px"
+else if (curX<leftedge)
+tipobj.style.left="5px"
+else
+//position the horizontal position of the menu where the mouse is positioned
+tipobj.style.left=curX+offsetxpoint+"px"
+
+//same concept with the vertical position
+if (bottomedge<tipobj.offsetHeight)
+tipobj.style.top=ie? ietruebody().scrollTop+event.clientY-tipobj.offsetHeight-offsetypoint+"px" : window.pageYOffset+e.clientY-tipobj.offsetHeight-offsetypoint+"px"
+else
+tipobj.style.top=curY+offsetypoint+"px"
+tipobj.style.visibility="visible"
+}
+}
+
+function hideddrivetip(){
+if (ns6||ie){
+enabletip=false
+tipobj.style.visibility="hidden"
+tipobj.style.left="0px"
+tipobj.style.backgroundColor=''
+tipobj.style.width=''
+}
+}
+
+document.onmousemove=positiontip
+
+</script>
+
+<!-- Float script start -->
+<!-- Courtesy of SimplytheBest.net - http://simplythebest.net/scripts/ -->
+<SCRIPT>
+
+var IW= 0;
+var IH= 0;
+var PX= 0;
+var PY= 0;
+var ZIN= 0;
+var us= null;
+var IMGW= 30;
+//modify top position
+var IMGH= 0;
+var LSAFETY= 20;
+var TSAFETY= 17;
+function branding() {
+browserVer = parseInt(navigator.appVersion); 
+if(browserVer<4) return;
+ oldIW= IW;
+ oldIH= IH;
+ oldPX= PX;
+ oldPY= PY;
+ if (navigator.appName == 'Netscape')
+ {
+  if ((window.innerHeight != oldIH)||(window.innerWidth != oldIW)||(window.pageXOffset != oldPX)||(window.pageYOffset != oldPY))
+  {
+    if (us == null)
+    {
+      for (i=0; i<document.layers.length; i++)
+      {
+        us= document.layers[i];
+        if (us.id == "Logo") break;
+      }
+    }
+    if (us != null)
+    {
+      us.visibility= "hide";
+      IH= window.innerHeight;
+      IW= window.innerWidth;
+      PX= window.pageXOffset;
+      PY= window.pageYOffset;
+
+      (IH > IMGH) ? us.bottom= (PY+(IMGH+TSAFETY)) : us.bottom= 0;
+//      (IW > IMGW) ? us.left= (PX-(IMGW+LSAFETY)) : us.left= 0;
+      us.left = 20;
+
+      for (i=0; i<document.layers.length; i++)
+      {
+        templay= document.layers[i];
+
+        if (templay.zIndex > ZIN)
+          ZIN= (templay.zIndex + 1);
+      }
+      us.zIndex= ZIN;
+      us.visibility= "show";
+    }
+  }
+ }
+ else{
+  //if (navigator.appVersion.indexOf("Mac") == -1)
+  {
+    if ((document.body.clientHeight != oldIH)||(document.body.clientWidth != oldIW)||(document.body.scrollLeft != oldPX)||(document.body.scrollTop != oldPY))      {
+      alldivs= document.all.tags("DIV");
+      if (us == null){ 
+        for (i=0; i<alldivs.length; i++)
+          {
+          us= alldivs[i];
+          if (us.id == "Logo")
+            break;
+          }
+      }
+      if (us != null){
+        us.style.display= "none";
+        IH= document.body.clientHeight;
+        IW= document.body.clientWidth;
+        PX= document.body.scrollLeft;
+        PY= document.body.scrollTop;
+        us.style.bottom= (-PY+(IMGH+TSAFETY)+12);
+//        us.style.left=(PX-(IMGW+LSAFETY)+15);
+//modify left position
+        us.style.left = 5;
+//us.style.left = (150 - ims.width)/2;
+
+        for (i=0; i<alldivs.length; i++){
+          templay= alldivs(i);
+          if (templay.style.zIndex > ZIN)
+            us.style.zindex= (templay.style.zIndex + 1);
+        }
+        us.style.display= "";
+      }
+  }
+ }
+ }
+}
+if ((document.all) || (document.layers))
+{
+ setInterval("branding()",100);
+}
+
+</SCRIPT>
+
+<div class="Logo" id="Logo" style="LEFT: 10px; POSITION: absolute; bottom:5px; width:25px">
+<br>
+<b><span lang="en-us">
+<font face="Wingdings" color="#0000FF" style="font-size: 16pt">
+<a class="menu" href="#0"><span style="text-decoration: none">&Ccedil;</span></a></font></span></b></div>
+<!-- Float script end -->
+
+
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<b>
+<span lang="AR-SA" style="font-size: 22.0pt; font-family: khalaad al-arabeh 2; color: #993300">&nbsp; <a name="0"></a> </span></b>
+<span lang="AR-SA" style="font-size:22.0pt;font-family:&quot;Hesham AlSharq&quot;;
+color:#993300">متن الجزرية</span></p>
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span style="font-family: Times New Roman; color: #008000; font-weight: 700">
+تأليف شمس الدين محمد بن الجزري</span></p>
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table3" width="100%">
+		<tr>
+			<td valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			مقدمة</span></td>
+		</tr>
+	</table>
+</div>
+
+
+
+  <DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+<font size="5" face="Arabic Transparent">يَقُولُ رَاجِي عَفْوِ رَبٍّ سَامِعِ=(مُحَمَّدُ بْنُ الْجَزَرِيِّ الشَّافِعِي)<BR>
+(الْحَمْدُ للَّهِ) وَصَلَّى اللَّهُ=عَلَى نَبِيِّهِ وَمُصْطَفَاهُ<BR>
+(مُحَمَّدٍ) وَآلِهِ وَصَحْبِهِ=وَمُقْرِئِ الْقُرْآنِ مَعْ مُحِبِّهِ<BR>
+(وَبَعْدُ) إِنَّ هَذِهِ مُقَدِّمَهْ=فِيمَا عَلَى قَارِئِهِ أَنْ يَعْلَمَهْ<BR>
+إذْ وَاجِبٌ عَلَيْهِمُ مُحَتَّمُ=قَبْلَ الشُّرُوعِ أَوَّلاً أَنْ يَعْلَمُوا<BR>
+مَخَارِجَ الْحُرُوفِ وَالصِّفَاتِ=لِيَلْفِظُوا بِأَفْصَحِ اللُّغَاتِ<BR>
+مُحَرِّرِي التَّجْوِيدِ وَالمَوَاقِفِ=وَمَا الَّذِي رُسِّمَ فِي المَصَاحِفِ<BR>
+مِنْ كُلِّ مَقْطُوعٍ وَمَوْصُولٍ بِهَا=وَتَاءِ أُنْثَى لَمْ تَكُنْ تُكْتَبْ بِّهَا</font><font size="5"><BR>	
+
+</font>	
+
+</DIV>
+      <font size="5">
+      <SCRIPT>doPoem(0)</SCRIPT>
+      </DIV>
+      
+      
+	</font>
+      
+      
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table7" width="100%">
+		<tr>
+			<td valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب مخارج الحروف</span></td>
+		</tr>
+	</table>
+
+
+  <DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="none" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+     <font size="5">مَخَارِجُ الحُرُوفِ سَبْعَةَ عَشَرْ=عَلَى الَّذِي يَخْتَارُهُ مَنِ اخْتَبَرْ<BR>
+فَأَلِفُ الجَوْفِ وأُخْتَاهَا وَهِي=حُرُوفُ مَدٍّ للْهَوَاءِ تَنْتَهِي<BR>
+ثُمَّ لأَقْصَى الحَلْقِ هَمْزٌ هَاءُ=ثُمَّ لِوَسْطِهِ فَعَيْنٌ حَاءُ<BR>
+أَدْنَاهُ غَيْنٌ خَاؤُهَا والْقَافُ=أَقْصَى اللِّسَانِ فَوْقُ ثُمَّ الْكَافُ<BR>
+أَسْفَلُ وَالْوَسْطُ فَجِيمُ الشِّينُ يَا=وَالضَّادُ مِنْ حَافَتِهِ إِذْ وَلِيَا<BR>
+لاضْرَاسَ مِنْ أَيْسَرَ أَوْ يُمْنَاهَا=وَاللاَّمُ أَدْنَاهَا لِمُنْتَهَاهَا<BR>
+وَالنُّونُ مِنْ طَرْفِهِ تَحْتُ اجْعَلُوا=وَالرَّا يُدَانِيهِ لِظَهْرٍ أَدْخَلُوا<BR>
+وَالطَّاءُ وَالدَّالُ وَتَا مِنْهُ وَمِنْ=عُلْيَا الثَّنَايَا والصَّفِيْرُ مُسْتَكِنْ<BR>
+مِنْهُ وَمِنْ فَوْقِ الثَّنَايَا السُّفْلَى=وَالظَّاءُ وَالذَّالُ وَثَا لِلْعُلْيَا<BR>
+مِنْ طَرَفَيْهِمَا وَمِنْ بَطْنِ الشَّفَهْ=فَالْفَا مَعَ اطْرافِ الثَّنَايَا المُشْرِفَهْ<BR>
+لِلشَّفَتَيْنِ الْوَاوُ بَاءٌ مِيْمُ=وَغُنَّةٌ مَخْرَجُهَا الخَيْشُومُ<BR> 
+
+		</font> 
+
+</DIV>
+      <font size="5">
+      <SCRIPT>doPoem(0)</SCRIPT>
+
+
+
+
+</font>
+
+
+
+
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table8" width="100%">
+		<tr>
+			<td valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب الصفات</span></td>
+		</tr>
+	</table>
+</div>
+
+
+  <DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+<font size="5">صِفَاتُهَا جَهْرٌ وَرِخْوٌ مُسْتَفِلْ=مُنْفَتِحٌ مُصْمَتَةٌ وَالضِّدَّ قُلْ<br>
+مَهْمُوسُهَا فَحَثَّهُ (شَخْصٌ سَكَتْ)=شَدِيْدُهَا لَفْظُ (أَجِدْ قَطٍ بَكَتْ)<br>
+وَبَيْنَ رِخْوٍ وَالشَّدِيدِ (لِنْ عُمَرْ)=وَسَبْعُ عُلْوٍ (خُصَّ ضَغْطٍ قِظْ) 
+حَصَرْ<br>
+وَصَادُ ضَادٌ طَاءُ ظَاءٌ مُطْبَقَهْ=وَ (فِرَّ مِنْ لُبِّ) الحُرُوفِ 
+المُذْلَقَهْ<br>
+صَفِيرُهَا صَادٌ وَزَايٌ سِينُ=قَلْقَلَةٌ (قُطْبُ جَدٍّ) وَاللِّينُ<br>
+وَاوٌ وَيَاءٌ سَكَنَا وَانْفَتَحَا=قَبْلَهُمَا وَالانْحِرَافُ صُحَّحَا<br>
+فِي اللاًَّمِ وَالرَّا وَبِتَكْرِيرٍ جُعِلْ=وَللتَّفَشِّي الشِّيْنُ ضَادًا 
+اسْتُطِلْ<BR>
+
+</font>
+
+</DIV>
+      <font size="5">
+      <SCRIPT>doPoem(0)</SCRIPT>
+      </DIV>
+
+
+</body>
+
+
+
+
+
+</font>
+
+
+
+
+
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table9" width="100%">
+		<tr>
+			<td valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب التجويد</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+<font size="5">وَالأَخْذُ بِالتَّجْوِيدِ حَتْمٌ لازِمُ=مَنْ لَمْ يُجَوِّدِ الْقُرَآنَ آثِمُ<BR>
+لأَنَّهُ بِهِ الإِلَهُ =وَهَكَذَا مِنْهُ إِلَيْنَا وَصَلاَ<BR>
+وَهُوَ أَيْضًا حِلَْيةُ التِّلاَوَةِ=وَزِيْنَةُ الأَدَاءِ وَالْقِرَاءَةِ<BR>
+وَهُوَ إِعْطَاءُ الْحُرُوفِ حَقَّهَا=مِنْ صِفَةٍ لَهَا وَمُستَحَقَّهَا<BR>
+وَرَدُّ كُلِّ وَاحِدٍ لأَصْلِهِ=وَاللَّفْظُ فِي نَظِيْرِهِ كَمِثْلهِ<BR>
+مُكَمِّلاً مِنْ غَيْرِ مَا تَكَلُّفِ=بِاللُّطْفِ فِي النُّطْقِ بِلاَ تَعَسُّفِ<BR>
+وَلَيْسَ بَيْنَهُ وَبَيْنَ تَرْكِهِ=إِلاَّ رِيَاضَةُ امْرِئٍ بِفَكِّهِ<BR>
+
+
+</font>
+
+
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+
+
+
+
+</font>
+
+
+
+
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table10" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب التفخيم والترقيق</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+<font size="5">فَرَقِّقَنْ مُسْتَفِلاً مِنْ أَحْرُفِ=وَحَاذِرَنْ تَفْخِيمَ لَفْظِ الأَلِفِ<BR>
+	كَهَمْزِ أَلْحَمْدُ أَعُوذُ إِهْدِنَا=أللَّهُ ثُمَّ لاَمِ لِلَّهِ لَنَا<BR>
+	وَلْيَتَلَطَّفْ وَعَلَى اللَّهِ وَلاَ الضْ=وَالْمِيمِ مِنْ مَخْمَصَةٍ وَمِنْ مَرَضْ<BR>
+	وَبَاءِ بَرْقٍ بَاطِلٍ بِهِمْ بِذِي=وَاحْرِصْ عَلَى الشِّدَّةِ وَالجَهْرِ الَّذِي<BR>
+	فِيهَا وَفِي الْجِيمِ كَحُبِّ الصَّبْرِ=وَرَبْوَةٍ اجْتُثَّتْ وَحَجِّ الْفَجْرِ<BR>
+	وَبَيِّنَنْ مُقَلْقَلاً إِنْ سَكَنَا=	وَإِنْ يَكُنْ فِي الْوَقْفِ كَانَ أَبْيَنَا<BR>
+	وَحَاءَ حَصْحَصَ أَحَطتُّ الْحَقُّ=وَسِينَ مُسْتَقِيمِ يَسْطُو يَسْقُو<BR>
+
+</font>
+
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+
+
+
+</font>
+
+
+
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table11" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب الراءات</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+
+<font size="5">وَرَقِّقِ الرَّاءَ إِذَا مَا كُسِرَتْ=كَذَاكَ بَعْدَ الْكَسْرِ حَيْثُ سَكَنَتْ<BR>
+	إِنْ لَمْ تَكُنْ مِنْ قَبْلِ حَرْفِ اسْتِعْلاَ=أَوْ كَانَتِ الكَسْرَةُ لَيْسَتْ أَصْلاَ<BR>
+	وَالْخُلْفُ فِي فِرْقٍ لِكَسْرٍ يُوجَدُ=وَأَخْفِ تَكْرِيْرًا إِذَا تُشَدَّدُ<BR>
+</font>
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+
+
+
+</font>
+
+
+
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table12" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب اللامات</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+
+<font size="5">وَفَخِّمِ اللاَّمَ مِنِ اسْمِ اللَّهِ=عَنْ فَتْحِ أوْ ضَمٍّ كَعَبْدُ اللَّهِ<BR>
+	وَحَرْفَ الاسْتِعْلاَءِ فَخِّمْ وَاخْصُصَا=لاطْبَاقَ أَقْوَى نَحْوَ قَالَ وَالْعَصَا<BR>
+	وَبَيِّنِ الإِطْبَاقَ مِنْ أَحَطتُّ مَعْ=بَسَطتَّ وَالخُلْفُ بِنَخْلُقْكُمْ وَقَعْ<BR>
+	وَاحْرِصْ عَلَى السُّكُونِ فِي جَعَلْنَا=أَنْعَمْتَ وَالمَغْضُوبِ مَعْ ضَلَلْنَا<BR>
+	وَخَلِّصِ انْفِتَاحَ مَحْذُورًا عَسَى=خَوْفَ اشْتِبَاهِهِ بِمَحْظُورًا عَصَى<BR>
+	وَرَاعِ شِدَّةً بِكَافٍ وَبِتَا=	كَشِرْكِكُمْ وَتَتَوَفَّى فِتْنَتَا<BR>
+	وَأَوَّلَى مِثْلٍ وَجِنْسٍ إنْ سَكَنْ=أَدْغِمْ كَقُلْ رَبِّ وَبَلْ لاَ وَأَبِنْ<BR>
+	فِي يَوْمِ مَعْ قَالُوا وَهُمْ وَقُلْ نَعَمْ=سَبِّحْهُ لاَ تُزِغْ قُلُوبَ فَلْتَقُمْ<BR>
+</font>
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+
+
+</font>
+
+
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table13" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب الضاد والظاء</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+<font size="5">وَالضَّادَ بِسْتِطَالَةٍ وَمَخْرَجِ=مَيِّزْ مِنَ الظَّاءِ وَكُلُّهَا تَجِي<BR>
+	فِي الظَّعْنِ ظِلَّ الظُهْرِ عُظْمِ الْحِفْظِ=أيْقِظْ وَأنْظُرْ عَظْمِ ظَهْرِ اللَّفْظِ<BR>
+	ظَاهِرْ لَظَى شُوَاظُ كَظْمٍ ظَلَمَا=اُغْلُظْ ظَلامَ ظُفُرٍ انْتَظِرْ ظَمَا<BR>
+	أَظْفَرَ ظَنًّا كَيْفَ جَا وَعَظْ سِوَى=عِضِينَ ظَلَّ النَّحْلُ زُخْرُفٍ سَوَى<BR>
+	وَظَلْتُ ظَلْتُمْ وَبِرُومٍ ظَلُّوا=كَالْحِجْرِ ظَلَّتْ شُعَرَا نَظَلُّ<BR>
+	يَظْلَلْنَ مَحْظُورًا مَعَ المُحْتَظِرِ=وَكُنْتَ فَظًّا وَجَمِيْعِ النَّظَرِ<BR>
+	إِلاَّ بِوَيْلٌ هَلْ وَأُولَى نَاضِرَهْ=وَالْغَيْظِ لاَ الرَّعْدِ وَهُودٍ قَاصِرَهْ<BR>
+	وَالْحَظُّ لاَ الْحَضُّ عَلَى الطَّعَامِ=وَفِي ضَنِيْنٍ الْخِلاَفُ سَامِي<BR>
+
+
+</font>
+
+
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+
+
+</font>
+
+
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table14" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب التحذيرات</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+<font size="5">وَإِنْ تَلاَقَيَا البَيَانُ لاَزِمُ=أَنْقَضَ ظَهْرَكَ يَعَضُّ الظَّالِمُ<BR>
+	وَاضْطُّرَّ مَعْ وَعَظْتَ مَعْ أَفَضْتُمُ=وَصَفِّ هَا جِبَاهُهُم عَلَيْهِمُ<BR>
+
+</font>
+
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+
+
+
+
+
+</font>
+
+
+
+
+
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table16" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب الميم والنون المشددتين والميم الساكنة</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+<font size="5">وأَظْهِرِ الغُنَّةَ مِنْ نُونٍ وَمِنْ=مِيْمٍ إِذَا مَا شُدِّدَا وَأَخْفِيَنْ<BR>
+	الْمِيْمَ إِنْ تَسْكُنْ بِغُنَّةٍ لَدَى=بَاءٍ عَلَى المُخْتَارِ مِنْ أَهْلِ الأدَا<BR>
+	وَأظْهِرَنْهَا عِنْدَ بَاقِي الأَحْرُفِ=وَاحْذَرْ لَدَى وَاوٍ وَفَا أنْ تَخْتَفِي<BR>
+
+</font>
+
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+
+</font>
+
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table17" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب حكم التنوين والنون الساكنة</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+<font size="5">وَحُكْمُ تَنْوِيْنٍ وَنُونٍ يُلْفَى=إِظْهَارٌ ادْغَامٌ وَقَلْبٌ اخْفَا<BR>
+	فَعِنْدَ حَرْفِ الحَلْقِ أَظْهِرْ وَادَّغِمْ=فِي اللاَّمِ وَالرَّا لاَ بِغُنَّةٍ لَزِمْ<BR>
+	وَأَدْغِمَنْ بِغُنَّةٍ فِي يُومِنُ=إِلاَّ بِكِلْمَةٍ كَدُنْيَا عَنْوَنُوا<BR>
+	وَالقَلْبُ عِنْدَ البَا بِغُنَّةٍ كَذَا=لاخْفَا لَدَى بَاقِي الحُرُوفِ أُخِذَا<BR>
+
+</font>
+
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+</font>
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table18" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب المد والقصر</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+
+<font size="5">وَالمَدُّ لاَزِمٌ وَوَاجِبٌ أَتَى=وَجَائِزٌ وَهْوَ وَقَصْرٌ ثَبَتَا<BR>
+	فَلاَزِمٌ إِنْ جَاءَ بَعْدَ حَرْفِ مَدْ=سَاكِنُ حَالَيْنِ وَبِالطُّولِ يُمَدْ<BR>
+	وَوَاجِبٌ إنْ جَاءَ قَبْلَ هَمْزَةِ=مُتَّصِلاً إِنْ جُمِعَا بِكِلْمَةِ<BR>
+	وَجَائزٌ إِذَا أَتَى مُنْفَصِلاَ=أَوْ عَرَضَ السُّكُونُ وَقْفًا مُسْجَلاَ<BR>
+</font>
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+
+</font>
+
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table19" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب معرفة الوقوف</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+	<font size="5">وَبَعْدَ تَجْوِيْدِكَ لِلْحُرُوفِ=لاَبُدَّ مِنْ مَعْرِفَةِ الْوُقُوفِ<BR>
+	وَالابْتِدَاءِ وَهْيَ تُقْسَمُ إِذَنْ=ثَلاَثَةً تَامٌ وَكَافٍ وَحَسَنْ<BR>
+	وَهْيَ لِمَا تَمَّ فَإنْ لَمْ يُوجَدِ=تَعَلُقٌ أَوْ كَانَ مَعْنَىً فَابْتَدي<BR>
+	فَالتَّامُ فَالْكَافِي وَلَفْظًا فَامْنَعَنْ=إِلاَّ رُؤُوسَ الآيِ جَوِّزْ فَالْحَسَنْ<BR>
+	وَغَيْرُ مَا تَمَّ قَبِيْحٌ وَلَهُ=ألْوَقْفُ مُضْطَرًّا وَيُبْدَا قَبْلَهُ<BR>
+	وَلَيْسَ فِي الْقُرْآنِ مِنْ وَقْفٍ وَجَبْ=وَلاَ حَرَامٌ غَيْرَ مَا لَهُ سَبَبْ<BR>
+
+	</font>
+
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+</font>
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table20" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب المقطوع والموصول وحكم التاء</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+	<font size="5">وَاعْرِفْ لِمَقْطُوعٍ وَمَوْصُولٍ وَتَا=فِي مُصْحَفِ الإِمَامِ فِيمَا قَدْ أَتَى<BR>
+	فَاقْطَعْ بِعَشْرِ كَلِمَاتٍ أنْ لا=مَعْ مَلْجَإٍ وَلاَ إِلَهَ إِلاَّ<BR>
+	وَتَعْبُدُوا يَاسِينَ ثَانِي هُودَ لاَ=يُشْرِكْنَ تُشْرِكْ يَدْخُلْنَ تَعْلُوا عَلَى<BR>
+	أَنْ لا يَقُولُوا لاَ أَقُولَ إِنَّ مَا=بِالرَّعْدِ وَالمَفْتُوحَ صِلْ وَعَنْ مَا<BR>
+	نُهُوا اقْطَعُوا مِنْ مَا بِرُومٍ وَالنِّسَا=خُلْفُ المُنَافِقِينَ أَمْ مَنْ أَسَّسَا<BR>
+	فُصِّلَتْ النِّسَا وَذِبْحٍ حَيْثُ مَا=وَأَنْ لَمِ المَفْتُوحَ كَسْرُ إِنَّ مَا<BR>
+	لانْعَامِ وَالمَفْتُوحَ يَدْعُونَ مَعَا=وَخُلْفُ الانْفَالِ وَنَحْلٍ وَقَعَا<BR>
+	وَكُلِّ مَا سَأَلْتُمُوهُ وَاخْتُلِفْ=رُدُّوا كَذَا قُلْ بِئْسَمَا وَالْوَصْلُ صِفْ<BR>
+	خَلَفْتُمُونِي وَاشْتَرَوْا فِي مَا اقْطَعَا=أُوحِيْ أَفَضْتُمُ اشْتَهَتْ يَبْلُوا مَعَا<BR>
+	ثَانِي فَعَلْنَ وَقَعَتْ رُومٌ كِلاَ=تَنْزِيْلُ شُعَرَاءٍ وَغَيْرَ ذِي صِلاَ<BR>
+	فَأَيْنَمَا كَالنَّحْلِ صِلْ وَ مُخْتَلِفْ=فِي الشُّعَرَا الأَحْزَابِ وَالنِّسَا وُصِفْ<BR>
+	وَصِلْ فَإِلَّمْ هُودَ أَلَّنْ نَجْعَلاَ=نَجْمَعَ كَيْلاَ تَحْزَنُوا تَأْسَوْا عَلَى<BR>
+	حَجٌّ عَلَيْكَ حَرَجٌ وَقَطْعُهُمْ=عَنْ مَنْ يَشَاءُ مَنْ تَوَلَّى يَوْمَ هُمْ<BR>
+	ومَالِ هَذَا وَالَّذِينَ هَؤُلاَ=تَ حِينَ فِي الإمَامِ صِلْ وَوُهِّلاَ<BR>
+	وَوَزَنُوهُمْ وَكَالُوهُمْ صِل=كَذَا مِنَ الْ وَهَا وَيَا لاَ تَفْصِلِ<BR>
+
+	</font>
+
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+</font>
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table21" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب التاءات</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+
+
+	<font size="5">وَرَحْمَتُ الزُّخْرُفِ بِالتَّا زَبَرَهْ=لاعْرَافِ رُومٍ هُودٍ كَافِ الْبَقَرَهْ<BR>
+	نِعْمَتُهَا ثَلاثُ نَحْلٍ إبْرَهَمْ=مَعًا أَخَيْرَاتٌ عُقُودُ الثَّانِ هُمْ<BR>
+	لُقْمَانُ ثُمَّ فَاطِرٌ كَالطُّور=عِمْرَانَ لَعْنَتَ بِهَا وَالنُّورِ<BR>
+	وَامْرَأَتٌ يُوسُفَ عِمْرَانَ الْقَصَصْ=تَحْرِيْمَ مَعْصِيَتْ بِقَدْ سَمِعْ يُخَصْ<BR>
+	شَجَرَتَ الدُّخَانِ سُنَّتْ فَاطِرِ=كُلاً وَالانْفَالَ وَحَرْفَ غَافِرِ<BR>
+	قُرَّتُ عَيْنٍ جَنَّتٌ فِي وَقَعَتْ=فِطْرَتْ بَقِيَّتْ وَابْنَتْ وَكَلِمَتْ<BR>
+	أَوْسَطَ اَلاعْرَافِ وَكُلُّ مَا اخْتُلِفْ=جَمْعًا وَفَرْدًا فِيْهِ بِالتَّاءِ عُرِفْ<BR>
+	
+	</font>
+	
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+</font>
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table22" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<span style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+			باب همز الوصل</span></td>
+		</tr>
+	</table>
+</div>
+
+<DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+<font size="5">وَابْدَأْ بِهَمْزِ الْوَصْلِ مِنْ فِعْلٍ بِضَمْ=إنْ كَانَ ثَالِثٌ مِنَ الفِعْلِ يُضَمْ<BR>
+	وَاكْسِرْهُ حَالَ الْكَسْرِ وَالْفَتْحِ وَفِي=لاسْمَاءِ غَيْرَ اللاَّمِ كَسْرَهَا وَفِي<BR>
+	ابْنٍ مَعَ ابْنَةِ امْرِئٍ وَاثْنَيْنِ=وَامْرَأةٍ وَاسْمٍ مَعَ اثْنَتَيْنِ<BR>
+	وَحَاذِرِ الْوَقْفَ بِكُلِّ الحَرَكَهْ=إِلاَّ إِذَا رُمْتَ فَبَعْضُ حَرَكَهْ<BR>
+	إِلاَّ بِفَتْحٍ أَوْ بِنَصْبٍ وَأَشِمْ=إِشَارَةً بِالضَّمِّ فِي رَفْعٍ وَضَمْ<BR>
+
+
+</font>
+
+
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+  
+
+
+
+</font>
+  
+
+
+
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table23" width="100%">
+		<tr>
+			<td width="590" valign="top" style="border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt; ">
+			<a name="18">
+			<span style="font-family: Hesham AlSharq; font-size: 18.0pt; color: blue">
+			الخاتمة</span></a></td>
+		</tr>
+	</table>
+</div>
+
+
+  
+  <DIV style="DISPLAY: none" 
+      tag='font="Traditional Arabic,4,Black,normal,normal" bkcolor="transparent" bkimage="backgrounds/9.gif" border="none,9,gray" type=1 line=150% align=center use=ex length=0 char="" num="0,black" filter=""'>
+
+<font size="5">وَقَدْ تَقَضَّى نَظْمِيَ المُقَدِّمَهْ=مِنِّي لِقَارِئِ القُرْآنِ تَقْدِمَهْ<BR>
+	أَبْيَاتُهَا قَافٌ وَزَاىٌ فِي الْعَدَدْ=مَنْ يُحْسِنِ التَّجْوِيدَ يَظْفَرْ بِالرَّشَدْ<BR>
+	(وَالحَمْدُ للهِ) لَهَا خِتَامُ=	ثُمَّ الصَّلاَةُ بَعْدُ وَالسَّلاَمُ<BR>
+عَلَى النَّبِيِّ المُصْطَفَى وَآلِهِ=وَصَحْبِهِ وتَابِعِي مِنْوَالِهِ<BR>
+
+
+</font>
+
+
+</DIV>
+
+<font size="5">
+
+<SCRIPT>doPoem(0)</SCRIPT>
+</DIV>
+
+
+
+</font>
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+</html>

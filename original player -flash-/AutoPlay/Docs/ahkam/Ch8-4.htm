@@ -1,0 +1,1438 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+
+
+
+<style>
+A.menulink {
+display: block;
+text-align: center;
+text-decoration: none;
+font-family:Times;
+font-size:14pt;
+color: #0000FF;
+BORDER: none;
+border: solid 1px #FFFFFF;
+}
+
+A.menulink:hover {
+border: solid 1px #6100C1;
+background-color:#F0E1FF;
+}
+
+</style>
+
+<script>
+
+var ns4class=''
+</script>
+
+<style>
+ a.menu:link {color: #0000FF; text-decoration: none; }
+ a.menu:hover {color: #33FFCC; text-decoration: underline; }
+</style>
+
+
+
+<style type="text/css">
+
+#dropmenudiv{
+position:absolute;
+text-align: center;
+border:1px solid black;
+border-bottom-width: 0;
+font:normal 15px Times;
+line-height:18px;
+z-index:100;
+}
+
+#dropmenudiv a{
+width: 100%;
+display: block;
+text-indent: 3px;
+border-bottom: 1px solid black;
+padding: 1px 0;
+text-decoration: none;
+font-weight: bold;
+}
+
+#dropmenudiv a:hover{ /*hover background color*/
+background-color: yellow;
+}
+
+</style>
+
+<script type="text/javascript">
+
+
+//Contents for menu 1
+var menu1=new Array()
+menu1[0]='<a href="#11">الإدغام الكبير</a>'
+menu1[1]='<a href="#12">الإدغام الصغير</a>'
+
+
+//Contents for menu 2, and so on
+var menu2=new Array()
+menu2[0]='<a href="#21">الإدغام الكامل</a>'
+menu2[1]='<a href="#22">الإدغام الناقص</a>'
+
+		
+var menuwidth='165px' //default menu width
+var menubgcolor='lightyellow'  //menu bgcolor
+var disappeardelay=250  //menu disappear speed onMouseout (in miliseconds)
+var hidemenu_onclick="yes" //hide menu when user clicks within menu?
+
+/////No further editting needed
+
+var ie4=document.all
+var ns6=document.getElementById&&!document.all
+
+if (ie4||ns6)
+document.write('<div id="dropmenudiv" style="visibility:hidden;width:'+menuwidth+';background-color:'+menubgcolor+'" onMouseover="clearhidemenu()" onMouseout="dynamichide(event)"></div>')
+
+function getposOffset(what, offsettype){
+var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+var parentEl=what.offsetParent;
+while (parentEl!=null){
+totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+parentEl=parentEl.offsetParent;
+}
+return totaloffset;
+}
+
+
+function showhide(obj, e, visible, hidden, menuwidth){
+if (ie4||ns6)
+dropmenuobj.style.left=dropmenuobj.style.top=-500
+if (menuwidth!=""){
+dropmenuobj.widthobj=dropmenuobj.style
+dropmenuobj.widthobj.width=menuwidth
+}
+if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover")
+obj.visibility=visible
+else if (e.type=="click")
+obj.visibility=hidden
+}
+
+function iecompattest(){
+return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+}
+
+function clearbrowseredge(obj, whichedge){
+var edgeoffset=0
+if (whichedge=="rightedge"){
+var windowedge=ie4 && !window.opera? iecompattest().scrollLeft+iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+dropmenuobj.contentmeasure=dropmenuobj.offsetWidth
+if (windowedge-dropmenuobj.x < dropmenuobj.contentmeasure)
+edgeoffset=dropmenuobj.contentmeasure-obj.offsetWidth
+}
+else{
+var topedge=ie4 && !window.opera? iecompattest().scrollTop : window.pageYOffset
+var windowedge=ie4 && !window.opera? iecompattest().scrollTop+iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+dropmenuobj.contentmeasure=dropmenuobj.offsetHeight
+if (windowedge-dropmenuobj.y < dropmenuobj.contentmeasure){ //move up?
+edgeoffset=dropmenuobj.contentmeasure+obj.offsetHeight
+if ((dropmenuobj.y-topedge)<dropmenuobj.contentmeasure) //up no good either?
+edgeoffset=dropmenuobj.y+obj.offsetHeight-topedge
+}
+}
+return edgeoffset
+}
+
+function populatemenu(what){
+if (ie4||ns6)
+dropmenuobj.innerHTML=what.join("")
+}
+
+
+function dropdownmenu(obj, e, menucontents, menuwidth){
+if (window.event) event.cancelBubble=true
+else if (e.stopPropagation) e.stopPropagation()
+clearhidemenu()
+dropmenuobj=document.getElementById? document.getElementById("dropmenudiv") : dropmenudiv
+populatemenu(menucontents)
+
+if (ie4||ns6){
+showhide(dropmenuobj.style, e, "visible", "hidden", menuwidth)
+dropmenuobj.x=getposOffset(obj, "left")
+dropmenuobj.y=getposOffset(obj, "top")
+dropmenuobj.style.left=dropmenuobj.x-clearbrowseredge(obj, "rightedge")+"px"
+dropmenuobj.style.top=dropmenuobj.y-clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+"px"
+}
+
+return clickreturnvalue()
+}
+
+function clickreturnvalue(){
+if (ie4||ns6) return false
+else return true
+}
+
+function contains_ns6(a, b) {
+while (b.parentNode)
+if ((b = b.parentNode) == a)
+return true;
+return false;
+}
+
+function dynamichide(e){
+if (ie4&&!dropmenuobj.contains(e.toElement))
+delayhidemenu()
+else if (ns6&&e.currentTarget!= e.relatedTarget&& !contains_ns6(e.currentTarget, e.relatedTarget))
+delayhidemenu()
+}
+
+function hidemenu(e){
+if (typeof dropmenuobj!="undefined"){
+if (ie4||ns6)
+dropmenuobj.style.visibility="hidden"
+}
+}
+
+function delayhidemenu(){
+if (ie4||ns6)
+delayhide=setTimeout("hidemenu()",disappeardelay)
+}
+
+function clearhidemenu(){
+if (typeof delayhide!="undefined")
+clearTimeout(delayhide)
+}
+
+if (hidemenu_onclick=="yes")
+document.onclick=hidemenu
+
+</script>
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="../../Images/back.gif"  >
+
+<SCRIPT>
+
+var IW= 0;
+var IH= 0;
+var PX= 0;
+var PY= 0;
+var ZIN= 0;
+var us= null;
+var IMGW= 30;
+//modify top position
+var IMGH= 0;
+var LSAFETY= 20;
+var TSAFETY= 17;
+function branding() {
+browserVer = parseInt(navigator.appVersion); 
+if(browserVer<4) return;
+ oldIW= IW;
+ oldIH= IH;
+ oldPX= PX;
+ oldPY= PY;
+ if (navigator.appName == 'Netscape')
+ {
+  if ((window.innerHeight != oldIH)||(window.innerWidth != oldIW)||(window.pageXOffset != oldPX)||(window.pageYOffset != oldPY))
+  {
+    if (us == null)
+    {
+      for (i=0; i<document.layers.length; i++)
+      {
+        us= document.layers[i];
+        if (us.id == "Logo") break;
+      }
+    }
+    if (us != null)
+    {
+      us.visibility= "hide";
+      IH= window.innerHeight;
+      IW= window.innerWidth;
+      PX= window.pageXOffset;
+      PY= window.pageYOffset;
+
+      (IH > IMGH) ? us.bottom= (PY+(IMGH+TSAFETY)) : us.bottom= 0;
+//      (IW > IMGW) ? us.left= (PX-(IMGW+LSAFETY)) : us.left= 0;
+      us.left = 20;
+
+      for (i=0; i<document.layers.length; i++)
+      {
+        templay= document.layers[i];
+
+        if (templay.zIndex > ZIN)
+          ZIN= (templay.zIndex + 1);
+      }
+      us.zIndex= ZIN;
+      us.visibility= "show";
+    }
+  }
+ }
+ else{
+  //if (navigator.appVersion.indexOf("Mac") == -1)
+  {
+    if ((document.body.clientHeight != oldIH)||(document.body.clientWidth != oldIW)||(document.body.scrollLeft != oldPX)||(document.body.scrollTop != oldPY))      {
+      alldivs= document.all.tags("DIV");
+      if (us == null){ 
+        for (i=0; i<alldivs.length; i++)
+          {
+          us= alldivs[i];
+          if (us.id == "Logo")
+            break;
+          }
+      }
+      if (us != null){
+        us.style.display= "none";
+        IH= document.body.clientHeight;
+        IW= document.body.clientWidth;
+        PX= document.body.scrollLeft;
+        PY= document.body.scrollTop;
+        us.style.bottom= (-PY+(IMGH+TSAFETY)+12);
+//        us.style.left=(PX-(IMGW+LSAFETY)+15);
+//modify left position
+        us.style.left = 5;
+//us.style.left = (150 - ims.width)/2;
+
+        for (i=0; i<alldivs.length; i++){
+          templay= alldivs(i);
+          if (templay.style.zIndex > ZIN)
+            us.style.zindex= (templay.style.zIndex + 1);
+        }
+        us.style.display= "";
+      }
+  }
+ }
+ }
+}
+if ((document.all) || (document.layers))
+{
+ setInterval("branding()",100);
+}
+
+</SCRIPT>
+
+<div class="Logo" id="Logo" style="LEFT: 10px; POSITION: absolute; bottom:5px; width:25px">
+<br>
+<b><span lang="en-us">
+<font face="Wingdings" color="#0000FF" style="font-size: 16pt">
+<a class="menu" href="#0"><span style="text-decoration: none">&Ccedil;</span></a></font></span></b></div>
+<!-- Float script end -->
+
+
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<b>
+<span lang="AR-SA" style="font-size: 22.0pt; font-family: khalaad al-arabeh 2; color: #993300">
+&nbsp; <a name="0"></a> </span></b>
+<span lang="AR-SA" style="font-size:22.0pt;font-family:&quot;Hesham AlSharq&quot;;
+color:#993300">الوقف الاضطراري</span></p>
+
+
+<table border="0" width="100%" id="table33">
+	<tr>
+		<td style="border-style: none; border-width: medium" rowspan="7">&nbsp;</td>
+		<td style="border-style: none; border-width: medium" width="316" align="center">
+	<p align="right"><font color="#0000FF">
+	<b>
+	<a class="menulink" href="#1" >
+	<font color="#0000FF"  face="Times New Roman" >تعريفه
+ </font></a></b></font></td>
+		<td style="border-style: none; border-width: medium" rowspan="7">
+	&nbsp;</td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" width="316" align="center">
+	<p align="right"><font color="#0000FF">
+	<b>
+	<a class="menulink" href="#2">
+	<font color="#0000FF"  >حكمه</font></a></b></font></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" width="316" align="center">
+	<p align="right"><font color="#0000FF">
+	<b>
+	<a class="menulink" href="#3">
+	<font color="#0000FF" >الابتداء بعد وقف 
+	اضطراري </font></a></b></font></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" width="316" align="center">
+	<p align="right"><fontcolor="#0000FF">
+	<b>
+	<a class="menulink" href="#4">
+	<font color="#0000FF" >&nbsp;الوقف على تاء 
+	التأنيث</font></a><font ></font></font></b></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" width="316" align="center">
+	<p align="right"><font color="#0000FF">
+	<b>
+	<a class="menulink" href="#5">
+	<font color="#0000FF" >المقطوع والموصول</font></a></b></font></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" width="316" align="center">
+	<p align="right"><font color="#0000FF">
+	<b>
+	<a class="menulink" href="#6">
+	<font color="#0000FF" >الوقف على (أيه)</font></a></b></font></td>
+	</tr>
+	<tr>
+		<td style="border-style: none; border-width: medium" width="316" align="center">
+	<p align="right"><font  color="#0000FF">
+	<b>
+	<a class="menulink" href="#7">
+	<font color="#0000FF" >الوقف على اللام 
+	المنفصلة عن الاسم المجرور</font></a></b></font></td>
+	</tr>
+</TR>
+</TR>
+</TR>
+
+    
+</table>
+
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+&nbsp;</p>
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+&nbsp;</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">&nbsp;</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">&nbsp;</span><span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+&nbsp;</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="1"></a>تعريفه </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 11.45pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+وهو أن يقف القارئ مضطرا من غير إرادة لسبب عارض، كالعطاس أو ضيق النفس أو السعال 
+أو النسيان أو غير ذلك.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="2"></a>حكمه </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 11.45pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+يجوز مطلقا، ويفضل تخير الكلمة المناسبة للوقف ما استطاع إلى ذلك سبيلا مع مراعاة 
+شروط الوقف الصحيح وضوابطه.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="3"></a>الابتداء بعد وقف اضطراري</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 11.45pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+إن كان الابتداء بالكلمة التي تلي موضع الوقف الاضطراري حسن، استأنف القارئ تلاوته 
+منها.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 11.45pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+&nbsp;وإن لم يكن كذلك أعاد ما يراه مناسب من الآية حتى يتصل اللفظ ولا يختل المعنى.
+</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 11.45pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+وفي ما يلي بيان كيفية الوقف على بعض الكلمات في القرآن.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="4"></a>الوقف على تاء التأنيث</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 11.45pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+إذا رسمت تاء التأنيث مبسوطة وقف عليها <b>بالتاء</b> وإذا رسمت مربوطة كان الوقف 
+عليها <b>بالهاء</b>. وفي ما يلي بيان كيفية الوقف على بعض الكلمات.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+رحمت</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+رسمت التاء مبسوطة في سبعة مواضع:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">إِنَّ 
+الَّذِينَ آمَنُواْ وَالَّذِينَ هَاجَرُواْ وَجَاهَدُواْ فِي سَبِيلِ اللّهِ 
+أُوْلَـئِكَ يَرْجُونَ </span><span style="color:red">رَحْمَتَ</span><span style="color:blue"> 
+اللّهِ وَاللّهُ غَفُورٌ رَّحِيمٌ</span></b>&#64830; (البقرة 218)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَلاَ 
+تُفْسِدُواْ فِي الأَرْضِ بَعْدَ إِصْلاَحِهَا وَادْعُوهُ خَوْفاً وَطَمَعاً إِنَّ
+</span><span style="color:red">رَحْمَتَ</span><span style="color:blue"> اللّهِ 
+قَرِيبٌ مِّنَ الْمُحْسِنِينَ</span></b>&#64830; (الأعراف 56)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">قَالُواْ 
+أَتَعْجَبِينَ مِنْ أَمْرِ اللّهِ </span><span style="color:red">رَحْمَتُ</span><span style="color:blue"> 
+اللّهِ وَبَرَكَاتُهُ عَلَيْكُمْ أَهْلَ الْبَيْتِ إِنَّهُ حَمِيدٌ مَّجِيدٌ</span></b>&#64830; 
+(هود 73)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">ذِكْرُ
+</span><span style="color:red">رَحْمَتِ</span><span style="color:blue"> رَبِّكَ 
+عَبْدَهُ زَكَرِيَّا</span></b>&#64830; (مريم 2)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">فَانظُرْ 
+إِلَى آثَارِ </span><span style="color:red">رَحْمَتِ</span><span style="color:blue"> 
+اللَّهِ كَيْفَ يُحْيِي الْأَرْضَ بَعْدَ مَوْتِهَا إِنَّ ذَلِكَ لَمُحْيِي 
+الْمَوْتَى وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</span></b>&#64830; (الروم 50)</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player14 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-1.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">أَهُمْ 
+يَقْسِمُونَ </span><span style="color:red">رَحْمَتَ</span><span style="color:blue"> 
+رَبِّكَ نَحْنُ قَسَمْنَا بَيْنَهُم مَّعِيشَتَهُمْ فِي الْحَيَاةِ الدُّنْيَا 
+وَرَفَعْنَا بَعْضَهُمْ فَوْقَ بَعْضٍ دَرَجَاتٍ لِيَتَّخِذَ بَعْضُهُم بَعْضاً 
+سُخْرِيّاً </span><span style="color:red">وَرَحْمَتُ</span><span style="color:blue"> 
+رَبِّكَ خَيْرٌ مِّمَّا يَجْمَعُونَ</span></b>&#64830; (الزخرف 32) </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 11.45pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+يوقف على كلمة (<b><span style="color:red">رَحْمَت</span></b>) في جميع هذه 
+المواضع بالتاء الساكنة (<b><span style="color:red">رَحْمَتْ</span></b>). وما 
+سواها من كلمة (رحمة) حيث رسمت التاء مربوطة فيوقف عليه بالهاء. نحو:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831; <b>
+<span style="color:blue">أُولَـئِكَ عَلَيْهِمْ صَلَوَاتٌ مِّن رَّبِّهِمْ </span>
+<span style="color:red">وَرَحْمَةٌ</span><span style="color:blue"> وَأُولَـئِكَ 
+هُمُ الْمُهْتَدُونَ</span></b>&#64830; (البقرة 157)</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player15 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-2.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+نعمت</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+رسمت التاء مبسوطة في أحد عشر موضعا:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَاذْكُرُواْ
+</span><span style="color:red">نِعْمَتَ</span><span style="color:blue"> اللّهِ 
+عَلَيْكُمْ</span></b>&#64830; (البقرة 231)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَاذْكُرُواْ
+</span><span style="color:red">نِعْمَتَ</span><span style="color:blue"> اللّهِ 
+عَلَيْكُمْ</span></b>&#64830; (آل عمران 103)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;يَا <b>
+<span style="color:blue">أَيُّهَا الَّذِينَ آمَنُواْ اذْكُرُواْ </span>
+<span style="color:red">نِعْمَتَ</span><span style="color:blue"> اللّهِ 
+عَلَيْكُمْ</span></b>&#64830; (المائدة 11)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">أَلَمْ 
+تَرَ إِلَى الَّذِينَ بَدَّلُواْ </span><span style="color:red">نِعْمَتَ</span><span style="color:blue"> 
+اللّهِ كُفْراً</span></b>&#64830; (ابراهيم 28)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَإِن 
+تَعُدُّواْ </span><span style="color:red">نِعْمَتَ</span><span style="color:blue"> 
+اللّهِ لاَ تُحْصُوهَا</span></b>&#64830; (ابراهيم 34)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">أَفَبِالْبَاطِلِ 
+يُؤْمِنُونَ </span><span style="color:red">وَبِنِعْمَتِ</span><span style="color:blue"> 
+اللّهِ هُمْ يَكْفُرُونَ</span></b>&#64830; (النحل 72)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">يَعْرِفُونَ
+</span><span style="color:red">نِعْمَتَ</span><span style="color:blue"> اللّهِ 
+ثُمَّ يُنكِرُونَهَا وَأَكْثَرُهُمُ الْكَافِرُونَ</span></b>&#64830; (النحل 83)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَاشْكُرُواْ
+</span><span style="color:red">نِعْمَتَ</span><span style="color:blue"> اللّهِ 
+إِن كُنتُمْ إِيَّاهُ تَعْبُدُونَ</span></b>&#64830; (النحل 114)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">أَلَمْ 
+تَرَ أَنَّ الْفُلْكَ تَجْرِي فِي الْبَحْرِ </span><span style="color:red">
+بِنِعْمَتِ</span><span style="color:blue"> اللَّهِ لِيُرِيَكُم مِّنْ آيَاتِهِ</span></b>&#64830; 
+(لقمان 31)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">يَا 
+أَيُّهَا النَّاسُ اذْكُرُوا </span><span style="color:red">نِعْمَتَ</span><span style="color:blue"> 
+اللَّهِ عَلَيْكُمْ</span></b>&#64830; (فاطر 3)</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player16 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-3.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">فَذَكِّرْ 
+فَمَا أَنتَ </span><span style="color:red">بِنِعْمَتِ</span><span style="color:blue"> 
+رَبِّكَ بِكَاهِنٍ وَلَا مَجْنُونٍ</span></b>&#64830; (الطور 29)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 11.45pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+يوقف على كلمة (<b><span style="color:red">نعمت</span></b>) في هذه المواضع بالتاء 
+(<b><span style="color:red">نِعْمَتْ</span></b>). وما سواها من كلمة (<b><span style="color:red">نعمة</span></b>)، 
+حيث رسمت التاء مربوطة، فيوقف عليه بالهاء مثل:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَأَمَّا
+</span><span style="color:red">بِنِعْمَةِ</span><span style="color:blue"> 
+رَبِّكَ فَحَدِّثْ</span></b>&#64830; (الضحى 11)</span><span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player17 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-4.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;</span><span dir="RTL"><b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">امرأت</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+رسمت التاء مبسوطة حيثما وردت مضافة إلى زوج، وذلك في المواضع التالية (سبعة):</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">إِذْ 
+قَالَتِ </span><span style="color:red">امْرَأَتُُ</span><span style="color:
+blue"> عِمْرَانَ رَبِّ إِنِّي نَذَرْتُ لَكَ مَا فِي بَطْنِي مُحَرَّراً 
+فَتَقَبَّلْ مِنِّي إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ</span></b>&#64830; (آل عمران 35) 
+</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player18 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-5.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَقَالَ 
+نِسْوَةٌ فِي الْمَدِينَةِ </span><span style="color:red">امْرَأَتُ</span><span style="color:blue"> 
+الْعَزِيزِ تُرَاوِدُ فَتَاهَا عَن نَّفْسِهِ</span></b>&#64830; (يوسف 30)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">قَالَتِ
+</span><span style="color:red">امْرَأَتُُ</span><span style="color:blue"> 
+الْعَزِيزِ الآنَ حَصْحَصَ الْحَقُّ</span></b>&#64830; (يوسف 51)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَقَالَتِ
+</span><span style="color:red">امْرَأَتُ</span><span style="color:blue"> 
+فِرْعَوْنَ قُرَّتُ عَيْنٍ لِّي وَلَكَ</span></b>&#64830; (القصص 9)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">ضَرَبَ 
+اللَّهُ مَثَلاً لِّلَّذِينَ كَفَرُوا </span><span style="color:red">اِمْرَأَتَ</span><span style="color:blue"> 
+نُوحٍ </span><span style="color:red">وَاِمْرَأَتَ</span><span style="color:blue"> 
+لُوطٍ</span></b>&#64830; (التحريم 10)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَضَرَبَ 
+اللَّهُ مَثَلاً لِّلَّذِينَ آمَنُوا </span><span style="color:red">اِمْرَأَتَ</span><span style="color:blue"> 
+فِرْعَوْنَ</span></b>&#64830; (التحريم 11)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 11.45pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+يوقف على هذه المواضع بالتاء (<b><span style="color:red">امرأتْ</span></b>). وفي 
+المواضع الأخرى حيث رسمت بالتاء المربوطة (<b><span style="color:red">امرأة</span></b>) 
+فيكون الوقف عليها بالهاء، نحو:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَإِنِ
+</span><span style="color:red">امْرَأَةٌ</span><span style="color:blue"> خَافَتْ 
+مِن بَعْلِهَا نُشُوزاً أَوْ إِعْرَاضاً</span></b>&#64830; (النساء 128) </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player19 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-6.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+كَلِمَت</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+رسمت التاء مبسوطة في المواضع التالية:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَتَمَّتْ
+</span><span style="color:red">كَلِمَتُ</span><span style="color:blue"> رَبِّكَ 
+صِدْقاً وَعَدْلاً لاَّ مُبَدِّلِ لِكَلِمَاتِهِ وَهُوَ السَّمِيعُ الْعَلِيمُ</span></b>&#64830; 
+(الأنعام 115)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَتَمَّتْ
+</span><span style="color:red">كَلِمَتُ</span><span style="color:blue"> رَبِّكَ 
+الْحُسْنَى عَلَى بَنِي إِسْرَائِيلَ بِمَا صَبَرُواْ</span></b>&#64830; (الأعراف 137)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">كَذَلِكَ 
+حَقَّتْ </span><span style="color:red">كَلِمَتُ</span><span style="color:blue"> 
+رَبِّكَ عَلَى الَّذِينَ فَسَقُواْ أَنَّهُمْ لاَ يُؤْمِنُونَ</span></b>&#64830; (يونس 
+33)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">إِنَّ 
+الَّذِينَ حَقَّتْ عَلَيْهِمْ </span><span style="color:red">كَلِمَتُ</span><span style="color:blue"> 
+رَبِّكَ لاَ يُؤْمِنُونَ</span></b>&#64830; (يونس 96)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَكَذَلِكَ 
+حَقَّتْ </span><span style="color:red">كَلِمَتُ</span><span style="color:blue"> 
+رَبِّكَ عَلَى الَّذِينَ كَفَرُوا أَنَّهُمْ أَصْحَابُ النَّارِ</span></b>&#64830; (غافر 
+6)</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player20 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-7.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 11.45pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+يوقف على هذه الكلمات التي رسمت بالتاء المبسوطة بالتاء (<b><span style="color:red">كَلِمَتْ</span></b>). 
+ويوقف عليها بالهاء الساكنة (<b><span style="color:red">كَلِمَهْ</span></b>) في 
+المواضع التي رسمت فيها بالتاء المربوطة مثل قوله تعالى: &#64831;<b><span style="color:blue"> 
+أَلَمْ تَرَ كَيْفَ ضَرَبَ اللّهُ مَثَلاً </span><span style="color:red">كَلِمَةً</span><span style="color:blue"> 
+طَيِّبَةً كَشَجَرةٍ طَيِّبَةٍ أَصْلُهَا ثَابِتٌ وَفَرْعُهَا فِي السَّمَاء</span></b>&#64830; 
+(ابراهيم 24)</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player21 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-8.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+سُنَّت</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+رسمت التاء مبسوطة في المواضع التالية:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَإِنْ 
+يَعُودُواْ فَقَدْ مَضَتْ </span><span style="color:red">سُنَّتُ</span><span style="color:blue"> 
+الأَوَّلِينِ</span></b>&#64830; (الأنفال 38)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">اسْتِكْبَاراً 
+فِي الْأَرْضِ وَمَكْرَ السَّيِّئِ وَلَا يَحِيقُ الْمَكْرُ السَّيِّئُ إِلَّا 
+بِأَهْلِهِ فَهَلْ يَنظُرُونَ إِلَّا </span><span style="color:red">سُنَّتَ</span><span style="color:blue"> 
+الْأَوَّلِينَ فَلَن تَجِدَ </span><span style="color:red">لِسُنَّتِ</span><span style="color:blue"> 
+اللَّهِ تَبْدِيلاً وَلَن تَجِدَ </span><span style="color:red">لِسُنَّتِ</span><span style="color:blue"> 
+اللَّهِ تَحْوِيلاً</span></b>&#64830;<b><span style="color:blue"> </span></b>(فاطر 43)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:red">سُنَّتَ</span><span style="color:blue"> 
+اللَّهِ الَّتِي قَدْ خَلَتْ فِي عِبَادِهِ</span></b>&#64830; (غافر 85)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 11.45pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+يوقف على هذه المواضع بالتاء وما سواها بالهاء</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+لعنت</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+رسمت التاء مبسوطة في المواضع التالية:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;ثُمَّ <b>
+<span style="color:blue">نَبْتَهِلْ فَنَجْعَل </span><span style="color:red">
+لَّعْنَتَ</span><span style="color:blue"> اللّهِ عَلَى الْكَاذِبِينَ</span></b>&#64830; 
+(آل عمران 61)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَالْخَامِسَةُ 
+أَنَّ </span><span style="color:red">لَعْنَتَ</span><span style="color:blue"> 
+اللَّهِ عَلَيْهِ إِن كَانَ مِنَ الْكَاذِبِينَ</span></b>&#64830; (النور 7)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+يكون الوقف على (<b><span style="color:red">لعنت</span></b>) في هذين الموضعين 
+بالتاء الساكنة وما سواهما بالهاء، نحو:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">فَلَعْنَ</span><span style="color:red">ة</span><span style="color:blue">ُ 
+اللَّه عَلَى الْكَافِرِينَ</span></b>&#64830; (البقرة 89)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+معصيت</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+رسمت التاء مبسوطة في المواضع التالية:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَيَتَنَاجَوْنَ 
+بِالْإِثْمِ وَالْعُدْوَانِ </span><span style="color:red">وَمَعْصِيَتِ</span></b>&#64830; 
+(المجادلة 8)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">فَلَا 
+تَتَنَاجَوْا بِالْإِثْمِ وَالْعُدْوَانِ </span><span style="color:red">
+وَمَعْصِيَتِ</span><span style="color:blue"> الرَّسُولِ</span></b>&#64830; (المجادلة 9)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+يوقف على (<b><span style="color:red">معصيت</span></b>) بالتاء في هذين الموضعين 
+ولم ترد هذه الكلمة بالتاء المربوطة في القرآن.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+غيابة </span></b></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+رسمت بالتاء المبسوطة في قوله تعالى: </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَأَلْقُوهُ 
+فِي </span><span style="color:red">غَيَابَتِ</span><span style="color:blue"> 
+الْجُبِّ</span></b>&#64830; (يوسف 10)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَأَجْمَعُواْ 
+أَن يَجْعَلُوهُ فِي </span><span style="color:red">غَيَابَتِ</span><span style="color:blue"> 
+الْجُبِّ</span></b>&#64830; (يوسف 15)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+بَقِيَّت</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+رسمت التاء مبسوطة في قوله تعالى &#64831;<b><span style="color:red">بَقِيَّتُ</span><span style="color:blue"> 
+اللّهِ خَيْرٌ لَّكُمْ إِن كُنتُم مُّؤْمِنِينَ</span></b>&#64830; (هود 86) يوقف عليها 
+بالتاء. وما سواها من كلمة (<b><span style="color:red">بقيّتْ</span></b>) فيوقف 
+عليه بالهاء الساكنة (<b><span style="color:red">بقيهْ</span></b>)، نحو &#64831;<b><span style="color:blue">أُوْلُواْ
+</span><span style="color:red">بَقِيَّةٍ</span><span style="color:blue"> 
+يَنْهَوْنَ عَنِ الْفَسَادِ فِي الأَرْضِ</span></b>&#64830; (هود 116)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+قرّت</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+رسمت بالتاء المبسوطة في قوله تعالى &#64831;وَقَالَتِ <b><span style="color:blue">
+امْرَأَتُ فِرْعَوْنَ </span><span style="color:red">قُرَّتُ</span><span style="color:
+blue"> عَيْنٍ لِّي وَلَكَ</span></b>&#64830; (القصص 9)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+فطرت: </span></b></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+رسمت بالتاء المبسوطة في قوله تعالى &#64831;<b><span style="color:red">فِطْرَتَ</span><span style="color:blue"> 
+اللَّهِ الَّتِي فَطَرَ النَّاسَ عَلَيْهَا</span></b>&#64830; (الروم 30)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<b><span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">جَنَّت </span></b></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">رسمت بالتاء المبسوطة في قوله تعالى &#64831;<b><span style="color:blue">فَرَوْحٌ 
+وَرَيْحَانٌ وَجَنّ</span><span style="color:red">َ</span><span style="color:blue">تُُ 
+نَعِيمٍ</span></b>&#64830; (الواقعة 89)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+ابنت </span></b></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+رسمت بالتاء المبسوطة في قوله تعالى &#64831;<b><span style="color:blue">وَمَرْيَمَ
+</span><span style="color:red">ابْنَتَ</span><span style="color:blue"> عِمْرَانَ 
+الَّتِي أَحْصَنَتْ فَرْجَهَا</span></b>&#64830; (التحريم 12)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+بَيِّنَتٍ </span></b></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+رسمت بالتاء المبسوطة في قوله تعالى &#64831;<b><span style="color:blue">أَمْ 
+آتَيْنَاهُمْ كِتَاباً فَهُمْ عَلَى </span><span style="color:red">بَيِّنَتٍ</span><span style="color:blue"> 
+مِّنْهُ</span></b>&#64830; (فاطر 40)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<b><span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">جمالت: </span></b></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">رسمت بالتاء المبسوطة في قوله تعالى &#64831;<b><span style="color:blue">كَأَنَّهُ
+</span><span style="color:red">جِمَالَتٌ</span><span style="color:blue"> صُفْرٌ</span></b>&#64830; 
+(المرسلات 33)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">
+شجرت: </span></b></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+رسمت بالتاء المبسوطة في موضع واحد<b><span style="color:red"> &nbsp;</span></b>&#64831;<b><span style="color:blue">إِنَّ
+</span><span style="color:red">شَجَرَتَ</span><span style="color:blue"> 
+الزَّقُّومِ</span></b>&#64830;<b><span style="color:red"> </span></b>(الدخان 43)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="5"></a>المقطوع والموصول</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+من أهم قواعد الوقف الصحيح أنه لا يجوز الوقف على متحرك بحركة كاملة بل يكون بسكون 
+محض أو روم أو إشمام. كما أنه لا يجوز أيضا الوقف في وسط الكلمة المتصلة رسما مهما 
+كان سبب الوقف اختياريا أو اضطراريا. لذا اهتم العلماء ببيان الكلمات الموصولة 
+والمقطوعة حتى يكون وقف القارئ صحيحا. &nbsp;</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 25.6pt">
+<b><span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+إذا رسمت كلمتان متصلتان وجب الوقف على الثانية منهما ولا يجوز الوقف على الأولى. 
+نحو:</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">(<b><span style="color:red">وَأَلَّوِ</span></b>) 
+في قوله تعالى &#64831;<b><span style="color:red">وَأَلَّوِ</span><span style="color:blue"> 
+اسْتَقَامُوا عَلَى الطَّرِيقَةِ لَأَسْقَيْنَاهُم مَّاء غَدَقاً</span></b>&#64830; (الجن 
+16) أصلها &quot;وأن لو&quot;</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">(<b><span style="color:red">بِئْسَمَا</span></b>) 
+في قوله تعالى &#64831;<b><span style="color:blue">قُلْ </span><span style="color:red">
+بِئْسَمَا</span><span style="color:blue"> يَأْمُرُكُمْ بِهِ إِيمَانُكُمْ إِن 
+كُنتُمْ مُّؤْمِنِينَ</span></b>&#64830; (البقرة 93) (البقرة 90) أصلها &quot;بئس ما&quot; </span>
+</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">(<b><span style="color:red">لِئَلاَّ</span></b>) 
+في قوله تعالى &#64831;<b><span style="color:red">لِئَلاَّ</span><span style="color:blue"> 
+يَكُونَ لِلنَّاسِ عَلَى اللّهِ حُجَّةٌ بَعْدَ الرُّسُلِ</span></b>&#64830; (النساء 165) 
+أصلها &quot;لأن لا&quot;</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 25.6pt">
+<b><span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></b><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+إذا رسمت كلمتان منفصلتان يوقف على أي منهما حسب الاضطرار. نحو:</span></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">(<b><span style="color:red">وَإِن</span><span style="color:blue">
+</span><span style="color:red">مَّا</span></b>) في قوله تعالى &#64831;<b><span style="color:red">وَإِن</span><span style="color:blue">
+</span><span style="color:red">مَّا</span><span style="color:blue"> نُرِيَنَّكَ 
+بَعْضَ الَّذِي نَعِدُهُمْ</span></b>&#64830; (الرعد 40)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">(<b><span style="color:red">مِن</span><span style="color:blue">
+</span><span style="color:red">مَّا</span></b>) في قوله تعالى &#64831;<b><span style="color:blue">وَأَنفِقُوا
+</span><span style="color:red">مِن</span><span style="color:blue"> </span>
+<span style="color:red">مَّا</span><span style="color:blue"> رَزَقْنَاكُم</span></b>&#64830; 
+(المنافقون 10)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">(<b><span style="color:red">أَن</span><span style="color:blue">
+</span><span style="color:red">لَّا</span></b>) في قوله تعالى &#64831;<b><span style="color:red">أَن</span><span style="color:blue">
+</span><span style="color:red">لَّا</span><span style="color:blue"> 
+يَدْخُلَنَّهَا الْيَوْمَ عَلَيْكُم مِّسْكِينٌ</span></b>&#64830; (القلم 24)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+ومثلها: (<b><span style="color:red">أن لم</span></b>) (<b><span style="color:red">أم 
+من</span></b>) (<b><span style="color:red">وحيث ما</span></b>) (<b><span style="color:red">في 
+ما</span></b>) (<b><span style="color:red">أن لو</span></b>) ..</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+إذا رسمت كلمة مجزّأة وقف على الجزء الأخير منها دون الأول. </span></b></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+وذلك في الموضع الوحيد في القرآن في قوله تعالى &#64831;<b><span style="color:blue">سَلَامٌ 
+عَلَى </span><span style="color:red">إِلْ</span><span style="color:blue"> </span>
+<span style="color:red">يَاسِينَ</span></b>&#64830; (الصافات 130) فلا يجوز الوقف (<b><span style="color:red">إِلْ</span></b>) 
+بل يجب الوقف على (<b><span style="color:
+red">إِلْ يَاسِينَ</span></b>).</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="6"></a>الوقف على (أيّه)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+&nbsp;يوقف على (<b><span style="color:red">أَيُّهَ</span></b>) بتسكين الهاء من غير 
+ألف في ثلاثة مواضع:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831; <b>
+<span style="color:blue">وَتُوبُوا إِلَى اللَّهِ جَمِيعاً</span></b> <b>
+<span style="color:red">أَيُّهَ</span><span style="color:blue"> الْمُؤْمِنُونَ 
+لَعَلَّكُمْ تُفْلِحُونَ</span></b>&#64830; (النور 31) </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player22 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-9.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَقَالُوا 
+يَا </span><span style="color:red">أَيُّهَ</span><span style="color:blue"> 
+السَّاحِرُ ادْعُ لَنَا رَبَّكَ بِمَا عَهِدَ عِندَكَ إِنَّنَا لَمُهْتَدُونَ</span></b>&#64830; 
+(الزخرف 49) </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player23 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-10.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">سَنَفْرُغُ 
+لَكُمْ </span><span style="color:red">أَيُّهَ</span><span style="color:blue"> 
+الثَّقَلَانِ</span></b>&#64830; (الرحمن 31) </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player24 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-11.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+وما عدا هذه المواضع فيوقف عليها بالألف، نحو:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">قُلْ 
+يَا </span><span style="color:red">أَيُّهَا</span><span style="color:blue"> 
+الْكَافِرُونَ</span></b>&#64830;<b><span style="color:blue"> </span></b>(الكافرون 1)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">يَا
+</span><span style="color:red">أَيُّهَا</span><span style="color:blue"> 
+الْإِنسَانُ إِنَّكَ كَادِحٌ إِلَى رَبِّكَ كَدْحاً فَمُلَاقِيهِ</span></b>&#64830; 
+(الانشقاق 6) </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player25 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/8-4-12.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+</p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="7"></a>الوقف على اللام المنفصلة عن الاسم المجرور</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+يمكن الوقف على اللام إذا انفصلت عن الاسم المجرور في المواضع الأربعة التالية:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:red">فَمَالِ</span><span style="color:blue"> 
+هَـؤُلاء الْقَوْمِ لاَ يَكَادُونَ يَفْقَهُونَ حَدِيثاً</span></b>&#64830; (النساء 78)
+</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَيَقُولُونَ 
+يَا وَيْلَتَنَا </span><span style="color:red">مَالِ</span><span style="color:blue"> 
+هَذَا الْكِتَابِ لَا يُغَادِرُ صَغِيرَةً وَلَا كَبِيرَةً إِلَّا أَحْصَاهَا</span></b>&#64830; 
+(الكهف 49)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:blue">وَقَالُوا
+</span><span style="color:red">مَالِ</span><span style="color:blue"> هَذَا 
+الرَّسُولِ يَأْكُلُ الطَّعَامَ وَيَمْشِي فِي الْأَسْوَاقِ</span></b>&#64830; (الفرقان 
+7) </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">&#64831;<b><span style="color:red">فَمَالِ</span><span style="color:blue"> 
+الَّذِينَ كَفَرُوا قِبَلَكَ مُهْطِعِينَ</span></b>&#64830; (المعارج 36) </span></p>
+
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">&nbsp;</p>
+
+</body>
+
+</html>

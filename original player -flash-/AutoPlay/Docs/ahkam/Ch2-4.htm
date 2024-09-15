@@ -1,0 +1,450 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+<style>
+A.menulink {
+display: block;
+text-align: center;
+text-decoration: none;
+font-family:times;
+font-size:16pt;
+color: #0000FF;
+BORDER: none;
+border: solid 1px #FFFFFF;
+}
+
+A.menulink:hover {
+border: solid 1px #6100C1;
+background-color:#F0E1FF;
+}
+
+</style>
+
+<script>
+
+var ns4class=''
+</script>
+
+<style>
+ a.menu:link {color: #0000FF; text-decoration: none; }
+ a.menu:hover {color: #33FFCC; text-decoration: underline; }
+</style>
+
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="../../Images/back.gif"  >
+
+
+
+
+<!-- Float script start -->
+
+<SCRIPT>
+
+var IW= 0;
+var IH= 0;
+var PX= 0;
+var PY= 0;
+var ZIN= 0;
+var us= null;
+var IMGW= 30;
+//modify top position
+var IMGH= 0;
+var LSAFETY= 20;
+var TSAFETY= 17;
+function branding() {
+browserVer = parseInt(navigator.appVersion); 
+if(browserVer<4) return;
+ oldIW= IW;
+ oldIH= IH;
+ oldPX= PX;
+ oldPY= PY;
+ if (navigator.appName == 'Netscape')
+ {
+  if ((window.innerHeight != oldIH)||(window.innerWidth != oldIW)||(window.pageXOffset != oldPX)||(window.pageYOffset != oldPY))
+  {
+    if (us == null)
+    {
+      for (i=0; i<document.layers.length; i++)
+      {
+        us= document.layers[i];
+        if (us.id == "Logo") break;
+      }
+    }
+    if (us != null)
+    {
+      us.visibility= "hide";
+      IH= window.innerHeight;
+      IW= window.innerWidth;
+      PX= window.pageXOffset;
+      PY= window.pageYOffset;
+
+      (IH > IMGH) ? us.bottom= (PY+(IMGH+TSAFETY)) : us.bottom= 0;
+//      (IW > IMGW) ? us.left= (PX-(IMGW+LSAFETY)) : us.left= 0;
+      us.left = 20;
+
+      for (i=0; i<document.layers.length; i++)
+      {
+        templay= document.layers[i];
+
+        if (templay.zIndex > ZIN)
+          ZIN= (templay.zIndex + 1);
+      }
+      us.zIndex= ZIN;
+      us.visibility= "show";
+    }
+  }
+ }
+ else{
+  //if (navigator.appVersion.indexOf("Mac") == -1)
+  {
+    if ((document.body.clientHeight != oldIH)||(document.body.clientWidth != oldIW)||(document.body.scrollLeft != oldPX)||(document.body.scrollTop != oldPY))      {
+      alldivs= document.all.tags("DIV");
+      if (us == null){ 
+        for (i=0; i<alldivs.length; i++)
+          {
+          us= alldivs[i];
+          if (us.id == "Logo")
+            break;
+          }
+      }
+      if (us != null){
+        us.style.display= "none";
+        IH= document.body.clientHeight;
+        IW= document.body.clientWidth;
+        PX= document.body.scrollLeft;
+        PY= document.body.scrollTop;
+        us.style.bottom= (-PY+(IMGH+TSAFETY)+12);
+//        us.style.left=(PX-(IMGW+LSAFETY)+15);
+//modify left position
+        us.style.left = 5;
+//us.style.left = (150 - ims.width)/2;
+
+        for (i=0; i<alldivs.length; i++){
+          templay= alldivs(i);
+          if (templay.style.zIndex > ZIN)
+            us.style.zindex= (templay.style.zIndex + 1);
+        }
+        us.style.display= "";
+      }
+  }
+ }
+ }
+}
+if ((document.all) || (document.layers))
+{
+ setInterval("branding()",100);
+}
+
+</SCRIPT>
+
+<div class="Logo" id="Logo" style="LEFT: 6px; POSITION: absolute; bottom:5px">
+<br>
+<b><span lang="en-us">
+<font face="Wingdings" color="#0000FF" style="font-size: 17pt">
+<a class="menu" href="#0"><span style="text-decoration: none">&Ccedil;</span></a></font></span></b></div>
+<!-- Float script end -->
+
+
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<b>
+<span lang="AR-SA" style="font-size: 22.0pt; font-family: khalaad al-arabeh 2; color: #993300">
+&nbsp; <a name="0"></a> </span></b>
+</p>
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size:22.0pt;font-family:&quot;Hesham AlSharq&quot;;
+color:#993300">صفات الحروف وأقسامها </span></p>
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+&nbsp;</p>
+
+
+<table border="0" width="100%" id="table31">
+	<tr>
+		<td style="border-style: none; border-width: medium" rowspan="6">&nbsp;</td>
+		<td style="border-style: none; border-width: medium" width="286" align="center">
+	<p align="right"><font size="4" color="#0000FF">
+	<b><a class="menulink" href="#1">
+	<font color="#0000FF" style="font-size: 16pt">تعريف الصفة
+ </font></a></b></font></td>
+		<td style="border-style: none; border-width: medium" rowspan="6">
+	&nbsp;</td>
+	</tr>
+  <TR>
+    <td width="286" height="28" align="center">
+	<p align="left">
+	<font size="4" color="#0000FF">
+	<b><a class="menulink" href="#2">
+	<font color="#0000FF" style="font-size: 16pt">فوائد معرفة صفات الحروف </font>
+	</a></b></font>
+</td>
+</TR>
+</TR>
+    <td width="286" align="center">
+	<p align="left">
+	<font size="4" color="#0000FF">
+	<b><a class="menulink" href="#3">
+	<font color="#0000FF" style="font-size: 16pt">الصفات اللازمة والصفات العارضة
+	</font></a></b></font></td>
+
+</TR>
+</TR>
+    <tr>
+    <td width="286" align="center">
+	<p align="left">
+	<font size="4" color="#0000FF">
+	<b><a class="menulink" href="#4">
+	<font color="#0000FF" style="font-size: 16pt">عدد الصفات اللازمة
+	</font></a></b></font></td>
+</TR>
+    <td width="286" align="center">
+	<p align="left">
+	<font size="4" color="#0000FF">
+	<b><a class="menulink" href="#5">
+	<font color="#0000FF" style="font-size: 16pt">أقسام الصفات اللازمة
+	</font></a></b></font></td>
+</TR>
+</TR>
+
+    <td height="28" width="286" align="center">
+	<p align="left"><b>
+	<font size="4" color="#0000FF"><a class="menulink" href="#6">
+	<font color="#0000FF" style="font-size: 16pt">الصفات القوية والضعيفة والمتوسطة</font></a></font></b></td>
+
+
+</table>
+
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+&nbsp;</p>
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+&nbsp;</p>
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="1"></a>تعريف الصفة</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">الصفة هي الكيفية التي تعطى للحرف عند النطق به 
+بحيث تميزه عن غيره.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="2"></a>فوائد معرفة صفات الحروف</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -.25in; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">تمييز الحروف 
+المشتركة في نفس المخرج بعضها عن بعض حال تأديتها. فمثلا الثاء والذال والظاء تخرج 
+كلها من طرف اللسان وأطراف الثنايا العليا ولا يُميز بينها إلا بإعطاء كل حرف حقه 
+من الصفات.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -.25in; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">تحسين النطق بالحروف 
+وذلك بإعطاء كل حرف حقه ومستحقه مخرجا وصفة.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -.25in; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">معرفة الحروف القوية 
+والضعيفة من حيث الصفات وما يترتب عن ذلك من معرفة ما يجوز إدغامه وما لا يجوز وما 
+يدغم إدغاما كاملا وما يدغم إدغاما ناقصا.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="3"></a>الصفات اللازمة والصفات العارضة</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;تنقسم الصفات إلى قسمين:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -.25in; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">الصفات اللازمة</span></b></span><span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;">: وهي الصفات التي من ذات 
+الحرف لا تنفك عنه مطلقا. كالاستعلاء والهمس وسائر الصفات التي نتعرض إليها في 
+الأبواب التالية.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -.25in; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 31.5pt">
+<span style="font-size:18.0pt">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">الصفات العارضة</span></b></span><span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;">: هي صفات مكملة للحرف تعرض له 
+في أحوال معينة ولا تؤثر في ذاته إذا انفكت عنه، كالتفخيم والترقيق والإدغام والمد 
+والإخفاء وغير ذلك. ونفصل هذه الصفات العارضة في مباحث منفصلة.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="4"></a>عدد الصفات اللازمة</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">اختلف العلماء في عددها وأشهر الأقوال أنها سبعة 
+عشر صفة لازمة. </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="5"></a>أقسام الصفات اللازمة</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">تنقسم الصفات اللازمة إلى قسمين:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -.25in; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 22.5pt">
+<span style="font-size:18.0pt">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">الصفات المتضادة</span></b></span><span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;">: وهي خمس مجموعات في كل 
+مجموعة صفتان متضادتان. فإذا وجدت صفة منهما في حرف امتنع عليه ضدها، ولا بد للحرف 
+من أن يتصف بإحدهما. وهذه الصفات هي:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -13.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&nbsp;<span lang="AR-SA">الهمس 
+وضده الجهر</span></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -13.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">الشدة وضدها الرخاوة 
+وبينهما التوسط أو البينية</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -13.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">الاستعلاء وضده 
+الاستفال</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -13.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">الإطباق وضده 
+الانفتاح</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -13.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">الإصمات وضده 
+الإذلاق</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -.25in; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 22.5pt">
+<span style="font-size:18.0pt">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">الصفات التي لا ضد لها</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+وهي سبع صفات:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -13.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;" dir="RTL">&nbsp;<span lang="AR-SA">القلقلة</span></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -13.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">الصفير</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -13.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">الانحراف</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -13.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">التفشي</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -13.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">الاستطالة</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -13.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">التكرير</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">وأضاف بعض العلماء صفتين أخريين لا ضد لهما وهما : 
+الخفاء والغنة.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;ولاستخراج صفات حرف ما، نقوم أولا باستعراض 
+مجموعات الصفات المتعارضة، فنثبت للحرف أحد الصفتين. وبناء على هذا ينبغي أن يتصف 
+كل حرف بخمس صفات من ذوات الأضداد.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">ثم بعد ذلك نقوم بعرضه على بقية الصفات التي لا ضد 
+لها، فإن كان متصفا بأحدها أثبتنا له هذه الصفة وأضفناها إلى الخمس المتقدمة.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">هذا ولا يتصف الحرف بأقل من خمس صفات (المتضادة) 
+ولا أكثر من سبع (الخمس المتضادة مع صفتين أخريين)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+<a name="6"></a>الصفات القوية والضعيفة والمتوسطة</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">يمكن تقسيم الصفات اللازمة إلى صفات قوية وأخرى 
+ضعيفة وأخرى متوسطة.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -.25in; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span style="font-size:18.0pt">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">الصفات القوية</span></b></span><span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;">: وهي الجهر والشدة والاستعلاء 
+والإطباق والقلقلة والصفير والانحراف والتفشي.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -.25in; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span style="font-size:18.0pt">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">الصفات الضعيفة</span></b></span><span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;">: وهي الهمس والرخاوة 
+والاستفال والانفتاح واللين والخفاء.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -.25in; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span style="font-size:18.0pt">3.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">الصفات المتوسطة</span></b></span><span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;">: التوسط (بين الشدة والرخاوة) 
+والإصمات والذلاقة. </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">والبعض يقسم الصفات إلى قوي وضعيف بجعل التوسط 
+والذلاقة من الصفات الضعيفة والإصمات من الصفات القوية.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 22.5pt">&nbsp;</p>
+
+</body>
+
+</html>

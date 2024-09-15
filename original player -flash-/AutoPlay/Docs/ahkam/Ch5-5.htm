@@ -1,0 +1,977 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+
+
+
+
+<style>
+A.menulink {
+display: block;
+text-align: center;
+text-decoration: none;
+font-family:Times;
+font-size:16pt;
+color: #0000FF;
+BORDER: none;
+border: solid 1px #FFFFFF;
+}
+
+A.menulink:hover {
+border: solid 1px #6100C1;
+background-color:#F0E1FF;
+}
+
+</style>
+
+<script>
+
+var ns4class=''
+</script>
+
+<style>
+ a.menu:link {color: #0000FF; text-decoration: none; }
+ a.menu:hover {color: #33FFCC; text-decoration: underline; }
+</style>
+
+
+<style type="text/css">
+
+#dhtmltooltip{
+position: absolute;
+width: 80px;
+border: 1px  black;
+padding: 0px;
+background-color: lightyellow;
+visibility: hidden;
+z-index: 100;
+/*Remove below line to remove shadow. Below line should always appear last within this CSS*/
+/*filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);*/
+}
+
+</style>
+
+
+<style type="text/css">
+<!--
+
+.tooltiptitle{COLOR: #FFFFFF; TEXT-DECORATION: none; CURSOR: Default; font-family: times; font-weight: bold; font-size: 13pt}
+.tooltipcontent{COLOR: #000000; TEXT-DECORATION: none; CURSOR: Default; font-family: times; font-weight: bold; font-size: 13pt}
+
+#ToolTip{position:absolute; width: 80px; top: 0px; left: 0px; z-index:4; visibility:hidden}
+
+
+-->
+
+</style>
+
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="../../Images/back.gif"  >
+
+
+
+<div id="dhtmltooltip"></div>
+
+<script type="text/javascript">
+
+
+var offsetxpoint=-60 //Customize x offset of tooltip
+var offsetypoint=20 //Customize y offset of tooltip
+var ie=document.all
+var ns6=document.getElementById && !document.all
+var enabletip=false
+var Ex, Ey, topColor, subColor, ContentInfo
+topColor = "#000099"
+subColor = "#FFFFCC"
+
+if (ie||ns6)
+var tipobj=document.all? document.all["dhtmltooltip"] : document.getElementById? document.getElementById("dhtmltooltip") : ""
+
+function ietruebody(){
+return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+}
+
+function ddrivetip(TTitle, TContent, thecolor, thewidth){
+if (ns6||ie){
+if (typeof thewidth!="undefined") tipobj.style.width=thewidth+"px"
+if (typeof thecolor!="undefined" && thecolor!="") tipobj.style.backgroundColor=thecolor
+
+ContentInfo = '<table border="0" width="100" cellspacing="0" cellpadding="0">'+
+'<tr><td width="100%" bgcolor="#000000">'+
+
+'<table border="0" width="100%" cellspacing="1" cellpadding="0">'+
+'<tr><td width="100%" bgcolor='+topColor+'>'+
+
+'<table border="0" width="90%" cellspacing="0" cellpadding="0" align="center">'+
+'<tr><td width="100%">'+
+
+'<font class="tooltiptitle"> <p align="center">&nbsp;'+TTitle+'</font>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+
+'<tr><td width="100%" bgcolor='+subColor+'>'+
+
+'<table border="0" width="90%" cellpadding="0" cellspacing="1" align="center">'+
+
+'<tr><td width="100%">'+
+
+'<font class="tooltipcontent"><p align="center">'+TContent+'</font>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+'</table>';
+
+
+
+tipobj.innerHTML=ContentInfo 
+
+enabletip=true
+return false
+}
+}
+
+function positiontip(e){
+if (enabletip){
+var curX=(ns6)?e.pageX : event.clientX+ietruebody().scrollLeft;
+var curY=(ns6)?e.pageY : event.clientY+ietruebody().scrollTop;
+//Find out how close the mouse is to the corner of the window
+var rightedge=ie&&!window.opera? ietruebody().clientWidth-event.clientX-offsetxpoint : window.innerWidth-e.clientX-offsetxpoint-20
+var bottomedge=ie&&!window.opera? ietruebody().clientHeight-event.clientY-offsetypoint : window.innerHeight-e.clientY-offsetypoint-20
+
+var leftedge=(offsetxpoint<0)? offsetxpoint*(-1) : -1000
+
+//if the horizontal distance isn't enough to accomodate the width of the context menu
+if (rightedge<tipobj.offsetWidth)
+//move the horizontal position of the menu to the left by it's width
+tipobj.style.left=ie? ietruebody().scrollLeft+event.clientX-tipobj.offsetWidth+"px" : window.pageXOffset+e.clientX-tipobj.offsetWidth+"px"
+else if (curX<leftedge)
+tipobj.style.left="5px"
+else
+//position the horizontal position of the menu where the mouse is positioned
+tipobj.style.left=curX+offsetxpoint+"px"
+
+//same concept with the vertical position
+if (bottomedge<tipobj.offsetHeight)
+tipobj.style.top=ie? ietruebody().scrollTop+event.clientY-tipobj.offsetHeight-offsetypoint+"px" : window.pageYOffset+e.clientY-tipobj.offsetHeight-offsetypoint+"px"
+else
+tipobj.style.top=curY+offsetypoint+"px"
+tipobj.style.visibility="visible"
+}
+}
+
+function hideddrivetip(){
+if (ns6||ie){
+enabletip=false
+tipobj.style.visibility="hidden"
+tipobj.style.left="0px"
+tipobj.style.backgroundColor=''
+tipobj.style.width=''
+}
+}
+
+document.onmousemove=positiontip
+
+</script>
+
+<!-- Float script start -->
+<!-- Courtesy of SimplytheBest.net - http://simplythebest.net/scripts/ -->
+<SCRIPT>
+
+var IW= 0;
+var IH= 0;
+var PX= 0;
+var PY= 0;
+var ZIN= 0;
+var us= null;
+var IMGW= 30;
+//modify top position
+var IMGH= 0;
+var LSAFETY= 20;
+var TSAFETY= 17;
+function branding() {
+browserVer = parseInt(navigator.appVersion); 
+if(browserVer<4) return;
+ oldIW= IW;
+ oldIH= IH;
+ oldPX= PX;
+ oldPY= PY;
+ if (navigator.appName == 'Netscape')
+ {
+  if ((window.innerHeight != oldIH)||(window.innerWidth != oldIW)||(window.pageXOffset != oldPX)||(window.pageYOffset != oldPY))
+  {
+    if (us == null)
+    {
+      for (i=0; i<document.layers.length; i++)
+      {
+        us= document.layers[i];
+        if (us.id == "Logo") break;
+      }
+    }
+    if (us != null)
+    {
+      us.visibility= "hide";
+      IH= window.innerHeight;
+      IW= window.innerWidth;
+      PX= window.pageXOffset;
+      PY= window.pageYOffset;
+
+      (IH > IMGH) ? us.bottom= (PY+(IMGH+TSAFETY)) : us.bottom= 0;
+//      (IW > IMGW) ? us.left= (PX-(IMGW+LSAFETY)) : us.left= 0;
+      us.left = 20;
+
+      for (i=0; i<document.layers.length; i++)
+      {
+        templay= document.layers[i];
+
+        if (templay.zIndex > ZIN)
+          ZIN= (templay.zIndex + 1);
+      }
+      us.zIndex= ZIN;
+      us.visibility= "show";
+    }
+  }
+ }
+ else{
+  //if (navigator.appVersion.indexOf("Mac") == -1)
+  {
+    if ((document.body.clientHeight != oldIH)||(document.body.clientWidth != oldIW)||(document.body.scrollLeft != oldPX)||(document.body.scrollTop != oldPY))      {
+      alldivs= document.all.tags("DIV");
+      if (us == null){ 
+        for (i=0; i<alldivs.length; i++)
+          {
+          us= alldivs[i];
+          if (us.id == "Logo")
+            break;
+          }
+      }
+      if (us != null){
+        us.style.display= "none";
+        IH= document.body.clientHeight;
+        IW= document.body.clientWidth;
+        PX= document.body.scrollLeft;
+        PY= document.body.scrollTop;
+        us.style.bottom= (-PY+(IMGH+TSAFETY)+12);
+//        us.style.left=(PX-(IMGW+LSAFETY)+15);
+//modify left position
+        us.style.left = 5;
+//us.style.left = (150 - ims.width)/2;
+
+        for (i=0; i<alldivs.length; i++){
+          templay= alldivs(i);
+          if (templay.style.zIndex > ZIN)
+            us.style.zindex= (templay.style.zIndex + 1);
+        }
+        us.style.display= "";
+      }
+  }
+ }
+ }
+}
+if ((document.all) || (document.layers))
+{
+ setInterval("branding()",100);
+}
+
+</SCRIPT>
+
+<div class="Logo" id="Logo" style="LEFT: 10px; POSITION: absolute; bottom:5px; width:25px">
+<br>
+<b><span lang="en-us">
+<font face="Wingdings" color="#0000FF" style="font-size: 16pt">
+<a class="menu" href="#0"><span style="text-decoration: none">&Ccedil;</span></a></font></span></b></div>
+<!-- Float script end -->
+
+
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<b>
+<span lang="AR-SA" style="font-size: 22.0pt; font-family: khalaad al-arabeh 2; color: #993300">
+&nbsp; <a name="0"></a> </span></b>
+<span lang="AR-SA" style="font-size:22.0pt;font-family:&quot;Hesham AlSharq&quot;;
+color:#993300">ملخص وتطبيق</span></p>
+<p class="MsoNormal" align="center" dir="RTL" style="text-autospace: none; direction: rtl; unicode-bidi: embed">&nbsp;</p>
+
+
+<table border="0" width="100%" id="table6" cellspacing="10">
+	<tr>
+		<td style="border-style: none; border-width: medium" rowspan="3">&nbsp;</td>
+		<td style="border-style: none; border-width: medium" width="128" align="center">
+	<p align="right"><font color="#0000FF">
+	<b><a class="menulink" href="#1"><font color="#0000FF">ملخص&nbsp; </font></a></b></font></td>
+		<td style="border-style: none; border-width: medium" rowspan="3">
+	&nbsp;</td>
+	</tr>
+  <TR>
+    <td width="128" height="28" align="center">
+	<p align="left">
+	<font color="#0000FF">
+	<b><a class="menulink" href="#2"><font color="#0000FF">متن الجزرية </font>
+	</a></b></font>
+</td>
+</TR>
+</TR>
+    <td width="128" align="center">
+	<p align="left">
+	<font color="#0000FF">
+	<b><a class="menulink" href="#3"><font color="#0000FF">تطبيق</font></a></b></font></td>
+
+</TR>
+</TR>
+</TR>
+
+    
+</table>
+
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Hesham AlSharq&quot;;color:blue">
+&nbsp;</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+&nbsp;</p>
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+&nbsp;</p>
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed">
+&nbsp;</p>
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table3" width="100%">
+		<tr>
+			<td width="590" valign="top" style="width: 442.8pt; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.0pt; margin-top:0">
+			<span lang="AR-SA" style="font-size: 20.0pt; font-family: khalaad al-arabeh 2; color: blue">
+			<a name="1"></a><font face="Hesham AlSharq">ملخـص</font></span></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt; margin-top:0">
+<b><span lang="AR-SA" style="font-family: Traditional Arabic; color: red">&nbsp;</span></b><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">&nbsp;&nbsp;
+
+
+</span>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt; margin-top:0">
+<span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+<MAP NAME="Mim">
+	<AREA SHAPE="RECT" COORDS="345,66,281,42"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','عَلَيْكُم مِّدْرَاراً <br> عَلَيْهِم مُّؤْصَدَةٌ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="23,74,92,49"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','كُنتُم بِـهِ <br> تَرْمِيهِم بِـحِجَارَةٍ ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="251,177,261,166"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','إِنَّا مَعَكْمْ إِنَّمَا  <br> ظَلَمْتُمْ أَنفُسَكُمْ ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="245,177,227,161"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','أَلَمْ تَرَ  <br> بِمَا كُنتُمْ تَعْمَلُونَ ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="220,176,201,161"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','عَالِيَهُمْ ثِيَابُ   <br>  بِهِمْ ثُمَّ ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="196,186,180,164"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','لَهُمْ جَنَّاتٍ  <br> كَانَ لَكُمْ جَزَاء ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="175,182,158,165"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','وَمِنْ حَيْثُ <br> عَلَيْهِمْ حَافِظِينَ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="153,184,137,162"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة',' ذَلِكُمْ خَيْرٌ <br> هُمْ خَيْرُ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="132,178,121,162"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','الْحَمْدُ  <br> لَكُمْ دِينُكُمْ ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="238,207,251,188"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','تَرْهَقُهُمْ ذِلَّةٌ  <br> إِلَيْكُمْ ذِكْراً ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="236,212,221,194"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','إِيلَافِهِمْ رِحْلَةَ <br> أَمْهِلْهُمْ رُوَيْداً')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="218,208,205,190"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','أَمْ زَاغَتْ <br>بَيْنَهُمْ زُبُراً')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="200,211,179,193"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','وَالشَّمْسِ <br> نَوْمَكُمْ سُبَاتاً')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="172,211,152,188"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','أَمْ لَهُمْ شِرْكٌ <br> وَأَمْرُهُمْ شُورَى')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="145,211,118,193"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','إِن كُنتُمْ صَادِقِينَ <br> عَلَيْهِمْ صَيْحَةً')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="228,219,255,240"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','لَكُمْ ضَرّاً <br> عَلَيْهِمْ ضَرْباً')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="205,215,222,236"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','عَلَيْهِمْ طَيْراً <br> لَكُمْ طَالُوتَ ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="183,216,199,235"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','وَأَنتُمْ ظَالِمُونَ <br> وَأَنَّهُمْ ظَنُّوا')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="167,242,184,219"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','الَّذِينَ هُمْ عَن <br> فَدَمْدَمَ عَلَيْهِمْ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="148,241,165,217"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','عَلَيهِمْ غَيرِ <br> مَاؤُكُمْ غَوْراً')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="144,234,123,217"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','وَيَمُدُّهُمْ فِي <br> الَّذِي هُمْ فِيهِ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="238,245,255,265"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','وَمَهِّلْهُمْ قَلِيلاً <br> بِأَنَّهُمْ قَوْمٌ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="217,242,235,263"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','مَثَلُهُمْ كَمَثَلِ <br> يَمْكُرُونَ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="198,243,211,264"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','إِنَّهُمْ لَصَالُوا <br> قَبْلِكُمْ لَعَلَّكُمْ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="177,264,193,245"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','أَلَمْ نَشْرَحْ<br> عَلَيْهِمْ نَارٌ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="173,264,157,248"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','هَاأَنتُمْ هَؤُلَاء <br> أَمْهِلْهُمْ ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="152,263,141,246"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','أَمْرِهِمْ وَلَهُمْ <br>أَمْوَالُكُمْ ')";  onMouseout="hideddrivetip()"  >
+	<AREA SHAPE="RECT" COORDS="138,270,118,248"  onclick="return false"  href="#"  onMouseover=" ddrivetip('أمثلة','هُمْ يُوقِنُونَ <br> وَلَمْ يَكُن')";  onMouseout="hideddrivetip()"  >
+</MAP>
+<IMG SRC="Pictures\Mim.gif" USEMAP="#Mim" BORDER="0">
+
+
+</span><p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+&nbsp;<span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue"><div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table4" width="100%">
+		<tr>
+			<td width="590" valign="top" style="width: 442.8pt; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.0pt">
+			<span lang="AR-SA" style="font-size: 20.0pt; font-family: khalaad al-arabeh 2; color: blue">
+			<a name="2"></a><font face="Hesham AlSharq">الجزرية</font></span></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<b>
+<span lang="AR-SA" style="font-size:8.0pt;font-family:
+&quot;Traditional Arabic&quot;;color:red">&nbsp;</span><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:#993300">وأَظْهِرِ الغُنَّةَ 
+مِنْ نُونٍ وَمِـنْ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مِيْمٍ إِذَا مَـا شُدـِّدَا وَأَخْفِيَـنْ</span></b></p>
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:#993300">الْمِيْمَ إِنْ 
+تَسْكُنْ بِغُنَّةٍ لَـدَى&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; بَاءٍ عَلَى المُخْتَارِ مِنْ أَهْـلِ الأدَا</span></b></p>
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 27.0pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:#993300">وَأظْهِرَنْهَا عِنْدَ 
+بَاقِي الأَحْرُفِ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; وَاحْذَرْ لَدَى وَاوٍ وَفَا أنْ تَخْتَفِي</span></b></p>
+</span>
+<div align="right">
+	<table class="MsoTableGrid" dir="rtl" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table5" width="100%">
+		<tr>
+			<td width="590" valign="top" style="width: 442.8pt; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0mm; padding-bottom: 0mm">
+			<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.0pt">
+			<a name="3">
+			<span style="font-size: 20.0pt; font-family: Hesham AlSharq; color: blue">
+			<font face="Hesham AlSharq"></font></span></a>
+			<span style="font-size: 20.0pt; font-family: Hesham AlSharq; color: blue">
+			<font face="Hesham AlSharq">تطبيق</font></span></td>
+		</tr>
+	</table>
+</div>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-left: 0mm; margin-right: 13.7pt; margin-top: 12.0pt; margin-bottom: .0001pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;;color:red">مثال</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+بيان أحكام الميم الساكنة في قوله تعالى: &#64831;<b><span style="color:blue">وَاذْكُرُواْ 
+نِعْمَتَ اللّهِ عَلَيْكُم</span><span style="color:red">ْ إِ</span><span style="color:blue">ذْ 
+كُنتُ</span><span style="color:red">مْ أَ</span><span style="color:blue">عْدَاء 
+فَأَلَّفَ بَيْنَ قُلُوبِكُ</span><span style="color:red">مْ فَ</span><span style="color:blue">أَصْبَحْتُ</span><span style="color:red">م 
+بِـ</span><span style="color:blue">نِعْمَتِهِ إِخْوَاناً وَكُنتُ</span><span style="color:red">مْ 
+عَ</span><span style="color:blue">لَى شَفَا حُفْرَةٍ مِّنَ النَّارِ فَأَنقَذَكُ</span><span style="color:red">م 
+مِّ</span><span style="color:blue">نْهَا</span></b>&#64830; (آل عمران 103)</span>
+      <OBJECT id=player11 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-1.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-left: 0mm; margin-right: 31.7pt; margin-top: 12.0pt; margin-bottom: .0001pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+عَلَيْكُ</span><font color="#FF0000"><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;">م</span></font></b></span><b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:red">ْ 
+إِ</span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:blue">ذْ</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">: إظهار الميم الساكنة عند الهمزة.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-left: 0mm; margin-right: 31.7pt; margin-top: 12.0pt; margin-bottom: .0001pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b>
+<span style="font-size: 18.0pt; font-family: Traditional Arabic; color: blue">
+كُنتُ</span><font color="#FF0000"><span style="font-size: 18.0pt; font-family: Traditional Arabic">مْ 
+أَ</span></font><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: blue">ع<span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:blue">ْدَاء</span></span></b><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">: إظهار الميم الساكنة عند الهمزة.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-left: 0mm; margin-right: 31.7pt; margin-top: 12.0pt; margin-bottom: .0001pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><b><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: blue">
+<span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+ق</span>ُلُوبِكُ</span><font color="#FF0000"><span style="font-size: 18.0pt; font-family: Traditional Arabic">مْ 
+فَ</span></font><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:blue">أَصْبَحْتُم</span><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">:</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;"> 
+إظهار الميم الساكنة عند الفاء. </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-left: 0mm; margin-right: 31.7pt; margin-top: 12.0pt; margin-bottom: .0001pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b>
+<span style="font-size: 18.0pt; font-family: Traditional Arabic; color: blue">فَأَصْبَحْتُ</span><font color="#FF0000"><span style="font-size: 18.0pt; font-family: Traditional Arabic">م 
+بِـ</span></font><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:blue">نِعْمَتِهِ</span></b><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">: إخفاء الميم الساكنة عند الباء.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-left: 0mm; margin-right: 31.7pt; margin-top: 12.0pt; margin-bottom: .0001pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b>
+<span style="font-size: 18.0pt; font-family: Traditional Arabic; color: blue">
+وَكُنتُ</span><font color="#FF0000"><span style="font-size: 18.0pt; font-family: Traditional Arabic">مْ 
+عَ</span></font><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: blue"><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:blue">لَى</span></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:blue">: </span></b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">إظهار الميم الساكنة عند العين.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-left: 0mm; margin-right: 31.7pt; margin-top: 12.0pt; margin-bottom: .0001pt">
+<span style="font-size:18.0pt">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><b><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: blue">
+<span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+ف</span>َأَنقَذَكُ</span><font color="#FF0000"><span style="font-size: 18.0pt; font-family: Traditional Arabic">م 
+مِّ</span></font><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: blue"><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:blue">نْهَا</span></span></b><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">: إدغام الميم الساكنة في ميم (منها) 
+وهو إدغام متماثلين بغنة.</span></p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed"><b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:red">تطبيق</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+بالنسبة لكل مثال من الأمثلة التالية:</span></p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:31.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+text-indent:-18.0pt;direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt">-</span><span lang="AR-SA" style="font-size:7.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+بين أحكام الميم الساكنة في كل المواضع التي وردت فبها (على غرار المثال السابق).</span></p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:31.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+text-indent:-18.0pt;direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt">-</span><span lang="AR-SA" style="font-size:7.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+استمع إلى التلاوة مع الانتباه إلى مواضع الميم الساكنة.</span></p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:31.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+text-indent:-18.0pt;direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt">-</span><span lang="AR-SA" style="font-size:7.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+قم بتسجيل تلاوتك للمثال مع تطبيق ما تعلمته في هذا الفصل من أحكام. </span></p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">فَأَمَّا 
+الَّذِينَ اسْوَدَّتْ وُجُوهُهُمْ أَكْفَرْتُم بَعْدَ إِيمَانِكُمْ فَذُوقُواْ 
+الْعَذَابَ بِمَا كُنْتُمْ تَكْفُرُونَ</span></b>&#64830; (آل عمران 106)</span>
+      <OBJECT id=player12 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-2.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">بَلَى 
+إِن تَصْبِرُواْ وَتَتَّقُواْ وَيَأْتُوكُم مِّن فَوْرِهِمْ هَـذَا يُمْدِدْكُمْ 
+رَبُّكُم بِخَمْسَةِ آلافٍ مِّنَ الْمَلآئِكَةِ مُسَوِّمِينَ</span></b>&#64830; (آل عمران 
+125) </span>
+      <OBJECT id=player13 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-3.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَمَا 
+جَعَلَهُ اللّهُ إِلاَّ بُشْرَى لَكُمْ وَلِتَطْمَئِنَّ قُلُوبُكُم بِهِ</span></b>&#64830; 
+(آل عمران 126) </span>
+      <OBJECT id=player14 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-4.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">لاَ 
+تَحْسَبَنَّ الَّذِينَ يَفْرَحُونَ بِمَا أَتَواْ وَّيُحِبُّونَ أَن يُحْمَدُواْ 
+بِمَا لَمْ يَفْعَلُواْ فَلاَ تَحْسَبَنَّهُمْ بِمَفَازَةٍ مِّنَ الْعَذَابِ 
+وَلَهُمْ عَذَابٌ أَلِيمٌ</span></b>&#64830; (آل عمران 188) </span>
+      <OBJECT id=player15 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-5.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span style="color:green; font-size:18.0pt; font-family:Traditional Arabic" lang="AR-SA"> &nbsp;</span></p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَيُمْدِدْكُمْ 
+بِأَمْوَالٍ وَبَنِينَ وَيَجْعَل لَّكُمْ جَنَّاتٍ وَيَجْعَل لَّكُمْ أَنْهَاراً</span></b>&#64830; 
+(نوح 12) </span>
+      <OBJECT id=player16 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-6.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَإِن 
+فَاتَكُمْ شَيْءٌ مِّنْ أَزْوَاجِكُمْ إِلَى الْكُفَّارِ فَعَاقَبْتُمْ فَآتُوا 
+الَّذِينَ ذَهَبَتْ أَزْوَاجُهُم مِّثْلَ مَا أَنفَقُوا وَاتَّقُوا اللَّهَ الَّذِي 
+أَنتُم بِهِ مُؤْمِنُونَ</span></b>&#64830;</span><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;"> (الممتحنة 11)</span>
+      <OBJECT id=player17 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-7.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;"><span style="color:green"> &nbsp;</span>&#64831;<b><span style="color:blue">إِنَّ 
+هَذَا كَانَ لَكُمْ جَزَاء وَكَانَ سَعْيُكُم مَّشْكُوراً</span></b>&#64830; (الانسان 22)</span>
+      <OBJECT id=player18 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-8.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">مِمَّا 
+خَطِيئَاتِهِمْ أُغْرِقُوا فَأُدْخِلُوا نَاراً فَلَمْ يَجِدُوا لَهُم مِّن دُونِ 
+اللَّهِ أَنصَاراً</span></b>&#64830; (نوح 25)</span>
+      <OBJECT id=player19 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-9.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">أَمْ 
+أَمِنتُم مَّن فِي السَّمَاء أَن يُرْسِلَ عَلَيْكُمْ حَاصِباً فَسَتَعْلَمُونَ 
+كَيْفَ نَذِيرِ</span></b>&#64830; (الملك 17)</span>
+      <OBJECT id=player20 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-10.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">إِنَّ 
+الَّذِينَ يَخْشَوْنَ رَبَّهُم بِالْغَيْبِ لَهُم مَّغْفِرَةٌ وَأَجْرٌ كَبِيرٌ</span></b>&#64830; 
+(الملك 12)</span>
+      <OBJECT id=player21 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-11.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">هُوَ 
+الَّذِي خَلَقَكُمْ فَمِنكُمْ كَافِرٌ وَمِنكُم مُّؤْمِنٌ وَاللَّهُ بِمَا 
+تَعْمَلُونَ بَصِيرٌ</span></b>&#64830; (التغابن 2)</span>
+      <OBJECT id=player22 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-12.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL" style="margin-top:12.0pt;margin-right:13.7pt;
+margin-bottom:0mm;margin-left:0mm;margin-bottom:.0001pt;text-align:justify;
+direction:rtl;unicode-bidi:embed">
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">&#64831;<b><span style="color:blue">وَإِذَا 
+قِيلَ لَهُمْ تَعَالَوْا يَسْتَغْفِرْ لَكُمْ رَسُولُ اللَّهِ لَوَّوْا رُؤُوسَهُمْ 
+وَرَأَيْتَهُمْ يَصُدُّونَ وَهُم مُّسْتَكْبِرُونَ</span></b>&#64830; (المنافقون 5</span>
+      <OBJECT id=player23 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples\5-5-13.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+
+<p class="MsoNormal" dir="RTL" style="text-align: justify; direction: rtl; unicode-bidi: embed; margin-left: 0mm; margin-right: 13.7pt; margin-top: 12.0pt; margin-bottom: .0001pt">&nbsp;</p>
+
+</body>
+
+</html>

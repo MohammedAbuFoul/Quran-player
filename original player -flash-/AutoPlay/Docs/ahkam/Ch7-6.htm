@@ -1,0 +1,881 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+
+
+
+
+<style>
+A.menulink {
+display: block;
+text-align: center;
+text-decoration: none;
+font-family:Times;
+font-size:15px;
+color: #000000;
+BORDER: none;
+border: solid 1px #FFFFFF;
+}
+
+A.menulink:hover {
+border: solid 1px #6100C1;
+background-color:#F0E1FF;
+}
+
+</style>
+
+<script>
+
+var ns4class=''
+</script>
+
+<style>
+ a.menu:link {color: #0000FF; text-decoration: none; }
+ a.menu:hover {color: #33FFCC; text-decoration: underline; }
+</style>
+
+
+<style type="text/css">
+
+#dhtmltooltip{
+position: absolute;
+width: 80px;
+border: 1px  black;
+padding: 0px;
+background-color: lightyellow;
+visibility: hidden;
+z-index: 100;
+/*Remove below line to remove shadow. Below line should always appear last within this CSS*/
+/*filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);*/
+}
+
+</style>
+
+
+<style type="text/css">
+<!--
+
+.tooltiptitle{COLOR: #FFFFFF; TEXT-DECORATION: none; CURSOR: Default; font-family: times; font-weight: bold; font-size: 13pt}
+.tooltipcontent{COLOR: #000000; TEXT-DECORATION: none; CURSOR: Default; font-family: times; font-weight: bold; font-size: 13pt}
+
+#ToolTip{position:absolute; width: 80px; top: 0px; left: 0px; z-index:4; visibility:hidden}
+
+
+-->
+
+</style>
+
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="../../Images/back.gif"  >
+
+
+
+<div id="dhtmltooltip">
+	<p></div>
+
+<script type="text/javascript">
+
+
+var offsetxpoint=-60 //Customize x offset of tooltip
+var offsetypoint=20 //Customize y offset of tooltip
+var ie=document.all
+var ns6=document.getElementById && !document.all
+var enabletip=false
+var Ex, Ey, topColor, subColor, ContentInfo
+topColor = "#000099"
+subColor = "#FFFFCC"
+
+if (ie||ns6)
+var tipobj=document.all? document.all["dhtmltooltip"] : document.getElementById? document.getElementById("dhtmltooltip") : ""
+
+function ietruebody(){
+return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+}
+
+function ddrivetip(TTitle, TContent, thecolor, thewidth){
+if (ns6||ie){
+if (typeof thewidth!="undefined") tipobj.style.width=thewidth+"px"
+if (typeof thecolor!="undefined" && thecolor!="") tipobj.style.backgroundColor=thecolor
+
+ContentInfo = '<table border="0" width="100" cellspacing="0" cellpadding="0">'+
+'<tr><td width="100%" bgcolor="#000000">'+
+
+'<table border="0" width="100%" cellspacing="1" cellpadding="0">'+
+'<tr><td width="100%" bgcolor='+topColor+'>'+
+
+'<table border="0" width="90%" cellspacing="0" cellpadding="0" align="center">'+
+'<tr><td width="100%">'+
+
+'<font class="tooltiptitle"> <p align="center">&nbsp;'+TTitle+'</font>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+
+'<tr><td width="100%" bgcolor='+subColor+'>'+
+
+'<table border="0" width="90%" cellpadding="0" cellspacing="1" align="center">'+
+
+'<tr><td width="100%">'+
+
+'<font class="tooltipcontent"><p align="center">'+TContent+'</font>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+'</table>';
+
+
+
+tipobj.innerHTML=ContentInfo 
+
+enabletip=true
+return false
+}
+}
+
+function positiontip(e){
+if (enabletip){
+var curX=(ns6)?e.pageX : event.clientX+ietruebody().scrollLeft;
+var curY=(ns6)?e.pageY : event.clientY+ietruebody().scrollTop;
+//Find out how close the mouse is to the corner of the window
+var rightedge=ie&&!window.opera? ietruebody().clientWidth-event.clientX-offsetxpoint : window.innerWidth-e.clientX-offsetxpoint-20
+var bottomedge=ie&&!window.opera? ietruebody().clientHeight-event.clientY-offsetypoint : window.innerHeight-e.clientY-offsetypoint-20
+
+var leftedge=(offsetxpoint<0)? offsetxpoint*(-1) : -1000
+
+//if the horizontal distance isn't enough to accomodate the width of the context menu
+if (rightedge<tipobj.offsetWidth)
+//move the horizontal position of the menu to the left by it's width
+tipobj.style.left=ie? ietruebody().scrollLeft+event.clientX-tipobj.offsetWidth+"px" : window.pageXOffset+e.clientX-tipobj.offsetWidth+"px"
+else if (curX<leftedge)
+tipobj.style.left="5px"
+else
+//position the horizontal position of the menu where the mouse is positioned
+tipobj.style.left=curX+offsetxpoint+"px"
+
+//same concept with the vertical position
+if (bottomedge<tipobj.offsetHeight)
+tipobj.style.top=ie? ietruebody().scrollTop+event.clientY-tipobj.offsetHeight-offsetypoint+"px" : window.pageYOffset+e.clientY-tipobj.offsetHeight-offsetypoint+"px"
+else
+tipobj.style.top=curY+offsetypoint+"px"
+tipobj.style.visibility="visible"
+}
+}
+
+function hideddrivetip(){
+if (ns6||ie){
+enabletip=false
+tipobj.style.visibility="hidden"
+tipobj.style.left="0px"
+tipobj.style.backgroundColor=''
+tipobj.style.width=''
+}
+}
+
+document.onmousemove=positiontip
+
+</script>
+
+<!-- Float script start -->
+<!-- Courtesy of SimplytheBest.net - http://simplythebest.net/scripts/ -->
+<SCRIPT>
+
+var IW= 0;
+var IH= 0;
+var PX= 0;
+var PY= 0;
+var ZIN= 0;
+var us= null;
+var IMGW= 30;
+//modify top position
+var IMGH= 0;
+var LSAFETY= 20;
+var TSAFETY= 17;
+function branding() {
+browserVer = parseInt(navigator.appVersion); 
+if(browserVer<4) return;
+ oldIW= IW;
+ oldIH= IH;
+ oldPX= PX;
+ oldPY= PY;
+ if (navigator.appName == 'Netscape')
+ {
+  if ((window.innerHeight != oldIH)||(window.innerWidth != oldIW)||(window.pageXOffset != oldPX)||(window.pageYOffset != oldPY))
+  {
+    if (us == null)
+    {
+      for (i=0; i<document.layers.length; i++)
+      {
+        us= document.layers[i];
+        if (us.id == "Logo") break;
+      }
+    }
+    if (us != null)
+    {
+      us.visibility= "hide";
+      IH= window.innerHeight;
+      IW= window.innerWidth;
+      PX= window.pageXOffset;
+      PY= window.pageYOffset;
+
+      (IH > IMGH) ? us.bottom= (PY+(IMGH+TSAFETY)) : us.bottom= 0;
+//      (IW > IMGW) ? us.left= (PX-(IMGW+LSAFETY)) : us.left= 0;
+      us.left = 20;
+
+      for (i=0; i<document.layers.length; i++)
+      {
+        templay= document.layers[i];
+
+        if (templay.zIndex > ZIN)
+          ZIN= (templay.zIndex + 1);
+      }
+      us.zIndex= ZIN;
+      us.visibility= "show";
+    }
+  }
+ }
+ else{
+  //if (navigator.appVersion.indexOf("Mac") == -1)
+  {
+    if ((document.body.clientHeight != oldIH)||(document.body.clientWidth != oldIW)||(document.body.scrollLeft != oldPX)||(document.body.scrollTop != oldPY))      {
+      alldivs= document.all.tags("DIV");
+      if (us == null){ 
+        for (i=0; i<alldivs.length; i++)
+          {
+          us= alldivs[i];
+          if (us.id == "Logo")
+            break;
+          }
+      }
+      if (us != null){
+        us.style.display= "none";
+        IH= document.body.clientHeight;
+        IW= document.body.clientWidth;
+        PX= document.body.scrollLeft;
+        PY= document.body.scrollTop;
+        us.style.bottom= (-PY+(IMGH+TSAFETY)+12);
+//        us.style.left=(PX-(IMGW+LSAFETY)+15);
+//modify left position
+        us.style.left = 5;
+//us.style.left = (150 - ims.width)/2;
+
+        for (i=0; i<alldivs.length; i++){
+          templay= alldivs(i);
+          if (templay.style.zIndex > ZIN)
+            us.style.zindex= (templay.style.zIndex + 1);
+        }
+        us.style.display= "";
+      }
+  }
+ }
+ }
+}
+if ((document.all) || (document.layers))
+{
+ setInterval("branding()",100);
+}
+
+</SCRIPT>
+
+<div class="Logo" id="Logo" style="LEFT: 10px; POSITION: absolute; bottom:5px; width:25px">
+<br>
+<b><span lang="en-us">
+<font face="Wingdings" color="#0000FF" style="font-size: 16pt">
+<a class="menu" href="#0"><span style="text-decoration: none">&Ccedil;</span></a></font></span></b></div>
+<!-- Float script end -->
+
+
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+&nbsp;</p>
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<b>
+<span lang="AR-SA" style="font-size: 22.0pt; font-family: khalaad al-arabeh 2; color: #993300">
+&nbsp; <a name="0"></a> </span></b>
+<span lang="AR-SA" style="font-size:22.0pt;font-family:&quot;Hesham AlSharq&quot;;
+color:#993300">المد اللازم</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span style="font-size:18.0pt;font-family:
+&quot;khalaad al-arabeh 2&quot;;color:blue">نوعه</span><span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;khalaad al-arabeh 2&quot;;color:blue">: </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+المد اللازم مد فرعي سببه سكون أصلي ثابت لا يتغير.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;khalaad al-arabeh 2&quot;;color:blue">تعريفه:</span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;"> 
+هو أن يأتي بعد حرف المد حرف ساكن سكونا أصليا أو حرف مشدد في كلمة واحدة (لأن 
+الحرف المشدد أصله حرفان متماثلان أولهما ساكن والآخر متحرك).</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;khalaad al-arabeh 2&quot;;color:blue">مقدار مده</span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+أجمع القراء على إشباع مده إلى <b><span style="color:red">ست</span></b> حركات.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;khalaad al-arabeh 2&quot;;color:blue">سبب تسميته باللازم:</span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;"> 
+سمي هذا المد لازما للزوم سببه أو للزوم مده ست حركات بالإجماع.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;khalaad al-arabeh 2&quot;;color:blue">&nbsp;أقسامه</span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+ينقسم المد اللازم إلى قسمين: كلِمي وحرفي.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 39.8pt; text-indent:-18.75pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span style="font-size: 18.0pt; color: red">1.<span style="font:7.0pt &quot;Times New Roman&quot;">
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">المد اللازم الكلمي</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+إذا كان المد اللازم في كلمة فهم كلمي، ويكون:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 61.05pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:green">مثقلا</span></b></span><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">: إذا أتى بعد حرف المد في الكلمة حرف 
+مشدد. نحو:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 82.3pt">
+<span style="font-size: 18.0pt; font-family: Arial">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&#64831;<b><span style="color:blue">وَلاَ الضَّ</span><span style="color:red">ـالِّ</span><span style="color:blue">ـينَ</span></b>&#64830; 
+(الفاتحة 7) </span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player14 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-1.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+وقعت اللام المشددة 
+بعد حرف المد.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 82.3pt">
+<span style="font-size: 18.0pt; font-family: Arial">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&#64831;<b><span style="color:blue">الْحَ</span><span style="color:
+red">ـاقَّ</span><span style="color:blue">ـةُ</span></b>&#64830; (الحاقة 1) </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player15 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-2.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 82.3pt">
+<span style="font-size: 18.0pt; font-family: Arial">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&#64831;<b><span style="color:blue">قُلْ </span><span style="color:
+red">آللّ</span><span style="color:blue">هُ أَذِنَ لَكُمْ أَمْ عَلَى اللّهِ 
+تَفْتَرُونَ</span></b>&#64830; (يونس 59) </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player16 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-3.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 82.3pt">
+<span style="font-size: 18.0pt; font-family: Arial">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" dir="RTL" style="font-size: 18.0pt; font-family: Traditional Arabic">
+&#64831;<b><span style="color:blue">قُلْ </span><span style="color:red">آلذَّ</span><span style="color:blue">كَرَيْنِ 
+حَرَّمَ أَمِ الأُنثَيَيْنِ أَمَّا اشْتَمَلَتْ عَلَيْهِ أَرْحَامُ الأُنثَيَيْن</span></b>&#64830;</span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+(الأنعام 143) </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player17 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-4.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 61.05pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:green">مخففا</span></b></span><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">: إذا أتى بعد حرف المد حرف ساكن 
+سكونا أصليا وكان غير مشدد. ومثال ذلك &#64831;<b><span style="color:red">ءال</span><span style="color:blue">ئن</span></b>&#64830; 
+في موضعين من سورة يونس. وليس لها نظير في القرآن:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 82.3pt">
+<span style="font-size: 18.0pt; font-family: Arial">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&#64831;<b><span style="color:red">آلآنَ</span><span style="color:blue"> وَقَدْ كُنتُم 
+بِهِ تَسْتَعْجِلُونَ</span></b>&#64830; (يونس 51)</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player18 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-5.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;وقع بعد الألف المدية حرف ساكن أصلي غير مشدد.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 82.3pt">
+<span style="font-size: 18.0pt; font-family: Arial">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&#64831;<b><span style="color:red">آلآنَ</span><span style="color:blue"> وَقَدْ 
+عَصَيْتَ قَبْلُ وَكُنتَ مِنَ الْمُفْسِدِينَ</span></b>&#64830; (يونس 91) </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player19 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-6.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 43.05pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;;color:green">ملاحظة</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+يُطلق على المد اللازم الكلمي الذي سببه همزة استفهام اسم &quot;مد الفرق&quot;، ويكون ذلك في 
+الكلمات التالية: &#64831;<b><span style="color:blue">ءالئن</span></b>&#64830;، &#64831;<b><span style="color:blue">ءالله</span></b>&#64830; 
+و &#64831;<b><span style="color:blue">ءالذكرين</span></b>&#64830;. ويسمى كذلك لأننا نفرق بين 
+هذه الكلمات الاستفهامية ونظائرها الخبرية بالمد. فالفرق مثلا بين (<b><span style="color:blue">ءالئن</span></b>) 
+الاستفهامية التي وردت مرتين في سورة يونس وكلمة (<b><span style="color:blue">الآن</span></b>) 
+الخبرية هو المد.</span><span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.75pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 39.8pt">
+<span style="font-size: 18.0pt; color: red">2.<span style="font:7.0pt &quot;Times New Roman&quot;">
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:red">المد اللازم الحرفي</span></b></span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+إذا كان المد اللازم في حرف من حروف الفواتح فهو حرفي. ويكون في الحروف التي يكون 
+هجاؤها ثلاثة أحرف أوسطها حرف مد أو لين وهي (<b><span style="color:red">نقص عسلكم</span></b>).ويكون 
+المد اللازم الحرفي:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 61.05pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:green">مثقلا</span></b></span><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">: إذا أتى بعد حرف المد حرف مدغم في 
+ما بعده. نحو:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 82.3pt">
+<span style="font-size: 18.0pt; font-family: Arial">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&#64831;<b><span style="color:blue">ا</span><span style="color:red">ل</span><span style="color:blue">ـم</span></b>&#64830; 
+(البقرة 1) </span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player20 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-7.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+أتى بعد الألف المدية 
+في هجاء حرف الـ(<b><span style="color:red">لام</span></b>) حرف (م) أدغم في الميم 
+التي بعده فكان المد مثقلا. </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 82.3pt">
+<span style="font-size: 18.0pt; font-family: Arial">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&#64831;<b><span style="color:blue">ط</span><span style="color:red">س</span><span style="color:blue">م</span></b>&#64830; 
+(الشعراء 1) </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player21 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-8.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;أدغمت النون التي 
+تلي الياء المدية في حرف (<b>الس<span style="color:red">ين</span></b>) في الميم 
+التي بعدها فكان مد الياء مثقلا.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 61.05pt">
+<span style="font-size: 18.0pt; font-family: Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;
+color:green">مخففا</span></b></span><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">: إذا أتى بعد حرف المد حرف ساكن غير 
+مدغم بما بعده. نحو:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 82.3pt">
+<span style="font-size: 18.0pt; font-family: Arial">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&#64831;<b><span style="color:red">ق</span><span style="color:blue"> وَالْقُرْآنِ 
+الْمَجِيدِ</span></b>&#64830; (ق 1) </span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player22 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-9.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+وقع بعد الألف المدية في حرف (<b>ق<span style="color:red">اف</span></b>) حرف (ف) 
+ساكن غير مدغم بما بعده فكان مد الألف مخففا.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 82.3pt">
+<span style="font-size: 18.0pt; font-family: Arial">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&#64831;<b><span style="color:red">ص</span><span style="color:blue"> وَالْقُرْآنِ ذِي 
+الذِّكْرِ</span></b>&#64830; (ص 1) 
+</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player23 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-10.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 82.3pt">
+<span style="font-size: 18.0pt; font-family: Arial">-<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&#64831;ا<b><span style="color:teal">لـ</span><span style="color:red">مـ</span><span style="color:blue">ر</span></b>&#64830;&nbsp; </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player24 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-11.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+تمد ألف (<b>لام</b>) مدا 
+مثقلا لإدغام حرف الميم من (<b>لا<span style="color:red">م</span></b>) في أول 
+حرفي الميم من هجاء (<b><span style="color:red">م</span>يم</b>). أما الياء المدية 
+في حرف الـ(<b>م<span style="color:red">يم</span></b>) فتمد مدا مخففا لوجود حرف 
+ساكن غير مدغم بعدها (الميم الثانية من (<b>م<span style="color:red">ي</span>م</b>)).</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 43.05pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;;color:green">تنبيه</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+تمد حروف الفواتح المجموعة في قولك (<b><span style="color:red">سنقص لكم</span></b>)
+<b>ست</b> حركات. أما المد في هجاء حرف العين في فاتحة سورة مريم &#64831;<b><span style="color:blue">كهيعص</span></b>&#64830;</span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player25 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-12.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span><span style="color:green; font-size:18.0pt; font-family:Traditional Arabic" lang="AR-SA" dir="RTL"> &nbsp;</span><span lang="en-us" style="font-size: 18.0pt; font-family: Traditional Arabic">&nbsp;</span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">وفاتحة سورة الشورى &#64831;<b><span style="color:blue">عسق</span></b>&#64830; </span><span lang="AR-SA" style="font-family: Hesham AlSharq; color: blue">
+      <OBJECT id=player26 height=32 width=59 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/7-6-13.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;"> &nbsp;فيجوز فيه (<b>أربع</b> 
+حركات على أنه ملحق بمد اللين) والإشباع (<b>ست</b> حركات على أنه مد لازم). ومده
+<b>ست</b> حركات أولى.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 43.05pt">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;;color:green">ملاحظة</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">: 
+إذا وصلت فاتحة سورة آل عمران &#64831;<b><span style="color:blue">ألم</span></b>&#64830; بما 
+بعدها فُتحت الميم. ويجوز حينئذ مد الياء عند هجائها (ميم) <b>حركتين</b> أو <b>ست</b> 
+حركات. أما حال الوقف فتمد <b>ست</b> حركات ولا يجوز قصرها.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 46.9pt">
+&nbsp;</p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 46.9pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span></p>
+
+</body>
+
+</html>

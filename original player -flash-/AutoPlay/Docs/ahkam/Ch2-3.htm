@@ -1,0 +1,412 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+<style>
+ a.menu:link {color: #0000FF; text-decoration: none; }
+ a.menu:hover {color: #33FFCC; text-decoration: underline; }
+</style>
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="../../Images/back.gif"   >
+
+<div id="point1" STYLE="position:absolute;visibility:visible;">
+<!--Please delete this table and insert into your html elements-->
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<br>
+<b><span lang="en-us">
+<font face="Wingdings" color="#0000FF" style="font-size: 16pt">
+<a class="menu" href="#0"><span style="text-decoration: none">&Ccedil;</span></a></font></span></b>&nbsp;</td>
+</tr>
+</table>
+<!--End of the customizable area, please do not delete div the tag -->
+</div>
+
+
+<script LANGUAGE="JavaScript1.2">
+
+
+
+var XX=3; // X position of the scrolling objects
+var xstep=1;
+var delay_time=60;
+
+//Begin of the unchangable area, please do not modify this area
+var YY=0;  
+var ch=0;
+var oh=0;
+var yon=0;
+
+var ns4=document.layers?1:0
+var ie=document.all?1:0
+var ns6=document.getElementById&&!document.all?1:0
+
+if(ie){
+YY=document.body.clientHeight;
+point1.style.top=YY;
+}
+
+
+function reloc1()
+{
+
+if(yon==0){YY=YY-xstep;}
+else{YY=YY+xstep;}
+if (ie){
+ch=document.body.clientHeight;
+oh=point1.offsetHeight;
+}
+		
+if(YY<0){yon=1;YY=0;}
+if(YY>=(ch-oh)){yon=0;YY=(ch-oh);}
+if(ie){
+point1.style.left=XX;
+point1.style.top=YY+document.body.scrollTop;
+}
+
+
+}
+
+function onad()
+{
+if(ns4)
+document.point1.visibility="visible";
+loopfunc();
+}
+function loopfunc()
+{
+reloc1();
+setTimeout('loopfunc()',delay_time);
+}
+
+if (ie||ns4||ns6)
+window.onload=onad
+
+</script>
+
+
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size:22.0pt;font-family:&quot;Hesham AlSharq&quot;;
+color:#993300"><a name="0"></a>ألقاب الحروف</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+&nbsp;</p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;"> <b><span style="color:red">
+<a class="menu"  href="#1"><span style="text-decoration: none">ـَا</span></a></span>&nbsp;
+</b></span> <b>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#1"><span style="text-decoration: none">ـُو</font></span></a></span><span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;">&nbsp; </span>
+
+
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#1"><span style="text-decoration: none">ـِي</font></span></a></span>
+
+
+<span style="font-size: 18.0pt; font-family: Traditional Arabic; ">&nbsp;</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">|</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> </span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#2"><span style="text-decoration: none">ء</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">&nbsp;
+</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: red">
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic; text-decoration:none">
+<a class="menu"  href="#2"><span style="text-decoration: none">هـ</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> </span>
+<a class="menu"  href="#2"><span style="text-decoration: none">ع</span></a><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">&nbsp;</span><span style="color:red; font-size:18.0pt; font-family:Traditional Arabic"><a class="menu"  href="#2"><span style="text-decoration: none">ح</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">&nbsp;</span><a class="menu"  href="#2"><span style="text-decoration: none">غ</span></a><span lang="en-us" style="font-size: 18.0pt; font-family: Traditional Arabic">
+</span><span style="color:red; font-size:18.0pt; font-family:Traditional Arabic"><a class="menu"  href="#2"><span style="text-decoration: none">خ</span></a></span><span style="font-family: Traditional Arabic; font-size: 18.0pt; ">&nbsp;</span></span><span style="font-family: Traditional Arabic; font-size: 18.0pt; ">|</span><span style="font-family: Traditional Arabic; font-size: 18.0pt; ">
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#3"><span style="text-decoration: none">ك</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span>
+<span style="font-size: 18.0pt; font-family: Traditional Arabic; color: red">
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#3"><span style="text-decoration: none">ق</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span>
+</span>
+<span style="font-size: 18.0pt; font-family: Traditional Arabic; ">|</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#4"><span style="text-decoration: none">ج</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+</span>
+<span style="font-size: 18.0pt; font-family: Traditional Arabic; color: red"> 
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#4"><span style="text-decoration: none">ش</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#4"><span style="text-decoration: none">ض</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#4"><span style="text-decoration: none">ي</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+</span>
+</span>
+</b></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<b>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#5"><span style="text-decoration: none">ل</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">&nbsp;
+</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: red">
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#5"><span style="text-decoration: none">ن</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#5"><span style="text-decoration: none">ر</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span> 
+</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+|</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#6"><span style="text-decoration: none">ط</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: red">
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#6"><span style="text-decoration: none">ت</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#6"><span style="text-decoration: none">د</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span> 
+</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+| 
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#7"><span style="text-decoration: none">ص</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">&nbsp;</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: red"><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span><span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#7"><span style="text-decoration: none">ز</span></a></span><span lang="en-us" style="font-size: 18.0pt; font-family: Traditional Arabic">
+</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+&nbsp;</span><span style="color:red; font-size:18.0pt; font-family:Traditional Arabic"><a class="menu"  href="#7">
+<span style="text-decoration: none">س</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span> 
+</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+|</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#8"><span style="text-decoration: none">ظ</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "><span lang="en-us">&nbsp;</span>
+</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: red">
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#8"><span style="text-decoration: none">ذ</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#8"><span style="text-decoration: none">ث</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; "> 
+</span> 
+</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+|</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#9"><span style="text-decoration: none">ف</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+</span><span style="font-size: 18.0pt; font-family: Traditional Arabic; color: red">
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#9"><span style="text-decoration: none">و</span></a></span><span style="font-size: 18.0pt; font-family: Traditional Arabic; ">
+</span>
+<span style="color:red; font-size:18.0pt; font-family:Traditional Arabic">
+<a class="menu"  href="#9"><span style="text-decoration: none">ب</span></a></span><span lang="en-us" style="font-size: 18.0pt; font-family: Traditional Arabic">
+</span>
+</span></b>
+<span style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;; color:red"><b><a class="menu"  href="#9">
+<span style="text-decoration: none">&nbsp;</font></span><span style="text-decoration: none; font-size: 18.0pt; font-family: Traditional Arabic">م</span></a></b></span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+&nbsp;</p>
+</span>
+
+<span style="text-decoration: none; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">للحروف ألقاب لقبت بها حسب المواضع التي تخرج منها 
+أو ما يقاربها. وأول من وضع هذه الألقاب الخليل بن أحمد في كتابه العين.</span></p>
+</span>
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span style="font-size: 18.0pt; color: blue">1<a name="1"></a>.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+الحروف الجوفية&nbsp; الهوائية&nbsp; المدية</span></b></span><span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;">  
+</span></span>
+<span style="font-size: 18.0pt; font-family: Traditional Arabic; text-decoration: none">: وهي 
+حروف المد الثلاثة </span>
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<span lang="AR-SA" style="font-size:
+18.0pt;font-family:&quot;Traditional Arabic&quot;"> (<b><span style="color:red">ـَا</span></b> 
+</span><span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;<b><span style="color:red">ـُو</span></b>&nbsp; <b><span style="color:red">ـِي</span></b>) 
+</span></span>
+<span style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;; text-decoration:none">ولقبت بالجوفية لخروجها من الجوف كما هو مبين في باب المخرج الأول. وتلقب بالهوائية 
+لخروج الهواء معها حال النطق بها. وتسمى أيضا في علم الصرف بحروف العلة.</span></p>
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span style="font-size: 18.0pt; color: blue">2<a name="2"></a>.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+الحروف الحلقية</span></b></span></span><span style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;; text-decoration:none">: الهمزة والهاء والعين والحاء والغين والخاء : </span>
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">(<b><span style="color:red">ء</span></b>&nbsp; <b><span style="color:red">هـ</span></b>&nbsp; <b><span style="color:red">ع</span></b>&nbsp; <b><span style="color:red">ح</span></b>&nbsp; <b><span style="color:red">غ</span></b>&nbsp; <b><span style="color:red">خ</span></b>)</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span style="font-size: 18.0pt; color: blue">3<a name="3"></a>.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+الحروف اللَّهَوية</span></b></span></span><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">: 
+وهي الكاف والقاف (</span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;"><span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic"><b><span style="color:red">ك</span></b>&nbsp; <b>
+<span style="color:red">ق</span></b>) </span></span>
+<span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">وسميت كذلك نسبة إلى اللهاة وهي اللحمة 
+المشرفة على الحلق في أقصى سقف الفم.</span></p>
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span style="font-size: 18.0pt; color: blue">4<a name="4"></a>.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+الحروف الشَّجْرِية</span></b></span></span><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">: 
+نسبة إلى شجر الفم وهو منفتح ما بين اللحيين. واختُلف في الحروف الشجرية فقيل الجيم 
+والشين والياء غير المدية </span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+(<b><span style="color:red">ج</span></b>&nbsp; <b>
+<span style="color:red">ش</span></b>&nbsp; <b><span style="color:red">ي</span></b>) 
+</span></span>
+<span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">وقيل الجيم والشين والضاد </span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+(<b><span style="color:red">ج</span></b>&nbsp; <b>
+<span style="color:red">ش</span></b>&nbsp; <b><span style="color:red">ض</span></b>) 
+</span></span>
+<span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">وقيل الجيم والشين والضاد والياء غير المدية </span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+(<b><span style="color:red">ج</span></b>&nbsp; <b><span style="color:red">ش</span></b>&nbsp; <b><span style="color:red">ض</span></b>&nbsp; <b><span style="color:red">ي</span></b>)</span></span><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">. ولعل القول الأخير أقرب الأقوال إلى 
+الصواب.</span></p>
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span style="font-size: 18.0pt; color: blue">5<a name="5"></a>.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+الحروف الذَّلْقِية</span></b></span></span><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">: 
+وهي اللام والنون والراء</span><span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic" lang="AR-SA"> (<b><span style="color:red">ل</span></b>&nbsp; <b>
+<span style="color:red">ن</span></b>&nbsp; <b><span style="color:red">ر</span></b>)</span><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">. 
+ولقبت بذلك نسبة إلى ذَلْق اللسان أي طرفه ولخفتها وسرعة النطق بها. </span></p>
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span style="font-size: 18.0pt; color: blue">6<a name="6"></a>.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+الحروف النِّطْعية</span></b></span></span><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">: 
+وهي الطاء والتاء والدال </span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;">
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+(<b><span style="color:red">ط</span></b>&nbsp; <b>
+<span style="color:red">ت</span></b>&nbsp; <b><span style="color:red">د</span></b>) 
+</span></span>
+<span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">ولقبت كذلك لأنها تخرج من نطع الحنك أي سقفه وهو ما ظهر في داخل الفم من الغار 
+الأعلى.</span></p>
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span style="font-size: 18.0pt; color: blue">7.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span>
+<span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+<a name="7"></a>&nbsp;<b><span lang="AR-SA" style="color:blue">الحروف الأَسَلِيَّة</span></b></span></span><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">: 
+وهي الصاد والزاي والسين</span><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL" lang="AR-SA"><span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+(<b><span style="color:red">ص</span></b> <b><span style="color:red"> 
+&nbsp;ز</span></b>&nbsp; <b><span style="color:red">س</span></b>)</span></span><span style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;; text-decoration:none">. ولقبت بذلك لخروجها من 
+أسَلَة اللسان أي ما دق منه. وهذه الحروف الثلاثة تشترك في صفة الصفير وتخرج من طرف 
+اللسان الدقيق.</span></p>
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span style="font-size: 18.0pt; color: blue">8<a name="8"></a>.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+الحروف اللِّثَوية</span></b></span></span><span style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;; text-decoration:none">: وهي الظاء والذال والثاء </span><span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;">
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+(<b><span style="color:red">ظ</span></b>&nbsp; <b><span style="color:red">ذ</span></b>&nbsp; <b><span style="color:red">ث</span></b>)</span></span><span style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;; text-decoration:none">. 
+وتخرج من قرب اللِّثة (بكسر اللام) واللثة ما حول الأسنان من اللحم.</span></p>
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-indent: -19.5pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 33.0pt">
+<span style="font-size: 18.0pt; color: blue">9<a name="9"></a>.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+الحروف الشفوية</span></b></span></span><span style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;; text-decoration:none">: وهي الفاء والواو غير المدية والباء والميم </span><span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+(<b><span style="color:red">ف</span></b>&nbsp; <b><span style="color:red">و</span></b>&nbsp; <b><span style="color:red">ب</span></b>&nbsp; <b><span style="color:red">م</span></b>)</span></span><span style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;; text-decoration:none">. وسميت كذلك لخروجها من الشفتين أو من 
+باطن الشفة السفلى مع أطراف الثنايا العليا (الفاء).</span></p>
+
+<span style="text-decoration: none; color: red; font-size: 18.0pt; font-family: Traditional Arabic">
+
+
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;;color:blue">
+&nbsp;</span></b><span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+
+</body>
+
+</html>

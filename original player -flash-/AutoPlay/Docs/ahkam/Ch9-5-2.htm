@@ -1,0 +1,669 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+
+
+
+
+<style>
+A.menulink {
+display: block;
+text-align: center;
+text-decoration: none;
+font-family:Times;
+font-size:15px;
+color: #000000;
+BORDER: none;
+border: solid 1px #FFFFFF;
+}
+
+A.menulink:hover {
+border: solid 1px #6100C1;
+background-color:#F0E1FF;
+}
+
+</style>
+
+<script>
+
+var ns4class=''
+</script>
+
+<style>
+ a.menu:link {color: #0000FF; text-decoration: none; }
+ a.menu:hover {color: #33FFCC; text-decoration: underline; }
+</style>
+
+
+
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="../../Images/back.gif"  >
+
+
+
+
+
+<!-- Float script start -->
+<!-- Courtesy of SimplytheBest.net - http://simplythebest.net/scripts/ -->
+<SCRIPT>
+
+var IW= 0;
+var IH= 0;
+var PX= 0;
+var PY= 0;
+var ZIN= 0;
+var us= null;
+var IMGW= 30;
+//modify top position
+var IMGH= 0;
+var LSAFETY= 20;
+var TSAFETY= 17;
+function branding() {
+browserVer = parseInt(navigator.appVersion); 
+if(browserVer<4) return;
+ oldIW= IW;
+ oldIH= IH;
+ oldPX= PX;
+ oldPY= PY;
+ if (navigator.appName == 'Netscape')
+ {
+  if ((window.innerHeight != oldIH)||(window.innerWidth != oldIW)||(window.pageXOffset != oldPX)||(window.pageYOffset != oldPY))
+  {
+    if (us == null)
+    {
+      for (i=0; i<document.layers.length; i++)
+      {
+        us= document.layers[i];
+        if (us.id == "Logo") break;
+      }
+    }
+    if (us != null)
+    {
+      us.visibility= "hide";
+      IH= window.innerHeight;
+      IW= window.innerWidth;
+      PX= window.pageXOffset;
+      PY= window.pageYOffset;
+
+      (IH > IMGH) ? us.bottom= (PY+(IMGH+TSAFETY)) : us.bottom= 0;
+//      (IW > IMGW) ? us.left= (PX-(IMGW+LSAFETY)) : us.left= 0;
+      us.left = 20;
+
+      for (i=0; i<document.layers.length; i++)
+      {
+        templay= document.layers[i];
+
+        if (templay.zIndex > ZIN)
+          ZIN= (templay.zIndex + 1);
+      }
+      us.zIndex= ZIN;
+      us.visibility= "show";
+    }
+  }
+ }
+ else{
+  //if (navigator.appVersion.indexOf("Mac") == -1)
+  {
+    if ((document.body.clientHeight != oldIH)||(document.body.clientWidth != oldIW)||(document.body.scrollLeft != oldPX)||(document.body.scrollTop != oldPY))      {
+      alldivs= document.all.tags("DIV");
+      if (us == null){ 
+        for (i=0; i<alldivs.length; i++)
+          {
+          us= alldivs[i];
+          if (us.id == "Logo")
+            break;
+          }
+      }
+      if (us != null){
+        us.style.display= "none";
+        IH= document.body.clientHeight;
+        IW= document.body.clientWidth;
+        PX= document.body.scrollLeft;
+        PY= document.body.scrollTop;
+        us.style.bottom= (-PY+(IMGH+TSAFETY)+12);
+//        us.style.left=(PX-(IMGW+LSAFETY)+15);
+//modify left position
+        us.style.left = 5;
+//us.style.left = (150 - ims.width)/2;
+
+        for (i=0; i<alldivs.length; i++){
+          templay= alldivs(i);
+          if (templay.style.zIndex > ZIN)
+            us.style.zindex= (templay.style.zIndex + 1);
+        }
+        us.style.display= "";
+      }
+  }
+ }
+ }
+}
+if ((document.all) || (document.layers))
+{
+ setInterval("branding()",100);
+}
+
+</SCRIPT>
+
+<div class="Logo" id="Logo" style="LEFT: 10px; POSITION: absolute; bottom:5px; width:25px">
+<br>
+<b><span lang="en-us">
+<font face="Wingdings" color="#0000FF" style="font-size: 16pt">
+<a class="menu" href="#0"><span style="text-decoration: none">&Ccedil;</span></a></font></span></b></div>
+<p class="MsoNormal" dir="RTL" style="text-align: right; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Hesham AlSharq&quot;;color:blue"><a name="0"></a></span>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Hesham AlSharq&quot;;color:blue">أخطاء شائعة – الجزء الثاني</span></p>
+<p class="MsoNormal" dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:red">سورة التوبة</span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -22.5pt; text-autospace: ideograph-numeric; margin-right: 18.35pt">
+<b><span style="font-size:18.0pt;color:blue">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span></b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+تقرأ كلمة (<b><span style="color:red">مُدَّخَلاً</span></b>) في قوله تعالى &#64831;<b><span style="color:blue">لَوْ 
+يَجِدُونَ مَلْجَأً أَوْ مَغَارَاتٍ أَوْ </span><span style="color:red">
+مُدَّخَلاً</span><span style="color:blue"> لَّوَلَّوْاْ إِلَيْهِ وَهُمْ 
+يَجْمَحُونَ</span></b>&#64830; (التوبة 57) </span>
+      <OBJECT id=player14 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-1.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">بضم الميم وفتح 
+وتشديد الدال.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -22.5pt; text-autospace: ideograph-numeric; margin-right: 18.35pt">
+<b><span style="font-size:18.0pt;color:blue">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span></b><span dir="RTL">
+<span lang="AR-SA" style="font-size:18.0pt;
+ font-family:&quot;Traditional Arabic&quot;">يزيد</span><span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;"> 
+بعض الناس (من) قبل كلمة (<b><span style="color:blue">تَحْتَهَا</span></b>) في 
+قوله تعالى &#64831;<b><span style="color:blue">رَّضِيَ اللّهُ عَنْهُمْ وَرَضُواْ عَنْهُ 
+وَأَعَدَّ لَهُمْ جَنَّاتٍ تَجْرِي تَحْتَهَا الأَنْهَارُ خَالِدِينَ فِيهَا 
+أَبَداً</span></b>&#64830; (التوبة 100)</span></span>
+      <OBJECT id=player13 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-2.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">. 
+وهذا غير صحيح عند حفص.</span></p>
+<p class="MsoNormal" dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:red">سورة يونس</span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -22.5pt; text-autospace: ideograph-numeric; margin-right: 18.35pt">
+<b><span style="font-size:18.0pt;color:blue">3.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span></b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+كلمة (<b><span style="color:red">يَهِدِّي</span></b>) (الثانية) في قوله تعالى &#64831;<b><span style="color:blue">أَفَمَن 
+يَهْدِي إِلَى الْحَقِّ أَحَقُّ أَن يُتَّبَعَ أَمَّن لاَّ </span>
+<span style="color:red">يَهِدِّي</span><span style="color:blue"> إِلاَّ أَن 
+يُهْدَى</span></b>&#64830; (يونس 35)</span>
+      <OBJECT id=player12 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-3.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">قرأها حفص (<b><span style="color:
+blue">أَمَّن لاَّ </span><span style="color:red">يَهِدِّي</span></b>) بفتح الياء 
+وكسر النون وتشديد الدال. والأصل في الكلمة (يهتدي). أدغمت التاء في الدال فالتقى 
+ساكنان فكسرت الهاء لذلك.</span></p>
+<p class="MsoNormal" dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:red">سورة هود</span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -22.5pt; text-autospace: ideograph-numeric; margin-right: 18.35pt">
+<b><span style="font-size:18.0pt;color:blue">4.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span></b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+وردت كلمة (<b><span style="color:red">لَيَقُولَنَّ</span></b>) بفتح اللام 
+الثانية في الآيتين 7 و10 من سورة هود &#64831;<b><span style="color:blue">وَلَئِن قُلْتَ 
+إِنَّكُم مَّبْعُوثُونَ مِن بَعْدِ الْمَوْتِ </span><span style="color:red">
+لَيَقُولَنَّ</span><span style="color:blue"> الَّذِينَ كَفَرُواْ إِنْ هَـذَا 
+إِلاَّ سِحْرٌ مُّبِينٌ</span></b>&#64830; (هود 7)</span>
+      <OBJECT id=player11 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-4.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;&nbsp;و&#64831;<b><span style="color:blue">وَلَئِنْ أَذَقْنَاهُ نَعْمَاء 
+بَعْدَ ضَرَّاء مَسَّتْهُ </span><span style="color:red">لَيَقُولَنَّ</span><span style="color:blue"> 
+ذَهَبَ السَّيِّئَاتُ عَنِّي</span></b>&#64830; (هود 10)</span>
+      <OBJECT id=player10 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-5.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;ووردت بضم اللام الثانية (<b><span style="color:red">لَّيَقُولُنَّ</span></b>) 
+في الآية 8 من سورة هود &#64831;<b><span style="color:blue">وَلَئِنْ أَخَّرْنَا عَنْهُمُ 
+الْعَذَابَ إِلَى أُمَّةٍ مَّعْدُودَةٍ </span><span style="color:red">
+لَّيَقُولُنَّ</span><span style="color:blue"> مَا يَحْبِسُهُ</span></b>&#64830; (هود 8) 
+</span>
+      <OBJECT id=player9 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-6.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      </p>
+<p class="MsoNormal" dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:red">سورة يوسف</span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -22.5pt; text-autospace: ideograph-numeric; margin-right: 18.35pt">
+<b><span style="font-size:18.0pt;color:blue">5.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span></b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+تُقرأ كلمة (<b><span style="color:red">بِجَهَازِهِمْ</span></b>) في قوله تعالى &#64831;<b><span style="color:blue">وَلَمَّا 
+جَهَّزَهُم </span><span style="color:red">بِجَهَازِهِمْ</span><span style="color:blue"> 
+قَالَ ائْتُونِي بِأَخٍ لَّكُم مِّنْ أَبِيكُمْ</span></b>&#64830; (يوسف 59)</span>
+      <OBJECT id=player8 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-7.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">بفتح الجيم وليس بكسرها كما يقرؤها بعض الناس خطأ.</span></p>
+<p class="MsoNormal" dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:red">سورة الرعد</span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -22.5pt; text-autospace: ideograph-numeric; margin-right: 18.35pt">
+<b><span style="font-size:18.0pt;color:blue">6.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span></b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+قرأ حفص كلمة<b><span style="color:red"> (الْمَثُلاَتُ)</span></b> في قوله تعالى 
+&#64831;<b><span style="color:blue">وَيَسْتَعْجِلُونَكَ بِالسَّيِّئَةِ قَبْلَ 
+الْحَسَنَةِ وَقَدْ خَلَتْ مِن قَبْلِهِمُ </span><span style="color:red">
+الْمَثُلاَتُ</span></b>&#64830; (الرعد 6)</span>
+      <OBJECT id=player7 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-8.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;بفتح الميم وضم الثاء.</span></p>
+<p class="MsoNormal" dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:red">سورة الحجر</span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -22.5pt; text-autospace: ideograph-numeric; margin-right: 18.35pt">
+<b><span style="font-size:18.0pt;color:blue">7.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span></b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+من الأخطاء الشائعة قراءة كلمة (<b><span style="color:red">رُبَمَا</span></b>) في 
+قوله تعالى &#64831;<b><span style="color:red">رُبَمَا</span><span style="color:blue"> 
+يَوَدُّ الَّذِينَ كَفَرُواْ لَوْ كَانُواْ مُسْلِمِينَ</span></b>&#64830; (الحجر 2) </span>
+      <OBJECT id=player6 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-9.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">بتشديد الباء والصحيح أن حرف الباء مفتوح <b>غير مشدد</b>.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -22.5pt; text-autospace: ideograph-numeric; margin-right: 18.35pt">
+<b><span style="font-size:18.0pt;color:blue">8.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span></b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+من الأخطاء الشائعة قراءة كلمة (<b><span style="color:red">تُؤْمَرُ</span></b>) 
+في قوله تعالى &#64831;<b><span style="color:blue">فَاصْدَعْ بِمَا </span>
+<span style="color:red">تُؤْمَرُ</span><span style="color:blue"> وَأَعْرِضْ عَنِ 
+الْمُشْرِكِينَ</span></b>&#64830; (الحجر 94) </span>
+      <OBJECT id=player5 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-10.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;&nbsp;بتسكين الراء عند الوصل والصحيح أنها <u>مضمومة</u>.</span></p>
+<p class="MsoNormal" dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:red">سورة الإسراء</span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -22.5pt; text-autospace: ideograph-numeric; margin-right: 18.35pt">
+<b><span style="font-size:18.0pt;color:blue">9.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span></b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+تقرأ كلمة (<b><span style="color:red">وَرَجِلِكَ</span></b>) في قوله تعالى &#64831;<b><span style="color:blue">وَاسْتَفْزِزْ 
+مَنِ اسْتَطَعْتَ مِنْهُمْ بِصَوْتِكَ</span></b> <b><span style="color:blue">
+وَأَجْلِبْ عَلَيْهِم بِخَيْلِكَ </span><span style="color:red">وَرَجِلِكَ</span><span style="color:blue"> 
+وَشَارِكْهُمْ فِي الأَمْوَالِ وَالأَوْلادِ وَعِدْهُمْ</span></b>&#64830; (الإسراء 64) </span>
+      <OBJECT id=player4 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-11.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;بفتح الراء وكسر الجيم واللام.</span></p>
+<p class="MsoNormal" dir="RTL"><b>
+<span lang="AR-SA" style="font-size:18.0pt;
+font-family:&quot;Traditional Arabic&quot;;color:red">سورة الكهف</span></b></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -22.5pt; text-autospace: ideograph-numeric; margin-right: 18.35pt">
+<b><span style="font-size:18.0pt;color:blue">10.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span></b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+من الأخطاء الشائعة قراءة كلمة (<b><span style="color:red">نهرا</span></b>) في 
+قوله تعالى &#64831;<b><span style="color:blue">وَفَجَّرْنَا خِلَالَهُمَا </span>
+<span style="color:red">نَهَراً</span></b>&#64830;<b><span style="color:blue"> </span>(</b>الكهف 
+33)</span>
+      <OBJECT id=player3 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-12.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;بسكون الهاء. والصواب أن 
+حرفي النون والهاء مفتوحين. ومثل هذا كلمة (<b><span style="color:red">بِنَهَرٍ</span></b>) 
+في الآية 249 من سورة البقرة وكلمة (<b><span style="color:red">وَنَهَرٍ</span></b>) 
+في الآية 54 من سورة القمر تُقرأ كلها بفتح النون والهاء.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -22.5pt; text-autospace: ideograph-numeric; margin-right: 18.35pt">
+<b><span style="font-size:18.0pt;color:blue">11.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span></span></b>
+<span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+يقرأ البعض كلمتي (<b><span style="color:red">لَنَفِدَ</span></b>) و(<b><span style="color:red">تَنفَدَ</span></b>) 
+في قوله تعالى &#64831;<b><span style="color:
+blue">قُل لَّوْ كَانَ الْبَحْرُ مِدَاداً لِّكَلِمَاتِ رَبِّي </span>
+<span style="color:red">لَنَفِدَ</span><span style="color:blue"> الْبَحْرُ 
+قَبْلَ أَن </span><span style="color:red">تَنفَدَ</span><span style="color:blue"> 
+كَلِمَاتُ رَبِّي وَلَوْ جِئْنَا بِمِثْلِهِ مَدَداً</span></b>&#64830; (الكهف 109)</span>
+      <OBJECT id=player2 height=34 width=57 
+      classid=CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6>
+		<param name="URL" value="examples/9-5-2-13.mp3">
+		<param name="rate" value="1">
+		<param name="balance" value="0">
+		<param name="currentPosition" value="0">
+		<param name="defaultFrame" value>
+		<param name="playCount" value="1">
+		<param name="autoStart" value="0">
+		<param name="currentMarker" value="0">
+		<param name="invokeURLs" value="-1">
+		<param name="baseURL" value>
+		<param name="volume" value="50">
+		<param name="mute" value="0">
+		<param name="uiMode" value="full">
+		<param name="stretchToFit" value="-1">
+		<param name="windowlessVideo" value="0">
+		<param name="enabled" value="-1">
+		<param name="enableContextMenu" value="-1">
+		<param name="fullScreen" value="0">
+		<param name="SAMIStyle" value>
+		<param name="SAMILang" value>
+		<param name="SAMIFilename" value>
+		<param name="captioningID" value>
+		<param name="enableErrorDialogs" value="0">
+</OBJECT>
+      <span lang="AR-SA" style="font-size:18.0pt;font-family:&quot;Traditional Arabic&quot;" dir="RTL">
+&nbsp;بالذال، وهذا خطأ. والصحيح أن الكلمتين تُقرآن بالدال.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">&nbsp;</p>
+
+</body>
+
+</html>

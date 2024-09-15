@@ -1,0 +1,222 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+
+
+
+
+
+<style>
+ a.menu:link {color: #0000FF; text-decoration: none; }
+ a.menu:hover {color: #33FFCC; text-decoration: underline; }
+</style>
+
+
+
+
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="../../Images/back.gif"  >
+
+
+
+
+
+<!-- Float script start -->
+<!-- Courtesy of SimplytheBest.net - http://simplythebest.net/scripts/ -->
+<SCRIPT>
+
+var IW= 0;
+var IH= 0;
+var PX= 0;
+var PY= 0;
+var ZIN= 0;
+var us= null;
+var IMGW= 30;
+//modify top position
+var IMGH= 0;
+var LSAFETY= 20;
+var TSAFETY= 17;
+function branding() {
+browserVer = parseInt(navigator.appVersion); 
+if(browserVer<4) return;
+ oldIW= IW;
+ oldIH= IH;
+ oldPX= PX;
+ oldPY= PY;
+ if (navigator.appName == 'Netscape')
+ {
+  if ((window.innerHeight != oldIH)||(window.innerWidth != oldIW)||(window.pageXOffset != oldPX)||(window.pageYOffset != oldPY))
+  {
+    if (us == null)
+    {
+      for (i=0; i<document.layers.length; i++)
+      {
+        us= document.layers[i];
+        if (us.id == "Logo") break;
+      }
+    }
+    if (us != null)
+    {
+      us.visibility= "hide";
+      IH= window.innerHeight;
+      IW= window.innerWidth;
+      PX= window.pageXOffset;
+      PY= window.pageYOffset;
+
+      (IH > IMGH) ? us.bottom= (PY+(IMGH+TSAFETY)) : us.bottom= 0;
+//      (IW > IMGW) ? us.left= (PX-(IMGW+LSAFETY)) : us.left= 0;
+      us.left = 20;
+
+      for (i=0; i<document.layers.length; i++)
+      {
+        templay= document.layers[i];
+
+        if (templay.zIndex > ZIN)
+          ZIN= (templay.zIndex + 1);
+      }
+      us.zIndex= ZIN;
+      us.visibility= "show";
+    }
+  }
+ }
+ else{
+  //if (navigator.appVersion.indexOf("Mac") == -1)
+  {
+    if ((document.body.clientHeight != oldIH)||(document.body.clientWidth != oldIW)||(document.body.scrollLeft != oldPX)||(document.body.scrollTop != oldPY))      {
+      alldivs= document.all.tags("DIV");
+      if (us == null){ 
+        for (i=0; i<alldivs.length; i++)
+          {
+          us= alldivs[i];
+          if (us.id == "Logo")
+            break;
+          }
+      }
+      if (us != null){
+        us.style.display= "none";
+        IH= document.body.clientHeight;
+        IW= document.body.clientWidth;
+        PX= document.body.scrollLeft;
+        PY= document.body.scrollTop;
+        us.style.bottom= (-PY+(IMGH+TSAFETY)+12);
+//        us.style.left=(PX-(IMGW+LSAFETY)+15);
+//modify left position
+        us.style.left = 5;
+//us.style.left = (150 - ims.width)/2;
+
+        for (i=0; i<alldivs.length; i++){
+          templay= alldivs(i);
+          if (templay.style.zIndex > ZIN)
+            us.style.zindex= (templay.style.zIndex + 1);
+        }
+        us.style.display= "";
+      }
+  }
+ }
+ }
+}
+if ((document.all) || (document.layers))
+{
+ setInterval("branding()",100);
+}
+
+</SCRIPT>
+
+<div class="Logo" id="Logo" style="LEFT: 6px; POSITION: absolute; bottom:5px">
+<br>
+<b><span lang="en-us">
+<font face="Wingdings" color="#0000FF" style="font-size: 16pt">
+<a class="menu" href="#0"><span style="text-decoration: none">&Ccedil;</span></a></font></span></b></div>
+<!-- Float script end -->
+
+
+<p class="MsoNormal" align="center" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<b>
+<span lang="AR-SA" style="font-size: 22.0pt; font-family: khalaad al-arabeh 2; color: #993300">
+&nbsp; <a name="0"></a> </span></b>
+<span lang="AR-SA" style="font-size: 22.0pt; font-family: Hesham AlSharq; color: #993300">
+السور والآيات</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed">
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">&nbsp;</span><span lang="AR-SA" style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">عدد 
+سور القرآن</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">
+اتفق العلماء على أن عدد سور القرآن أربع عشرة ومائة سورة أولها في ترتيب المصحف 
+سورة الفاتحة وآخرها سورة الناس</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 4.35pt">
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Hesham AlSharq; color: blue">
+تقسيم&nbsp; سور القرآن</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">
+قسم العلماء سور القرآن إلى أربع أقسام وهي: </span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<b>
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic; color: red">
+السبع الطوال</span></b><span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">: 
+وهي البقرة، آل عمران، النساء، المائدة، الأنعام، الأعراف والتوبة. وقيل السابعة 
+الأنفال والتوبة معا لعدم الفصل بينهما بالبسملة.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<b>
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic; color: red">
+المئين</span></b><span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">: 
+وهي السور التي يزيد عدد آياتها على المائة أو يقاربها. وقيل المئين من سورة يونس 
+إلى الشعراء.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<b>
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic; color: red">
+المثاني</span></b><span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">: 
+وهي التي تلي المئين في عدد الآيات. وسميت كذلك لأن القارئ يثنيها في الصلاة أكثر 
+من الطوال والمئين.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 18.55pt">
+<b>
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic; color: red">
+المفصل</span></b><span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">: 
+وهي التي يكثر الفصل بينها بالبسملة لقصرها. واختلف العلماء في أول سور المفصل فقيل 
+من أول الحجرات وقيل من أول سورة قاف (ق) وقيل غير ذلك. وينقسم المفصل إلى:</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 53.8pt">
+<span style="font-size: 18.0pt">-<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">
+طوال المفصل</span></b></span><span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">: 
+حتى سورة المرسلات.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 53.8pt">
+<span style="font-size: 18.0pt">-<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">
+أواسط المفصل</span></b></span><span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">: 
+من سورة النبأ إلى سورة الليل.</span></p>
+<p class="MsoNormal" dir="RTL" style="text-align: justify; text-justify: kashida; text-kashida: 0%; text-indent: -18.0pt; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 53.8pt">
+<span style="font-size: 18.0pt">-<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir="RTL"><b>
+<span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">
+قصار المفصل</span></b></span><span lang="AR-SA" style="font-size: 18.0pt; font-family: Traditional Arabic">: 
+من الضحى حتى سورة الناس. </span></p>
+
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">
+<span lang="AR-SA" style="font-size:18.0pt;font-family:
+&quot;Traditional Arabic&quot;">&nbsp;</span><span dir="LTR" style="font-size:18.0pt;color:gray">&nbsp;</span><span dir="LTR" style="font-size:18.0pt">&nbsp;</span><img border="0" src="Pictures/hbar.gif" width="246" height="27"></p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">&nbsp;</p>
+<p class="MsoNormal" dir="RTL" style="text-align: center; text-autospace: none; direction: rtl; unicode-bidi: embed; margin-right: 13.5pt">&nbsp;</p>
+
+</body>
+
+</html>

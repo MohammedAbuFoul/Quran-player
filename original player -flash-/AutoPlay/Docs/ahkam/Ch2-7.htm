@@ -1,0 +1,223 @@
+<html dir="rtl">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<meta http-equiv="Content-Language" content="ar-sa">
+<title>برنامج التجويد</title>
+<style>
+<!--
+h3
+	{margin-bottom:.0001pt;
+	text-autospace:none;
+	font-size:12.0pt;
+	font-family:Al-Mothnna;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+<style fprolloverstyle>A:hover {color: #FF0000; font-weight: bold}
+ p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0in; margin-right:0in; margin-top:0in}
+</style>
+
+
+
+
+
+<style type="text/css">
+
+#dhtmltooltip{
+position: absolute;
+width: 200px;
+border: 1px  black;
+padding: 0px;
+background-color: lightyellow;
+visibility: hidden;
+z-index: 100;
+/*Remove below line to remove shadow. Below line should always appear last within this CSS*/
+/*filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);*/
+}
+
+</style>
+
+
+<style type="text/css">
+<!--
+
+.tooltiptitle{COLOR: #FFFFFF; TEXT-DECORATION: none; CURSOR: Default; font-family: times; font-weight: bold; font-size: 11pt}
+.tooltipcontent{COLOR: #000000; TEXT-DECORATION: none; CURSOR: Default; font-family: times; font-weight: bold; font-size: 11pt}
+
+#ToolTip{position:absolute; width: 100px; top: 0px; left: 0px; z-index:4; visibility:hidden;}
+
+-->
+
+</style>
+
+
+
+
+</head>
+
+<body  scroll ="yes" style="background-attachment: fixed; background-repeat: no-repeat; background-position: center" rightmargin="3"  link="#0000FF" vlink="#0000FF" alink="#FF0000" background="../../Images/back.gif"   >
+
+<div id="dhtmltooltip"></div>
+
+<script type="text/javascript">
+
+
+var offsetxpoint=-60 //Customize x offset of tooltip
+var offsetypoint=20 //Customize y offset of tooltip
+var ie=document.all
+var ns6=document.getElementById && !document.all
+var enabletip=false
+var Ex, Ey, topColor, subColor, ContentInfo
+topColor = "#000099"
+subColor = "#FFFFCC"
+
+if (ie||ns6)
+var tipobj=document.all? document.all["dhtmltooltip"] : document.getElementById? document.getElementById("dhtmltooltip") : ""
+
+function ietruebody(){
+return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+}
+
+function ddrivetip(TTitle, TContent, thecolor, thewidth){
+if (ns6||ie){
+if (typeof thewidth!="undefined") tipobj.style.width=thewidth+"px"
+if (typeof thecolor!="undefined" && thecolor!="") tipobj.style.backgroundColor=thecolor
+
+ContentInfo = '<table border="0" width="200" cellspacing="0" cellpadding="0">'+
+'<tr><td width="100%" bgcolor="#000000">'+
+
+'<table border="0" width="100%" cellspacing="1" cellpadding="0">'+
+'<tr><td width="100%" bgcolor='+topColor+'>'+
+
+'<table border="0" width="90%" cellspacing="0" cellpadding="0" align="center">'+
+'<tr><td width="100%">'+
+
+'<font class="tooltiptitle"> <p align="center">&nbsp;'+TTitle+'</font>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+
+'<tr><td width="100%" bgcolor='+subColor+'>'+
+
+'<table border="0" width="90%" cellpadding="0" cellspacing="1" align="center">'+
+
+'<tr><td width="100%">'+
+
+'<font class="tooltipcontent">'+TContent+'</font>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+'</table>'+
+
+'</td></tr>'+
+'</table>';
+
+
+
+tipobj.innerHTML=ContentInfo 
+
+enabletip=true
+return false
+}
+}
+
+function positiontip(e){
+if (enabletip){
+var curX=(ns6)?e.pageX : event.clientX+ietruebody().scrollLeft;
+var curY=(ns6)?e.pageY : event.clientY+ietruebody().scrollTop;
+//Find out how close the mouse is to the corner of the window
+var rightedge=ie&&!window.opera? ietruebody().clientWidth-event.clientX-offsetxpoint : window.innerWidth-e.clientX-offsetxpoint-20
+var bottomedge=ie&&!window.opera? ietruebody().clientHeight-event.clientY-offsetypoint : window.innerHeight-e.clientY-offsetypoint-20
+
+var leftedge=(offsetxpoint<0)? offsetxpoint*(-1) : -1000
+
+//if the horizontal distance isn't enough to accomodate the width of the context menu
+if (rightedge<tipobj.offsetWidth)
+//move the horizontal position of the menu to the left by it's width
+tipobj.style.left=ie? ietruebody().scrollLeft+event.clientX-tipobj.offsetWidth+"px" : window.pageXOffset+e.clientX-tipobj.offsetWidth+"px"
+else if (curX<leftedge)
+tipobj.style.left="5px"
+else
+//position the horizontal position of the menu where the mouse is positioned
+tipobj.style.left=curX+offsetxpoint+"px"
+
+//same concept with the vertical position
+if (bottomedge<tipobj.offsetHeight)
+tipobj.style.top=ie? ietruebody().scrollTop+event.clientY-tipobj.offsetHeight-offsetypoint+"px" : window.pageYOffset+e.clientY-tipobj.offsetHeight-offsetypoint+"px"
+else
+tipobj.style.top=curY+offsetypoint+"px"
+tipobj.style.visibility="visible"
+}
+}
+
+function hideddrivetip(){
+if (ns6||ie){
+enabletip=false
+tipobj.style.visibility="hidden"
+tipobj.style.left="0px"
+tipobj.style.backgroundColor=''
+tipobj.style.width=''
+}
+}
+
+document.onmousemove=positiontip
+
+</script>
+
+<MAP NAME="letters">
+
+
+	<AREA SHAPE="RECT" COORDS="236,226,249,208"   onclick="return false" href="#"  onMouseover="ddrivetip('حرف القاف','<b><font color=#FF0000>لقبه</font></b>: من الحروف اللهوية <br> <font color=#FF0000><b>مخرجه</b></font>: أقصى اللسان مع استعلائه وما يقابله من الحنك العلوي<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الشدة، الاستعلاء، الانفتاح، الإصمات، القلقلة')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="238,210,224,194" onclick="return false" href="#" onMouseover="ddrivetip('حرف الكاف','<b><font color=#FF0000>لقبه</font></b>: من الحروف اللهوية.<br> <font color=#FF0000><b>مخرجه</b></font>: أقصى اللسان مع ما يقابله من الحنك العلوي.<br><font color=#FF0000><b>صفاته</b></font>: الهمس، ، الشدة، الاستفال، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="287,282,300,262"onclick="return false" href="#" onMouseover="ddrivetip('حرف الخاء','<b><font color=#FF0000>لقبه</font></b>:  من الحروف الحلقية.<br> <font color=#FF0000><b>مخرجه</b></font>:  أدنى الحلق.<br><font color=#FF0000><b>صفاته</b></font>: الهمس، الرخاوة، الاستعلاء، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="282,288,268,268" onclick="return false" href="#" onMouseover="ddrivetip('حرف الغين','<b><font color=#FF0000>لقبه</font></b>:  من الحروف الحلقية. <br> <font color=#FF0000><b>مخرجه</b></font>: أدنى الحلق.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الرخاوة، الاستعلاء، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="281,332,299,315" onclick="return false" href="#" onMouseover="ddrivetip('حرف الحاء','<b><font color=#FF0000>لقبه</font></b>:  من الحروف الحلقية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من وسط الحلق.<br><font color=#FF0000><b>صفاته</b></font>: الهمس، الرخاوة، الاستفال، الانفتاح، الإصمات ')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="281,341,269,320" onclick="return false" href="#" onMouseover="ddrivetip('حرف العين','<b><font color=#FF0000>لقبه</font></b>:  العين من الحروف الحلقية. <br> <font color=#FF0000><b>مخرجه</b></font>: من وسط الحلق.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، البينية، الاستفال، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="274,360,299,372" onclick="return false" href="#" onMouseover="ddrivetip('حرف الهاء','<b><font color=#FF0000>لقبه</font></b>:  من الحروف الحلقية. <br> <font color=#FF0000><b>مخرجه</b></font>: من أقصى الحلق.<br><font color=#FF0000><b>صفاته</b></font>: الهمس، الرخاوة، الاستفال، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="290,372,275,384" onclick="return false" href="#" onMouseover="ddrivetip('حرف الهمزة','<b><font color=#FF0000>لقبه</font></b>: من الحروف الحلقية. <br> <font color=#FF0000><b>مخرجه</b></font>: من أقصى الحلق.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الشدة، الاستفال، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="297,414,310,397" onclick="return false" href="#" onMouseover="ddrivetip('الألف المدية','<b><font color=#FF0000>لقبه</font></b>: من الحروف الجوفية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من الجوف.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الرخاوة، الاستفال، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="278,418,293,402" onclick="return false" href="#" onMouseover="ddrivetip('الواو المدية','<b><font color=#FF0000>لقبه</font></b>: من الحروف الجوفية. <br> <font color=#FF0000><b>مخرجه</b></font>: من الجوف.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الرخاوة، الاستفال، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="255,420,276,407" onclick="return false" href="#" onMouseover="ddrivetip('الياء المدية','<b><font color=#FF0000>لقبه</font></b>: من الحروف الجوفية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من الجوف.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الرخاوة، الاستفال، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="223,169,209,185" onclick="return false" href="#" onMouseover="ddrivetip('حرف الجيم','<b><font color=#FF0000>لقبه</font></b>: من الحروف الشجرية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من وسط اللسان مع ما يحاذيه من اللثة العليا.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الشدة، الاستفال، الانفتاح، الإصمات، القلقلة.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="208,174,188,158" onclick="return false" href="#" onMouseover="ddrivetip('حرف الشين','<b><font color=#FF0000>لقبه</font></b>: من الحروف الشجرية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من وسط اللسان مع ما يحاذيه من اللثة العليا.<br><font color=#FF0000><b>صفاته</b></font>: الهمس، الرخاوة، الاستفال، الانفتاح، الإصمات، التفشي.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="169,168,185,154" onclick="return false" href="#" onMouseover="ddrivetip('الياء غير المدية','<b><font color=#FF0000>لقبه</font></b>: من الحروف الشجرية. <br> <font color=#FF0000><b>مخرجه</b></font>: من وسط اللسان مع ما يحاذيه من اللثة العليا.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الرخاوة، الاستفال، الانفتاح، الإصمات، اللين عند السكون')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="131,167,151,152" onclick="return false" href="#" onMouseover="ddrivetip('حرف الطاء','<b><font color=#FF0000>لقبه</font></b>:  من الحروف النطعية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من طرف اللسان مع أصول الثنايا العليا.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الشدة، الاستعلاء، الإطباق، الإصمات، القلقلة.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="118,170,130,155" onclick="return false" href="#" onMouseover="ddrivetip('حرف الدال','<b><font color=#FF0000>لقبه</font></b>:  من الحروف النطعية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من  طرف اللسان مع أصول الثنايا العليا.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الشدة، الاستفال، الانفتاح، الإصمات، القلقلة.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="98,168,116,157" onclick="return false" href="#" onMouseover="ddrivetip('حرف التاء','<b><font color=#FF0000>لقبه</font></b>:  من الحروف النطعية.<br> <font color=#FF0000><b>مخرجه</b></font>:  مخرجه من  طرف اللسان مع أصول الثنايا العليا.<br><font color=#FF0000><b>صفاته</b></font>: الهمس، الشدة، الاستفال، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="108,188,126,172" onclick="return false" href="#" onMouseover="ddrivetip('حرف الظاء','<b><font color=#FF0000>لقبه</font></b>:  من الحروف اللثوية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من طرف اللسان مع أطراف الثنايا العليا.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الرخاوة، الاستعلاء، الإطباق، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="94,186,106,171" onclick="return false" href="#" onMouseover="ddrivetip('حرف الذال','<b><font color=#FF0000>لقبه</font></b>:  من الحروف اللثوية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من طرف اللسان مع أطراف الثنايا العليا.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الرخاوة، الاستفال، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="73,187,93,172" onclick="return false" href="#" onMouseover="ddrivetip('حرف الثاء','<b><font color=#FF0000>لقبه</font></b>: من الحروف اللثوية.<br> <font color=#FF0000><b>مخرجه</b></font>: من طرف اللسان مع أطراف الثنايا العليا.<br><font color=#FF0000><b>صفاته</b></font>: الهمس، الرخاوة، الاستفال، الانفتاح، الإصمات.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="21,176,43,160" onclick="return false" href="#" onMouseover="ddrivetip('حرف الفاء','<b><font color=#FF0000>لقبه</font></b>:  من الحروف الشفوية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من بطن الشفة السفلى مع أطراف الثنايا العليا.<br><font color=#FF0000><b>صفاته</b></font>: الهمس، الرخاوة، الاستفال، الانفتاح، الإذلاق.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="38,204,55,187" onclick="return false" href="#" onMouseover="ddrivetip('حرف الباء','<b><font color=#FF0000>لقبه</font></b>:  من الحروف الشفوية. <br> <font color=#FF0000><b>مخرجه</b></font>:  ما بين الشفتين بانطباقهما.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الشدة، الاستفال، الانفتاح، الإذلاق، القلقلة.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="23,208,34,189" onclick="return false" href="#" onMouseover="ddrivetip('حرف الميم','<b><font color=#FF0000>لقبه</font></b>:  من الحروف الشفوية.<br> <font color=#FF0000><b>مخرجه</b></font>:  ما بين الشفتين بانطباقهما.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، البينية، الاستفال، الانفتاح، الإذلاق.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="7,207,22,189" onclick="return false" href="#" onMouseover="ddrivetip('الواو غير المدية','<b><font color=#FF0000>لقبه</font></b>: من الحروف الشفوية. <br> <font color=#FF0000><b>مخرجه</b></font>: ما بين الشفتين بانفتاحهما.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الرخاوة، الاستفال، الانفتاح، الإصمات، اللين عند السكون.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="135,210,161,199" onclick="return false" href="#" onMouseover="ddrivetip('حرف الصاد','<b><font color=#FF0000>لقبه</font></b>:  من الحروف الأسلية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من طرف اللسان، فوق الثنايا السفلى مع إبقاء حيز ضيق بين سطح اللسان، الحنك الأعلى لمرور الهواء هاربا.<br><font color=#FF0000><b>صفاته</b></font>: الهمس، الرخاوة، الاستعلاء، الإطباق، الإصمات، الصفير.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="112,209,133,198" onclick="return false" href="#" onMouseover="ddrivetip('حرف السين','<b><font color=#FF0000>لقبه</font></b>:  من الحروف الأسلية. <br> <font color=#FF0000><b>مخرجه</b></font>: من طرف اللسان، فوق الثنايا السفلى مع إبقاء حيز ضيق بين سطح اللسان، الحنك الأعلى لمرور الهواء هاربا.<br><font color=#FF0000><b>صفاته</b></font>: الهمس، الرخاوة، الاستفال، الانفتاح، الإصمات، الصفير.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="95,210,112,193" onclick="return false" href="#" onMouseover="ddrivetip('حرف الزاي','<b><font color=#FF0000>لقبه</font></b>:  من الحروف الأسلية. <br> <font color=#FF0000><b>مخرجه</b></font>: من طرف اللسان، فوق الثنايا السفلى مع إبقاء حيز ضيق بين سطح اللسان، الحنك الأعلى لمرور الهواء هاربا.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الرخاوة، الاستفال، الانفتاح، الإصمات، الصفير.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="89,57,122,39" onclick="return false" href="#" onMouseover="ddrivetip('الغنة','صفة ترافق الميم والنون <br> <font color=#FF0000><b>مخرجها</b></font>: من الخيشوم')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="157,194,141,174" onclick="return false" href="#" onMouseover="ddrivetip('حرف اللام','<b><font color=#FF0000>لقبه</font></b>: من الحروف الذَّلْقِية<br> <font color=#FF0000><b>مخرجه</b></font>:  أدنى حافتي اللسان (أو إحداهما واليمنى أيسر) مع ما يحاذيه من لثة الأسنان العليا.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، البينية، الاستفال، الانفتاح، الإذلاق،الانحراف.')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="129,142,144,127" onclick="return false" href="#" onMouseover="ddrivetip('حرف الراء','<b><font color=#FF0000>لقبه</font></b>: من الحروف الذَّلْقِية<br> <font color=#FF0000><b>مخرجه</b></font>: طرف اللسان مع شيء من ظهره وما يحاذيه من لثة الأسنان العليا.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، البينية، الاستفال، الانفتاح، الإذلاق، الانحراف، التكرير (قابل له ويجب التحرز منه)')";  onMouseout="hideddrivetip()">
+	<AREA SHAPE="RECT" COORDS="114,150,127,134" onclick="return false" href="#" onMouseover="ddrivetip('حرف النون','<b><font color=#FF0000>لقبه</font></b>: من الحروف الذَّلْقِية<br> <font color=#FF0000><b>مخرجه</b></font>: طرف اللسان مع ما يقابله من لثة الأسنان العليا<br><font color=#FF0000><b>صفاته</b></font>: الجهر، البينية، الاستفال، الانفتاح، الإذلاق.')";  onMouseout="hideddrivetip()">
+	    <AREA SHAPE="POLY" COORDS="156,186, 155,193, 195,205, 227,228, 231,216, 191,192" onclick="return false" href="#" onMouseover="ddrivetip('حرف الضاد','<b><font color=#FF0000>لقبه</font></b>:  من الحروف الشجرية.<br> <font color=#FF0000><b>مخرجه</b></font>:  من إحدى حافتي اللسان (واليسرى أيسر) مع ما يحاذيه من الأضراس العليا.<br><font color=#FF0000><b>صفاته</b></font>: الجهر، الرخاوة، الاستعلاء، الإطباق، الإصمات، الاستطالة.')";  onMouseout="hideddrivetip()">
+</MAP>
+<IMG SRC="Pictures/letters.gif" USEMAP="#letters" BORDER="0" align="left">
+
+
+</body>
+
+</html>
