@@ -1,3 +1,4 @@
+<h1><a href="https://mohammedabufoul.github.io/Quran-player/web%20player/">Go to the Web Player</a></h1>
 # Quran player
  software for reading and listening to Quran originally using flash player autoplay (kept in “original player -flash-“ folder if you are interested)
 I am trying to change it to a web application
