@@ -3,6 +3,8 @@
 I am trying to change it to a web application
 I don’t own the original work but it is distributed on a free license, below is the license agreement of the original work
 
+added features:
+* new images taken from ayat (https://quran.ksu.edu.sa/ayat/)
 
 "
                                                                 بسم الله الرحمن الرحيم
